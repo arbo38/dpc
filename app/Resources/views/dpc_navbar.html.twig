@@ -9,28 +9,28 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="ASSAN"></a>
+                    <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="DPC"></a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="#">Accueil</a>
+                            <a href="{{ path('dpc_store_homepage') }}">Accueil</a>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Produits <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="blog-full.html">Occasions</a></li>
-                                <li><a href="blog-leftimg.html">Promotions</a></li>
-                                <li><a href="blog-sidebar.html">En magasin</a></li>
-                                <li><a href="blog-2col.html">En ligne</a></li>
+                                <li><a href="{{ path('dpc_store_occasions') }}">Occasions</a></li>
+                                <li><a href="{{ path('dpc_store_promos') }}">Promotions</a></li>
+                                <li><a href="{{ path('dpc_store_promos') }}">En magasin</a></li>
+                                <li><a href="{{ path('dpc_store_homepage') }}">En ligne</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Services <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="blog-full.html">Réparation</a></li>
-                                <li><a href="blog-leftimg.html">Maintenance</a></li>
-                                <li><a href="blog-sidebar.html">Dépannage</a></li>
+                                <li><a href="{{ path('dpc_store_homepage') }}">Réparation</a></li>
+                                <li><a href="{{ path('dpc_store_homepage') }}">Maintenance</a></li>
+                                <li><a href="{{ path('dpc_store_homepage') }}">Dépannage</a></li>
                             </ul>
                         </li>
                         <li>

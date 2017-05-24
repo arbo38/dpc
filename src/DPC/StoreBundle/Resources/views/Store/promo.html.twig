@@ -1,12 +1,12 @@
 {% extends "DPCStoreBundle::layout.html.twig" %}
 
 {% block title %}
-  Accueil - {{ parent() }}
+  Promotions - {{ parent() }}
 {% endblock %}
 
 {% block dpcstore_body %}
-
-  <h2>Promo</h2>
+<div class="row"></div> <!-- div.row -->
+  <h3>Promo</h3>
 
   <p>
         <a href="{{ path('dpc_store_promo', {'id': promo.id}) }}">
@@ -17,5 +17,6 @@
           {{ promo.description }}
         </p>
   </p>
+</div>
 
 {% endblock %}

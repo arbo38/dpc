@@ -41,11 +41,14 @@
 
     {{ include('dpc_navbar.html.twig') }}
 
+    <div class="divide60"></div>
+    <div class="container">
+        {% block bundle_body %}
+
+        {% endblock %}
+    </div>
+
     {{ include('dpc_footer.html.twig') }}
-
-    {% block bundle_body %}
-
-    {% endblock %}
 
     {% block javascript %}
         <!--scripts and plugins -->

@@ -1,12 +1,8 @@
 {% extends "DPCStoreBundle::layout.html.twig" %}
 
-{% block title %}
-  Accueil - {{ parent() }}
-{% endblock %}
-
 {% block dpcstore_body %}
-
-  <h2>Les promos</h2>
+<div class="row">
+  <h3>Les promos</h3>
 
   <ul>
     {% for promo in listPromos %}
@@ -23,5 +19,8 @@
       <li>Pas (encore !) de promos</li>
     {% endfor %}
   </ul>
+
+</div> <!-- div.row -->
+  
 
 {% endblock %}
