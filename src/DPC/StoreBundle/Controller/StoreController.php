@@ -97,15 +97,8 @@ class StoreController extends Controller
     }
 
     public function testAction(){
-    	$em = $this->getDoctrine()->getManager();
-
-    	$brand = $em->getRepository('DPCStoreBundle:Brand')->find(13);
-
-    	$listProducts = $brand->getProducts();
-
-    	dump($listProducts);
-
-    	return $this->render('DPCStoreBundle:Store:test.html.twig', compact('listProducts'));
+    	
+    	return $this->render('::dpc_base_layout.html.twig');
     }
 
 
