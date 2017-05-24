@@ -1,0 +1,4 @@
+dpc_store:
+    resource: "@DPCStoreBundle/Resources/config/routing.yml"
+    prefix:   /
+

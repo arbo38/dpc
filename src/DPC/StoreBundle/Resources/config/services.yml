@@ -1,0 +1,4 @@
+services:
+#    dpc_store.example:
+#        class: DPC\StoreBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

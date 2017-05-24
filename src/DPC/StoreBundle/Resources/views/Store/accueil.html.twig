@@ -1,0 +1,45 @@
+{% extends "DPCStoreBundle::layout.html.twig" %}
+
+{% block title %}
+  Accueil - {{ parent() }}
+{% endblock %}
+
+{% block dpcstore_body %}
+
+  <h2>Les dernières promos</h2>
+
+  <ul>
+    {% for promo in listPromos %}
+      <li>
+        <a href="{{ path('dpc_store_promo', {'id': promo.id}) }}">
+          {{ promo.title }}
+        </a>
+        le {{ promo.date|date('d/m/Y') }}
+        <p>
+          {{ promo.description }}
+        </p>
+      </li>
+    {% else %}
+      <li>Pas (encore !) de promos</li>
+    {% endfor %}
+  </ul>
+
+  <h2>Les dernières occasions</h2>
+
+  <ul>
+    {% for occasion in listOccasions %}
+      <li>
+        <a href="{{ path('dpc_store_occasion', {'id': occasion.id}) }}">
+          {{ occasion.title }}
+        </a>
+        le {{ occasion.date|date('d/m/Y') }}
+        <p>
+          {{ occasion.description }}
+        </p>
+      </li>
+    {% else %}
+      <li>Pas (encore !) d'occasions</li>
+    {% endfor %}
+  </ul>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "DPCStoreBundle::layout.html.twig" %}
+
+{% block title %}
+  Accueil - {{ parent() }}
+{% endblock %}
+
+{% block dpcstore_body %}
+
+  <h2>Occasion:</h2>
+
+  <p>
+        <a href="{{ path('dpc_store_occasion', {'id': occasion.id}) }}">
+          {{ occasion.title }}
+        </a>
+        le {{ occasion.date|date('d/m/Y') }}
+        <p>
+          {{ occasion.description }}
+        </p>
+  </p>
+
+{% endblock %}

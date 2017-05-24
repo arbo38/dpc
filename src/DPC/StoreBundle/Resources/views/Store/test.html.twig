@@ -1,0 +1,27 @@
+{% extends "DPCStoreBundle::layout.html.twig" %}
+
+{% block title %}
+  Accueil - {{ parent() }}
+{% endblock %}
+
+{% block dpcstore_body %}
+
+  <h2>Test:</h2>
+
+  <ul>
+    {% for product in listProducts %}
+      <li>
+        <a href="{{ path('dpc_store_occasion', {'id': product.id}) }}">
+          {{ product.title }}
+        </a>
+        le {{ product.date|date('d/m/Y') }}
+        <p>
+          {{ product.description }}
+        </p>
+      </li>
+    {% else %}
+      <li>Pas (encore !) de produits</li>
+    {% endfor %}
+  </ul>
+
+{% endblock %}

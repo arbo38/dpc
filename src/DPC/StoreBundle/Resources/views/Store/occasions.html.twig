@@ -1,0 +1,27 @@
+{% extends "DPCStoreBundle::layout.html.twig" %}
+
+{% block title %}
+  Accueil - {{ parent() }}
+{% endblock %}
+
+{% block dpcstore_body %}
+
+  <h2>Les occasions</h2>
+
+  <ul>
+    {% for occasion in listOccasions %}
+      <li>
+        <a href="{{ path('dpc_store_occasion', {'id': occasion.id}) }}">
+          {{ occasion.title }}
+        </a>
+        le {{ occasion.date|date('d/m/Y') }}
+        <p>
+          {{ occasion.description }}
+        </p>
+      </li>
+    {% else %}
+      <li>Pas (encore !) d'occasions</li>
+    {% endfor %}
+  </ul>
+
+{% endblock %}

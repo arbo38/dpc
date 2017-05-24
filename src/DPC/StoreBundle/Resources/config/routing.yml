@@ -1,0 +1,57 @@
+dpc_store_homepage:
+    path:     /
+    defaults: { _controller: DPCStoreBundle:Store:index }
+
+dpc_store_promo:
+    path:     /promo/{id}
+    defaults: 
+        _controller: DPCStoreBundle:Store:promo
+    requirements: 
+        id: \d+
+
+dpc_store_promos:
+    path:     /promos
+    defaults: { _controller: DPCStoreBundle:Store:promos }
+    
+dpc_store_occasion:
+    path:     /occasion/{id}
+    defaults: { _controller: DPCStoreBundle:Store:occasion }
+    requirements: 
+        id: \d+
+
+dpc_store_occasions:
+    path:     /occasions
+    defaults: { _controller: DPCStoreBundle:Store:occasions }
+
+dpc_store_add_category_to_product:
+    path:     /add_category/{product}/{category}
+    defaults: { _controller: DPCStoreBundle:Store:addCategoryToProduct }
+    requirements: 
+        product: \d+
+        category: \d+
+
+dpc_store_add_brand_to_product:
+    path:     /add_brand/{product}/{brand}
+    defaults: { _controller: DPCStoreBundle:Store:addBrandToProduct }
+    requirements: 
+        product: \d+
+        brand: \d+
+
+dpc_store_add_image_to_product:
+    path:     /add_image/{product}/{image}
+    defaults: { _controller: DPCStoreBundle:Store:addImageToProduct }
+    requirements: 
+        product: \d+
+        image: \d+
+
+dpc_store_remove_product:
+    path:     /remove_product/{id}
+    defaults: { _controller: DPCStoreBundle:Store:removeProduct }
+    requirements: 
+        id: \d+
+
+dpc_store_test:
+    path:     /test
+    defaults: { _controller: DPCStoreBundle:Store:test }
+
+
