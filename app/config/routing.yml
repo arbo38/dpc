@@ -1,3 +1,7 @@
+dpc_admin:
+    resource: "@DPCAdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
 dpc_store:
     resource: "@DPCStoreBundle/Resources/config/routing.yml"
     prefix:   /
