@@ -44,7 +44,7 @@ class Brand
     private $url;
 
     /**
-     * @ORM\ManyToMany(targetEntity="DPC\StoreBundle\Entity\Image")
+     * @ORM\ManyToMany(targetEntity="DPC\StoreBundle\Entity\Image", cascade={"persist"})
      */
     private $images;
 

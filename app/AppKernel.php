@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new DPC\AdminBundle\DPCAdminBundle(),
             new DPC\UserBundle\DPCUserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new Vich\UploaderBundle\VichUploaderBundle(),
 
         ];
 

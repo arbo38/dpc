@@ -70,7 +70,7 @@ class Image
     private $imageName;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="integer")
      *
      * @var integer
      */
@@ -230,29 +230,5 @@ class Image
     public function getTitle()
     {
         return $this->title;
-    }
-
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     *
-     * @return Image
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
     }
 }

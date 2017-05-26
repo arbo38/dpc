@@ -1,0 +1,26 @@
+{% extends "DPCStoreBundle::layout.html.twig" %}
+
+{% block title %}
+	Marque - {{ parent() }}
+{% endblock %}
+
+{% block dpcstore_body %}
+	<div class="row"></div> <!-- div.row -->
+	<h3>Marque</h3>
+
+	<p>
+		<h4>{{ brand.title }}</h4>
+
+		<p>
+			{{ brand.description }}
+		</p>
+		<p>	
+			{% for image in brand.images %}
+				<h5>{{ image.title }}</h5>
+				<img src="{{ image.url }}" alt="{{ image.alt }}" />
+			{% endfor %}
+				</p>
+			</p>
+		</div>
+
+	{% endblock %}

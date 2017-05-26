@@ -384,7 +384,7 @@
         </div><!--end wrapper-->
 
 
-
+        {% block javascript %}
         <!--Common plugins-->
         <script src="{{ asset('bundles/DPCAdmin/plugins/jquery/dist/jquery.min.js') }}"></script>
         <script src="{{ asset('bundles/DPCAdmin/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
@@ -399,12 +399,12 @@
         <script src="{{ asset('bundles/DPCAdmin/plugins/flot/jquery.flot.resize.js') }}"></script>
         <script src="{{ asset('bundles/DPCAdmin/plugins/flot/jquery.flot.pie.js') }}"></script>
         <script src="{{ asset('bundles/DPCAdmin/plugins/flot/jquery.flot.time.js') }}"></script>
-        <!--vector map-->
+        <!--vector map
         <script src="{{ asset('bundles/DPCAdmin/plugins/vectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
         <script src="{{ asset('bundles/DPCAdmin/plugins/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
-        <!-- ChartJS-->
+        ChartJS
         <script src="{{ asset('bundles/DPCAdmin/plugins/chartJs/Chart.min.js') }}"></script>
-        <!--dashboard custom script-->
-        <script src="{{ asset('bundles/DPCAdmin/js/dashboard.js') }}"></script>
+        <script src="{{ asset('bundles/DPCAdmin/js/dashboard.js') }}"></script>-->
+        {% endblock %}
     </body>
 </html>
