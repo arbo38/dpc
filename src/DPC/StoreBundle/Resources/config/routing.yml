@@ -2,6 +2,13 @@ dpc_store_homepage:
     path:     /
     defaults: { _controller: DPCStoreBundle:Store:index }
 
+dpc_store_product:
+    path:     /product/{id}
+    defaults: 
+        _controller: DPCStoreBundle:Store:product
+    requirements: 
+        id: \d+
+
 dpc_store_promo:
     path:     /promo/{id}
     defaults: 
@@ -22,6 +29,24 @@ dpc_store_occasion:
 dpc_store_occasions:
     path:     /occasions
     defaults: { _controller: DPCStoreBundle:Store:occasions }
+
+dpc_store_brand:
+    path:     /brand/{id}
+    defaults: 
+        _controller: DPCStoreBundle:Store:brand
+    requirements: 
+        id: \d+
+
+dpc_store_image:
+    path:     /image/{id}
+    defaults: 
+        _controller: DPCStoreBundle:Store:image
+    requirements: 
+        id: \d+
+
+
+
+# Testing
 
 dpc_store_add_category_to_product:
     path:     /add_category/{product}/{category}

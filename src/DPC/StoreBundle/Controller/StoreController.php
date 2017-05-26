@@ -7,7 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use OC\PlatformBundle\Entity\Advert;
+use DPC\StoreBundle\Entity\Product;
+use DPC\StoreBundle\Entity\Image;
 
 class StoreController extends Controller
 {
@@ -17,6 +18,12 @@ class StoreController extends Controller
     	$listOccasions = $this->getDoctrine()->getManager()->getRepository('DPCStoreBundle:Product')->getLastOccasions();
 
         return $this->render('DPCStoreBundle:Store:accueil.html.twig', compact('listPromos', 'listOccasions'));
+    }
+
+    public function productAction($id)
+    {
+        $product = $this->getDoctrine()->getManager()->getRepository('DPCStoreBundle:Product')->find($id);
+        return $this->render('DPCStoreBundle:Store:product.html.twig', compact('product'));
     }
 
     public function promoAction($id)
@@ -99,6 +106,18 @@ class StoreController extends Controller
     public function testAction(){
     	
     	return $this->render('::dpc_base_layout.html.twig');
+    }
+
+    public function brandAction($id)
+    {
+        $brand = $this->getDoctrine()->getManager()->getRepository('DPCStoreBundle:Brand')->find($id);
+        return $this->render('DPCStoreBundle:Store:brand.html.twig', compact('brand'));
+    }
+
+    public function imageAction($id)
+    {
+        $image = $this->getDoctrine()->getManager()->getRepository('DPCStoreBundle:Image')->find($id);
+        return $this->render('DPCStoreBundle:Store:image.html.twig', compact('image'));
     }
 
 

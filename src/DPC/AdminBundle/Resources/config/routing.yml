@@ -1,3 +1,29 @@
 dpc_admin_homepage:
     path:     /
     defaults: { _controller: DPCAdminBundle:Admin:index }
+
+dpc_admin_product:
+    path:     /product
+    defaults: { _controller: DPCAdminBundle:Admin:product }
+
+dpc_admin_add_brand:
+    path:     /brand/add
+    defaults: { _controller: DPCAdminBundle:Admin:addBrand }
+
+dpc_admin_edit_brand:
+    path:     /brand/{id}
+    defaults: 
+        _controller: DPCAdminBundle:Admin:editBrand 
+    requirements: 
+        id: \d+
+
+dpc_admin_add_image:
+    path:     /image/add
+    defaults: { _controller: DPCAdminBundle:Admin:addImage }
+
+dpc_admin_edit_image:
+    path:     /image/{id}
+    defaults: 
+        _controller: DPCAdminBundle:Admin:editImage
+    requirements: 
+        id: \d+
