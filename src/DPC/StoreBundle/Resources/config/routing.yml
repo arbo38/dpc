@@ -3,7 +3,7 @@ dpc_store_homepage:
     defaults: { _controller: DPCStoreBundle:Store:index }
 
 dpc_store_product:
-    path:     /product/{id}
+    path:     /fiche-produit/{id}
     defaults: 
         _controller: DPCStoreBundle:Store:product
     requirements: 
@@ -36,6 +36,7 @@ dpc_store_brand:
         _controller: DPCStoreBundle:Store:brand
     requirements: 
         id: \d+
+
 
 dpc_store_image:
     path:     /image/{id}

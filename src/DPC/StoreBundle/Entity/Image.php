@@ -31,12 +31,6 @@ class Image
      */
     private $title;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="url", type="string", length=255)
-     */
-    private $url;
 
     /**
      * @var string
@@ -94,6 +88,7 @@ class Image
      *
      * @return Product
      */
+
     public function setImageFile(File $image = null)
     {
         $this->imageFile = $image;
@@ -160,29 +155,6 @@ class Image
         return $this->id;
     }
 
-    /**
-     * Set url
-     *
-     * @param string $url
-     *
-     * @return Image
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-
-        return $this;
-    }
-
-    /**
-     * Get url
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->url;
-    }
 
     /**
      * Set alt

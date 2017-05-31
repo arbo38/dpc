@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 class ImageType extends AbstractType
 {
@@ -19,10 +20,9 @@ class ImageType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('url')
             ->add('alt')
-            ->add('imageFile', FileType::class)
-            ->add('Envoyer', SubmitType::class);
+            ->add('imageFile', FileType::class, array('required' => false))
+            ->add('currentImage', HiddenType::class, array('data' => 'current_image', 'mapped' => false));
     }
     
     /**

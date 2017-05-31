@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="category")
  * @ORM\Entity(repositoryClass="DPC\StoreBundle\Repository\CategoryRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Category
 {
@@ -48,10 +49,9 @@ class Category
     private $products;
 
     /**
-     * @ORM\ManyToOne(targetEntity="DPC\StoreBundle\Entity\Image")
+     * @ORM\ManyToMany(targetEntity="DPC\StoreBundle\Entity\Image", cascade={"persist"})
      */
-    private $image;
-
+    private $images;
 
     /**
      * Get id
@@ -177,26 +177,36 @@ class Category
     }
 
     /**
-     * Set image
+     * Add image
      *
      * @param \DPC\StoreBundle\Entity\Image $image
      *
      * @return Category
      */
-    public function setImage(\DPC\StoreBundle\Entity\Image $image = null)
+    public function addImage(\DPC\StoreBundle\Entity\Image $image)
     {
-        $this->image = $image;
+        $this->images[] = $image;
 
         return $this;
     }
 
     /**
-     * Get image
+     * Remove image
      *
-     * @return \DPC\StoreBundle\Entity\Image
+     * @param \DPC\StoreBundle\Entity\Image $image
      */
-    public function getImage()
+    public function removeImage(\DPC\StoreBundle\Entity\Image $image)
     {
-        return $this->image;
+        $this->images->removeElement($image);
+    }
+
+    /**
+     * Get images
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getImages()
+    {
+        return $this->images;
     }
 }

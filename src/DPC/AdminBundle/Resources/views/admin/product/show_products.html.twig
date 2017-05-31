@@ -1,0 +1,84 @@
+{% extends "DPCAdminBundle::admin_layout.html.twig" %}
+
+{% block admin_content %}
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel">
+				<header class="panel-heading">
+					<h2 class="panel-title">{{ title|upper }}</h2>
+				</header>
+				<div class="panel-body">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Titre</th>
+								<th>Crée le</th>
+								<th>MAJ le</th>
+								<th>Prix</th>
+								<th>Réduction (%)</th>
+								<th>Occasion</th>
+								<th>Promotion</th>
+								<th>Garantie (m)</th>
+								<th>Marque</th>
+								<th style="width:5%;">Images</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for product in listProducts %}
+								<tr>
+									<th scope="row">
+										<a href="{{ path('dpc_admin_edit_product', {'id': product.id}) }}">
+											{{ product.id }}
+										</a>
+									</th>
+									<td>{{ product.title }}</td>
+									<td>{{ product.date|date('d/m/Y') }}</td>
+									<td>{{ product.updateDate|date('d/m/Y') }}</td>
+									<td>{{ product.price }}</td>
+									<td>{{ product.discount }}</td>
+									<td>{% if product.occasion %}
+										Oui
+									{% else %}
+										Non
+									{% endif %}</td>
+									<td>{% if product.promo %}
+										Oui
+									{% else %}
+										Non
+									{% endif %}</td>
+									<td>{{ product.warranty }}</td>
+									<td>
+										{% if product.brand.title is defined %}
+											{{ product.brand.title }}
+										{% endif %}
+									</td>
+									<td>
+										{% for image in product.images %}
+												<a href="{{ vich_uploader_asset(image, 'imageFile') }}">
+													<img src="{{ vich_uploader_asset(image, 'imageFile') }}" alt="{{ image.alt }}" class="img-responsive">
+													</a>
+										{% endfor %}
+									</td>
+
+								</tr>
+
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div><!--col end-->
+	</div><!--row end-->
+{% endblock %}
+
+{% block javascript %}
+	{{ parent() }}
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#product_menu').addClass('opened');
+		});
+	</script>
+{% endblock %}
+

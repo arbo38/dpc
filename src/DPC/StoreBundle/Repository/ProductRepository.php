@@ -29,4 +29,24 @@ class ProductRepository extends \Doctrine\ORM\EntityRepository
 
 		return $query->getResult();
 	}
+
+	public function getAllPromos(){
+		$qb = $this->createQueryBuilder('p');
+
+		$query = $qb
+		->andWhere('p.promo = true')
+		->getQuery();
+
+		return $query->getResult();
+	}
+
+	public function getAllOccasions(){
+		$qb = $this->createQueryBuilder('p');
+
+		$query = $qb
+		->andWhere('p.occasion = true')
+		->getQuery();
+
+		return $query->getResult();
+	}
 }

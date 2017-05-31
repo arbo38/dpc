@@ -2,28 +2,78 @@ dpc_admin_homepage:
     path:     /
     defaults: { _controller: DPCAdminBundle:Admin:index }
 
+# Route Admin Produits
+
 dpc_admin_product:
     path:     /product
     defaults: { _controller: DPCAdminBundle:Admin:product }
 
+dpc_admin_product_promotions:
+    path:     /product/promotions
+    defaults: { _controller: DPCAdminBundle:AdminProduct:showPromotions }
+
+dpc_admin_product_occasions:
+    path:     /product/occasions
+    defaults: { _controller: DPCAdminBundle:AdminProduct:showOccasions }
+
+dpc_admin_add_product:
+    path:     /product/add
+    defaults: { _controller: DPCAdminBundle:AdminProduct:add }
+
+dpc_admin_edit_product:
+    path:     /product/{id}
+    defaults: 
+        _controller: DPCAdminBundle:AdminProduct:edit
+    requirements: 
+        id: \d+
+
+# Route Admin Marques
+
+dpc_admin_brands:
+    path:     /brands
+    defaults: { _controller: DPCAdminBundle:AdminBrand:showAll }
+
 dpc_admin_add_brand:
     path:     /brand/add
-    defaults: { _controller: DPCAdminBundle:Admin:addBrand }
+    defaults: { _controller: DPCAdminBundle:AdminBrand:add }
 
 dpc_admin_edit_brand:
     path:     /brand/{id}
     defaults: 
-        _controller: DPCAdminBundle:Admin:editBrand 
+        _controller: DPCAdminBundle:AdminBrand:edit 
     requirements: 
         id: \d+
 
+# Route Admin Images
+
+dpc_admin_images:
+    path:     /images
+    defaults: { _controller: DPCAdminBundle:AdminImage:showAll }
+
 dpc_admin_add_image:
     path:     /image/add
-    defaults: { _controller: DPCAdminBundle:Admin:addImage }
+    defaults: { _controller: DPCAdminBundle:AdminImage:addImage }
 
 dpc_admin_edit_image:
     path:     /image/{id}
     defaults: 
-        _controller: DPCAdminBundle:Admin:editImage
+        _controller: DPCAdminBundle:AdminImage:editImage
+    requirements: 
+        id: \d+
+
+# Route Admin Catégories
+
+dpc_admin_categories:
+    path:     /categories
+    defaults: { _controller: DPCAdminBundle:AdminCategory:showAll }
+
+dpc_admin_add_category:
+    path:     /category/add
+    defaults: { _controller: DPCAdminBundle:AdminCategory:add }
+
+dpc_admin_edit_category:
+    path:     /category/{id}
+    defaults: 
+        _controller: DPCAdminBundle:AdminCategory:edit 
     requirements: 
         id: \d+

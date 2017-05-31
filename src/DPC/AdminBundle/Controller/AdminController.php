@@ -73,7 +73,7 @@ class AdminController extends Controller
     			return $this->redirectToRoute('dpc_store_brand', array('id' => $brand->getId()));
     	}
 
-    	return $this->render('DPCAdminBundle:admin:admin_brand.html.twig', array('form' => $form->createView()));
+    	return $this->render('DPCAdminBundle:admin/brand:admin_brand.html.twig', array('form' => $form->createView()));
     }
 
     public function editBrandAction(Request $request, $id)
@@ -92,7 +92,7 @@ class AdminController extends Controller
     			return $this->redirectToRoute('dpc_store_brand', array('id' => $brand->getId()));
     	}
 
-    	return $this->render('DPCAdminBundle:admin:admin_brand.html.twig', array('form' => $form->createView()));
+    	return $this->render('DPCAdminBundle:admin/brand:admin_brand.html.twig', array('form' => $form->createView()));
     }
 
     public function addImageAction(Request $request)

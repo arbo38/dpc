@@ -1,0 +1,4 @@
+services:
+#    dpc_contact.example:
+#        class: DPC\ContactBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

@@ -1,0 +1,49 @@
+{% extends "DPCAdminBundle::admin_layout.html.twig" %}
+
+{% block admin_content %}
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel">
+				<header class="panel-heading">
+					<h2 class="panel-title">{{ title|upper }}</h2>
+				</header>
+				<div class="panel-body">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Titre</th>
+								<th>Image</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for image in listImages %}
+									<tr>
+										<th scope="row">
+											<a href="{{ path('dpc_admin_edit_image', {'id': image.id}) }}">
+												{{ image.id }}
+											</a>
+										</th>
+										<td>{{ image.title }}</td>
+										<td>Upcomming</td>
+									</tr>
+									
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div><!--col end-->
+		</div><!--row end-->
+	{% endblock %}
+
+	{% block javascript %}
+		{{ parent() }}
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('#image_menu').addClass('opened');
+			});
+		</script>
+	{% endblock %}
+

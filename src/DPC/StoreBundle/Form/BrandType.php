@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use DPC\StoreBundle\Form\ImageType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class BrandType extends AbstractType
 {
@@ -29,6 +30,8 @@ class BrandType extends AbstractType
                 'entry_type' => ImageType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
+                'required' => false,
+                'prototype' => true,
             ))
         ->add('Envoyer', SubmitType::class);
     }

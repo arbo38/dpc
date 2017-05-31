@@ -1,0 +1,57 @@
+{% extends "DPCAdminBundle::admin_layout.html.twig" %}
+
+{% block admin_content %}
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel">
+				<header class="panel-heading">
+					<h2 class="panel-title">{{ title|upper }}</h2>
+				</header>
+				<div class="panel-body">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Titre</th>
+								<th style="width:5%;">Image</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for brand in listBrands %}
+								<div class="row">
+									<tr>
+										<th scope="row">
+											<a href="{{ path('dpc_admin_edit_brand', {'id': brand.id}) }}">
+												{{ brand.id }}
+											</a>
+										</th>
+										<td>{{ brand.title }}</td>
+										<td>
+											{% for image in brand.images %}
+												<a href="{{ vich_uploader_asset(image, 'imageFile') }}">
+													<img src="{{ vich_uploader_asset(image, 'imageFile') }}" alt="{{ image.alt }}" class="img-responsive">
+												</a>
+											{% endfor %}
+										</td>
+										
+									</tr>
+								</div> <!-- div.row -->
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div><!--col end-->
+	</div><!--row end-->
+{% endblock %}
+
+{% block javascript %}
+	{{ parent() }}
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#brand_menu').addClass('opened');
+		});
+	</script>
+{% endblock %}
+
