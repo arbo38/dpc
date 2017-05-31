@@ -22,7 +22,7 @@ class AppKernel extends Kernel
             new DPC\UserBundle\DPCUserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
-
+            new DPC\ContactBundle\DPCContactBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

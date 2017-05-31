@@ -1,3 +1,7 @@
+dpc_contact:
+    resource: "@DPCContactBundle/Resources/config/routing.yml"
+    prefix:   /
+
 dpc_admin:
     resource: "@DPCAdminBundle/Resources/config/routing.yml"
     prefix:   /admin

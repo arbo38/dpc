@@ -1,0 +1,19 @@
+
+
+<h3>Bonjour DPC74,</h3>
+<p>
+	Un client a demandé à être recontacté par 
+	{% if contact.method %}
+	téléphone au {{ contact.phone }}
+	{% else %}
+	mail à l'adresse <em>{{ contact.email }}</em>
+	{% endif %}
+</p>
+<p>
+	<h3>Son message</h3>
+	<p>
+		{{ contact.message }}
+	</p>
+</p>
+
+

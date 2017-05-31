@@ -23,7 +23,7 @@ class StoreController extends Controller
     public function productAction($id)
     {
         $product = $this->getDoctrine()->getManager()->getRepository('DPCStoreBundle:Product')->find($id);
-        return $this->render('DPCStoreBundle:Store:product.html.twig', compact('product'));
+        return $this->render('DPCStoreBundle:Store/product:show_product.html.twig', compact('product'));
     }
 
     public function promoAction($id)
@@ -40,15 +40,16 @@ class StoreController extends Controller
 
     public function occasionAction($id)
     {
-    	$occasion = $this->getDoctrine()->getManager()->getRepository('DPCStoreBundle:Product')->find($id);
+    	$product = $this->getDoctrine()->getManager()->getRepository('DPCStoreBundle:Product')->find($id);
 
-        return $this->render('DPCStoreBundle:Store:occasion.html.twig', compact('occasion'));
+        return $this->render('DPCStoreBundle:Store/product:show_product.html.twig', compact('product'));
     }
 
     public function occasionsAction()
     {
-        $listOccasions = $this->getDoctrine()->getManager()->getRepository('DPCStoreBundle:Product')->getLastOccasions();
-        return $this->render('DPCStoreBundle:Store:occasions.html.twig', compact('listOccasions'));
+        $listProducts = $this->getDoctrine()->getManager()->getRepository('DPCStoreBundle:Product')->getLastOccasions();
+        $title = "Nos occasions";
+        return $this->render('DPCStoreBundle:Store/product:list_products.html.twig', compact('listProducts', 'title'));
     }
 
     public function addCategoryToProductAction($product, $category){

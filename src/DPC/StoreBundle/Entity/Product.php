@@ -9,7 +9,9 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="product")
  * @ORM\Entity(repositoryClass="DPC\StoreBundle\Repository\ProductRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
+
 class Product
 {
     /**
@@ -86,6 +88,7 @@ class Product
 
     /**
      * @ORM\ManyToOne(targetEntity="DPC\StoreBundle\Entity\Brand", inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $brand;
 
@@ -96,6 +99,7 @@ class Product
 
     /**
      * @ORM\ManyToMany(targetEntity="DPC\StoreBundle\Entity\Category", inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $categories;
 
@@ -210,6 +214,16 @@ class Product
     }
 
     /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescriptionExcerpt()
+    {
+        return (substr($this->description, 0, 200) . '...'); 
+    }
+
+    /**
      * Set price
      *
      * @param string $price
@@ -231,6 +245,10 @@ class Product
     public function getPrice()
     {
         return $this->price;
+    }
+
+    public function getPriceBeforeDiscount(){
+        return $this->price * (float) ('1.' . $this->discount);
     }
 
     /**
@@ -337,9 +355,12 @@ class Product
      *
      * @return Product
      */
-    public function addImage(\DPC\StoreBundle\Entity\Image $image)
+    public function addImage(\DPC\StoreBundle\Entity\Image $image = null)
     {
-        $this->images[] = $image;
+        if(!is_null($image)){
+            $this->images[] = $image;
+        }
+        
 
         return $this;
     }
@@ -421,4 +442,5 @@ class Product
     {
         return $this->categories;
     }
+
 }

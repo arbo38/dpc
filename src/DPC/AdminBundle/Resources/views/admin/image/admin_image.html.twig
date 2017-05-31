@@ -1,0 +1,28 @@
+{% extends "DPCAdminBundle::admin_layout.html.twig" %}
+
+{% block admin_content %}
+<div class="well">
+	<h3>Formulaire image</h3>
+
+	<div class="well">
+		{{ form(form) }}
+	</div>
+	{% if deleteForm is defined %}
+      <h3>SUPPRIMER L'IMAGE</h3>
+      <div class="well">
+        {{ form(deleteForm) }}
+      </div>
+    {% endif %}
+</div> <!-- div.well -->
+	
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<style>	
+		.form-horizontal .form-group .form-group {
+			margin-right: 15px !important;
+			margin-left: 15px !important;
+		}
+	</style>
+{% endblock %}

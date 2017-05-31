@@ -1,0 +1,18 @@
+% for image in category.images %}
+    <div class="col-xs-6 col-md-1 current-images">
+      <a href="{{ vich_uploader_asset(image, 'imageFile') }}" class="thumbnail">
+        <img src="{{ vich_uploader_asset(image, 'imageFile') }}" alt="{{ image.alt }}">
+      </a>
+    </div>
+  {% endfor %}
+
+{% endblock %}
+
+{% block javascript %}
+  {{ parent() }}
+  <script type="text/javascript">
+    $(document).ready(function() {
+
+    // Affichage des images déjà liées à la catégorie
+    currentImages = $('.current-images').detach();
+    currentImages.insertAfter('div#dpc_storebundle_category_images > div.form-group > label.control-label > div > div.form-group');

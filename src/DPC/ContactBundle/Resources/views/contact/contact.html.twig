@@ -1,0 +1,158 @@
+{% extends "DPCContactBundle::layout.html.twig" %}
+
+{% block bundle_body %}
+	{% block stylesheets %}
+		{{ parent() }}
+		<link href="{{ asset('assets/e-commerce/pe-icons/Pe-icon-7-stroke.css') }}" rel="stylesheet">
+		<link href="{{ asset('assets/e-commerce/css/style.css') }}" rel="stylesheet">
+	{% endblock %}
+
+	{# On définit un nouveau bloc, que les vues du bundle pourront remplir #}
+	{% block dpcstore_body %}
+		<!--breadcrumb start-->
+		<div class="breadcrumb-wrapper" >
+			<div class="container">
+				<h1>Nous Contacter</h1>
+			</div>
+		</div>
+		<!--end breadcrumb-->
+
+		<div class="space-60"></div>
+		<div class="container">
+			<div id="map-canvas"></div>
+		</div><!--.container-->
+		<div class="divide60"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 margin30">
+					<h3 class="heading">Toujours à votre écoute</h3>
+					<p>
+						Duis vitae imperdiet ipsum. Vestibulum ullamcorper lorem at orci vulputate, volutpat tempus magna elementum. Nam in odio sem. Morbi in justo interdum massa tristique lobortis in quis diam. Etiam erat urna, cursus eu ante quis, aliquam venenatis augue. Cras turpis justo, pellentesque eu hendrerit et, euismod vitae leo. Ut in lorem lobortis, gravida quam eget, pulvinar quam. Nam ut leo leo.
+					</p>
+					<div class="divide30"></div>
+					<h3 class="heading">Formulaire de contact</h3>
+					<div class="form-contact">
+						{{ form_start(form, {'attr': {'class': '', 'id': 'contactForm', 'method': 'POST'}}) }}
+						<div class="row control-group">
+							<div class="form-group col-xs-6  controls">
+								{{ form_label(form.method, "Vous souhaitez:") }}
+							{{ form_errors(form.method) }}
+								{{ form_widget(form.method, {'attr': {'class': 'form-control'}}) }}
+							</div>
+							<div class="form-group col-xs-6  controls">
+								{{ form_label(form.phone, "Téléphone") }}
+							{{ form_errors(form.phone) }}
+								{{ form_widget(form.phone, {'attr': {'class': 'form-control'}}) }}
+							</div>
+						</div>
+						<div class="row control-group">
+							<div class="form-group col-xs-6  controls">
+								{{ form_label(form.name, "Nom") }}
+							{{ form_errors(form.name) }}
+								{{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+							</div>
+							<div class="form-group col-xs-6  controls">
+								{{ form_label(form.email, "Email") }}
+							{{ form_errors(form.email) }}
+								{{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+							</div>
+						</div>
+						<div class="row control-group">
+							<div class="form-group col-xs-12  controls">
+								{{ form_label(form.message, "Message") }}
+							{{ form_errors(form.message) }}
+								{{ form_widget(form.message, {'attr': {'class': 'form-control'}}) }}
+							</div>
+						</div>
+						<div id="success"></div>
+							<div class="row">
+								<div class="form-group col-xs-12">
+									<button type="submit" class="btn btn-theme-bg btn-lg">Envoyer</button>
+								</div>
+							</div>
+						{{ form_widget(form) }}
+						{{ form_end(form) }}
+					</div><!--contact form-->
+				</div>
+				<div class="col-md-4">
+					<h3 class="heading">Contact</h3>
+					<ul class="list-unstyled contact contact-info">
+						<li><p><strong><i class="fa fa-map-marker"></i> Address:</strong> vaisahali, jaipur, 302012</p></li> 
+						<li><p><strong><i class="fa fa-envelope"></i> Mail Us:</strong> <a href="#">Support@designmylife.com</a></p></li>
+						<li> <p><strong><i class="fa fa-phone"></i> Phone:</strong> +91 1800 2345 2132</p></li>
+						<li> <p><strong><i class="fa fa-print"></i> Fax:</strong> +91 2345 2132</p></li>
+					</ul>
+					<div class="divide40"></div>
+					<h4>Rejoignez nous</h4>
+					<div class=" margin10">
+						<a href="#" class="social-icon si-dark si-colored-facebook">
+							<i class="fa fa-facebook"></i>
+							<i class="fa fa-facebook"></i>
+						</a>
+						<a href="#" class="social-icon si-dark si-colored-twitter">
+							<i class="fa fa-twitter"></i>
+							<i class="fa fa-twitter"></i>
+						</a>
+						<a href="#" class="social-icon si-dark si-colored-google-plus">
+							<i class="fa fa-google-plus"></i>
+							<i class="fa fa-google-plus"></i>
+						</a>
+						<a href="#" class="social-icon si-dark si-colored-linkedin">
+							<i class="fa fa-linkedin"></i>
+							<i class="fa fa-linkedin"></i>
+						</a>
+						<a href="#" class="social-icon si-dark si-colored-google-plus">
+							<i class="fa fa-youtube"></i>
+							<i class="fa fa-youtube"></i>
+						</a>
+					</div><!--socials-->
+
+				</div>
+			</div>
+		</div>
+	{% endblock %}
+
+	
+
+{% endblock %}
+
+{% block javascript %}
+		{{ parent() }}
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+		<script type="text/javascript">
+			var myLatlng;
+			var map;
+			var marker;
+
+			function initialize() {
+				myLatlng = new google.maps.LatLng(45.912981, 6.128712);
+
+				var mapOptions = {
+					zoom: 13,
+					center: myLatlng,
+					mapTypeId: google.maps.MapTypeId.ROADMAP,
+					scrollwheel: true,
+					draggable: true
+				};
+				map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+				var contentString = '<p style="line-height: 20px;"><strong>DPC 74</strong></p><p><a href="https://maps.google.com/maps?ll=45.913175,6.12887&z=18&t=m&hl=fr-FR&gl=US&mapclient=apiv3&cid=9757037431037663952">Voir sur google map</a></p>';
+
+				var infowindow = new google.maps.InfoWindow({
+					content: contentString
+				});
+
+				marker = new google.maps.Marker({
+					position: myLatlng,
+					map: map,
+					title: 'Marker'
+				});
+
+				google.maps.event.addListener(marker, 'click', function() {
+					infowindow.open(map, marker);
+				});
+			}
+
+			google.maps.event.addDomListener(window, 'load', initialize);
+		</script>
+	{% endblock %}

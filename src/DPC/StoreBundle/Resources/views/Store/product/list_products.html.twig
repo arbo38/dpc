@@ -1,0 +1,60 @@
+{% extends "DPCStoreBundle::layout.html.twig" %}
+
+{% block dpcstore_body %}
+	<!--breadcrumb start-->
+	<div class="breadcrumb-wrapper" >
+		<div class="container">
+			<h1>{{ title|upper }}</h1>
+		</div>
+	</div>
+	<!--end breadcrumb-->
+
+	<div class="space-60"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				{% for product in listProducts %}
+					<div class="product-list">
+						<div class="row">
+							<div class="col-md-4 margin-b-30">
+								<div class="product-list-thumb">
+									<a href="#"> <img src="{{ vich_uploader_asset(product.images[0], 'imageFile') }}" alt="Product image" class="img-responsive"></a>
+								</div>
+							</div>
+							<div class="col-md-8">
+								<div class="product-list-desc">
+									<h3 class="title"><a href="{{ path('dpc_store_product', { 'id': product.id }) }}">{{ product.title|upper }}</a></h3>
+										<h5 >Type: 
+											{% if product.promo and  product.occasion %}
+												<a href="#">Promotion</a> - <a href="#">Occasion</a>
+											{% elseif product.promo %}
+												<a href="#">Promotion</a>
+											{% elseif product.occasion %}
+												<a href="#">Occasion</a>
+											{% endif %}
+										</h5>
+										<h5>Catégories: 
+											{% for category in product.categories %}
+												<a href="#">{{ category.title }}</a> {% if not loop.last %}/{% endif %}
+											{% endfor %}
+										</h5>
+										<span class="price">{% if product.discount %}<del>{{ product.PriceBeforeDiscount }}</del>{% endif %} {{ product.price }}€</span> 
+										<p>
+											{{ product.descriptionExcerpt }}
+										</p>
+										<div class="icon-list">
+											<a href="{{ path('dpc_store_product', { 'id': product.id }) }}" class="btn btn-skin">Voir le produit</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div><!--products list-->
+					{% endfor %}
+				</div>
+
+			</div>
+		</div>
+		<div class="space-60"></div>
+
+
+	{% endblock %}

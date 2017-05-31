@@ -1,0 +1,22 @@
+
+
+<h3>Bonjour {{ contact.name }},</h3>
+<p>
+	Votre message nous est bien parvenue, nous vous répondrons dès que possible.
+</p>
+<p>
+	Vous avez choisi d'être recontacté par 
+	{% if contact.method %}
+	téléphone au {{ contact.phone }}
+	{% else %}
+	mail à l'adresse <em>{{ contact.email }}</em>
+	{% endif %}
+</p>
+<p>
+	<h3>Votre message</h3>
+	<p>
+		{{ contact.message }}
+	</p>
+</p>
+
+
