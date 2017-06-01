@@ -3950,7 +3950,7 @@ label span {
   font-size: 15px;
   color: #505050;
   line-height: 1.5;
-  text-transform: capitalize;
+  font-style: italic;
   text-decoration: none;
   font-weight: 400;
 }

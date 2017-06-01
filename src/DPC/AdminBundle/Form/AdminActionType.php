@@ -14,7 +14,6 @@ class AdminActionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('delete', CheckboxType::class)
-        ->add('Envoyer', SubmitType::class);
+        ->add('delete', CheckboxType::class);
     }
 }

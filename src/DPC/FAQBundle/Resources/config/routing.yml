@@ -1,0 +1,3 @@
+dpcfaq_homepage:
+    path:     /FAQ
+    defaults: { _controller: DPCFAQBundle:FAQ:index }

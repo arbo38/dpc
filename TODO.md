@@ -20,4 +20,5 @@ Entité :
 
 Global :
 
-Un service qui va chercher les 9 derniers produits ajoutés pour l'afficher dans le footer
+- Un service qui va chercher les 9 derniers produits ajoutés pour l'afficher dans le footer
+- Créer des vues pour les menus
