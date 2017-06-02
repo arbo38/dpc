@@ -193,6 +193,39 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="hoe-has-menu" id="image_menu" >
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-life-ring"></i>
+                                <span class="menu-text">Service</span>
+                                <span class="selected"></span>
+                            </a>
+                            <ul class="hoe-sub-menu">
+                                <li>
+                                    <a href="{{ path('dpc_admin_service_categories') }}">
+                                        <span class="menu-text">Catégories</span>
+                                        <span class="selected"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('dpc_admin_add_service_category') }}">
+                                        <span class="menu-text">Ajouter Catégorie</span>
+                                        <span class="selected"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('dpc_admin_services') }}">
+                                        <span class="menu-text">Services</span>
+                                        <span class="selected"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('dpc_admin_add_service') }}">
+                                        <span class="menu-text">Ajouter Service</span>
+                                        <span class="selected"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                         <li>
                             <a href="calendar.html">
                                 <i class="fa fa-calendar"></i>
@@ -257,15 +290,6 @@
 
                     {% endblock %}
 
-                    <!--footer start-->
-                    <div class="footer">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <span>&copy; Copyright 2016. Assan</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--footer end-->
                 </section><!--end main content-->
             </div>
         </div><!--end wrapper-->

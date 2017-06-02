@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new Vich\UploaderBundle\VichUploaderBundle(),
             new DPC\ContactBundle\DPCContactBundle(),
             new DPC\FAQBundle\DPCFAQBundle(),
+            new DPC\ServiceBundle\DPCServiceBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

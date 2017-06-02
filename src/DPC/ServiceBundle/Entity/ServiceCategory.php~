@@ -1,0 +1,108 @@
+<?php
+
+namespace DPC\ServiceBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ServiceCategory
+ *
+ * @ORM\Table(name="service_category")
+ * @ORM\Entity(repositoryClass="DPC\ServiceBundle\Repository\ServiceCategoryRepository")
+ */
+class ServiceCategory
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text")
+     */
+    private $description;
+
+    /**
+     * @ORM\OneToMany(targetEntity="DPC\ServiceBundle\Entity\Service", mappedBy="category")
+     * 
+     */
+    private $services;
+
+    /**
+     * @ORM\OneToOne(targetEntity="DPC\StoreBundle\Entity\Image", cascade={"persist"})
+     */
+    private $image;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return ServiceCategory
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return ServiceCategory
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+}
+

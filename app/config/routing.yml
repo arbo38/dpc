@@ -1,3 +1,7 @@
+dpc_service:
+    resource: "@DPCServiceBundle/Resources/config/routing.yml"
+    prefix:   /
+
 dpcfaq:
     resource: "@DPCFAQBundle/Resources/config/routing.yml"
     prefix:   /

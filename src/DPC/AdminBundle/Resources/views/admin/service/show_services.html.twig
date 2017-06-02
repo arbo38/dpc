@@ -1,0 +1,50 @@
+{% extends "DPCAdminBundle::admin_layout.html.twig" %}
+
+{% block admin_content %}
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel">
+				<header class="panel-heading">
+					<h2 class="panel-title">{{ title|upper }}</h2>
+				</header>
+				<div class="panel-body">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Titre</th>
+								<th>Catégorie</th>
+								<th>Prix min</th>
+								<th style="width:5%;">Image</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% if listServices is not empty %}
+							{% for service in listServices %}
+								<tr>
+									<th scope="row">
+										<a href="{{ path('dpc_admin_edit_service', {'id': service.id}) }}">
+											{{ service.id }}
+										</a>
+									</th>
+									<td>{{ service.title }}</td>
+									<td>{{ service.category.title }}</td>
+									<td>{{ service.priceMin }}</td>
+									<td>
+										<a href="{{ vich_uploader_asset(service.image, 'imageFile') }}">
+											<img src="{{ vich_uploader_asset(service.image, 'imageFile') }}" alt="{{ service.image.alt }}" class="img-responsive">
+										</a>
+									</td>
+								</tr>
+
+							{% endfor %}
+						{% endif %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div><!--col end-->
+	</div><!--row end-->
+{% endblock %}
+

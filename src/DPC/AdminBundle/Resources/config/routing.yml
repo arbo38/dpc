@@ -109,3 +109,35 @@ dpc_admin_edit_faq_theme:
         _controller: DPCAdminBundle:AdminFAQ:editTheme 
     requirements: 
         id: \d+
+
+# Route Admin Service
+
+dpc_admin_services:
+    path:     /services
+    defaults: { _controller: DPCAdminBundle:AdminService:showAll }
+
+dpc_admin_add_service:
+    path:     /services/add
+    defaults: { _controller: DPCAdminBundle:AdminService:add }
+
+dpc_admin_edit_service:
+    path:     /services/{id}
+    defaults: 
+        _controller: DPCAdminBundle:AdminService:edit 
+    requirements: 
+        id: \d+
+
+dpc_admin_service_categories:
+    path:     /service/categories
+    defaults: { _controller: DPCAdminBundle:AdminServiceCategory:showAll }
+
+dpc_admin_add_service_category:
+    path:     /service/category/add
+    defaults: { _controller: DPCAdminBundle:AdminServiceCategory:add }
+
+dpc_admin_edit_service_category:
+    path:     /service/category/edit/{id}
+    defaults: 
+        _controller: DPCAdminBundle:AdminServiceCategory:edit 
+    requirements: 
+        id: \d+
