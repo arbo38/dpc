@@ -443,4 +443,8 @@ class Product
         return $this->categories;
     }
 
+    public function getFirstCategory(){
+        return reset($this->categories);
+    }
+
 }

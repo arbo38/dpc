@@ -57,9 +57,16 @@
                     <ul class="nav panel-list">
 
                         <li class="active">
-                            <a href="index.html">
+                            <a href="{{ path('dpc_admin_homepage') }}">
                                 <i class="fa fa-home"></i>
-                                <span class="menu-text">Dashboard</span>
+                                <span class="menu-text">Accueil</span>
+                                <span class="selected"></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="{{ path('dpc_admin_contact') }}">
+                                <i class="fa fa-envelope"></i>
+                                <span class="menu-text">Information de contact</span>
                                 <span class="selected"></span>
                             </a>
                         </li>

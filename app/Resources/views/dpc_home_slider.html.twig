@@ -2,21 +2,12 @@
 <div class="fullwidthbanner">
     <div class="tp-banner">
         <ul>
+            {% for slide in home.slides %}
             <!-- SLIDE -->
             <li data-transition="fade" data-slotamount="5" data-masterspeed="1000" data-title="Powerful Theme">
-                <!-- MAIN IMAGE -->
-                <img src="{{ asset('assets/base/img/shop1.jpg') }}"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                <img src="{{ vich_uploader_asset(slide, 'imageFile') }}" alt="{{ slide.alt }}" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
             </li>
-            <!-- SLIDE -->
-            <li data-transition="fade" data-slotamount="5" data-masterspeed="1000" data-title="Unique Theme">
-                <!-- MAIN IMAGE -->
-                <img src="{{ asset('assets/base/img/shop2.jpg') }}"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
-            </li>
-            <!-- SLIDE -->
-            <li data-transition="fade" data-slotamount="5" data-masterspeed="1000" data-title="Multipurpose">
-                <!-- MAIN IMAGE -->
-                <img src="{{ asset('assets/base/img/bg-1.jpg') }}"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
-            </li>
+        {% endfor %}
         </ul>
     </div>
 </div><!--full width banner-->

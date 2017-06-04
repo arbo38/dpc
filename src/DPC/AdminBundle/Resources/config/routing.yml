@@ -1,6 +1,10 @@
 dpc_admin_homepage:
     path:     /
-    defaults: { _controller: DPCAdminBundle:Admin:index }
+    defaults: { _controller: DPCAdminBundle:AdminHome:home }
+
+dpc_admin_contact:
+    path:     /contact/info
+    defaults: { _controller: DPCAdminBundle:AdminContact:contactInfo }
 
 # Route Admin Produits
 

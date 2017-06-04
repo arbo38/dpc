@@ -4,43 +4,49 @@
         <div class="row">
             <div class="col-md-4 col-sm-6 margin30">
                 <div class="footer-col">
-                    <h3>Depann'PC 74</h3>
-                    <p>
-                        Entreprise annécienne de dépannage informatique depuis plus de 20 ans. Nous vous proposons un service personnalisé et rapide en fonction de vos besoins. Nous sommes spécialisé dans les dépannage express, en magasin comme à domicil et même à distance. 
-                        Nous vendons tout type de matériel informatique, neuf et occasions, tous garantie. Pour vos besoins informatique sur Annecy, pensez Depann'PC!
-                    </p>
+                    {% if app.session.get('companyInformation') is null %}
+                        {{ render(controller('DPCContactBundle:Contact:description')) }}
+                    {% else %}
+                        <h3>{{ app.session.get('companyInformation').name }}</h3>
+                        <p>
+                            {{ app.session.get('companyInformation').description }}
+                        </p>
+                    {% endif %}
                 </div>                        
             </div><!--footer col-->
             <div class="col-md-4 col-sm-6 margin30">
                 <div class="footer-col">
                     <h3>Contact</h3>
-
                     <ul class="list-unstyled contact">
-                        <li><p><strong><i class="fa fa-map-marker"></i> Adresse:</strong>20 avenue de Novel, 74000 Annecy </p></li> 
-                        <li><p><strong><i class="fa fa-envelope"></i> Email:</strong> <a href="#">dpc74@mail.com</a></p></li>
-                        <li> <p><strong><i class="fa fa-phone"></i> Tel:</strong> 04 50 46 77 08</p></li>
-                        <li> <p><strong><i class="fa fa-print"></i> Fax</strong> 04 50 46 77 09</p></li>
-                    </ul>
+                        {% if app.session.get('companyInformation') is null %}
+                            {{ render(controller('DPCContactBundle:Contact:contactInfo')) }}
+                        {% else %}
+                            <li><p><strong><i class="fa fa-map-marker"></i> Adresse:</strong>{{ app.session.get('companyInformation').address }}</p></li> 
+                            <li><p><strong><i class="fa fa-envelope"></i> Email:</strong>{{ app.session.get('companyInformation').email }}</p></li>
+                            <li> <p><strong><i class="fa fa-phone"></i> Tel:</strong>{{ app.session.get('companyInformation').tel }}</p></li>
+                            <li> <p><strong><i class="fa fa-print"></i> Fax</strong>{{ app.session.get('companyInformation').fax }}</p></li>
+                        {% endif %}
+                    </ul>          
                 </div>                        
             </div><!--footer col-->
             <div class="col-md-4 col-sm-6 margin30">
                 <div class="footer-col">
                     <h3>Produits du moment</h3>
                     <ul class="list-inline f2-work">
-                    <!-- 
-                        <li><a href="portfolio-single.html"><img src="assets/img/img-1.jpg" class="img-responsive" alt=""></a></li>
-                        <li><a href="portfolio-single.html"><img src="assets/img/img-2.jpg" class="img-responsive" alt=""></a></li>
-                        <li><a href="portfolio-single.html"><img src="assets/img/img-3.jpg" class="img-responsive" alt=""></a></li>
-                        <li><a href="portfolio-single.html"><img src="assets/img/img-4.jpg" class="img-responsive" alt=""></a></li>
-                        <li><a href="portfolio-single.html"><img src="assets/img/img-5.jpg" class="img-responsive" alt=""></a></li>
-                        <li><a href="portfolio-single.html"><img src="assets/img/img-6.jpg" class="img-responsive" alt=""></a></li>
-                        <li><a href="portfolio-single.html"><img src="assets/img/img-7.jpg" class="img-responsive" alt=""></a></li>
-                        <li><a href="portfolio-single.html"><img src="assets/img/img-8.jpg" class="img-responsive" alt=""></a></li>
-                        <li><a href="portfolio-single.html"><img src="assets/img/img-9.jpg" class="img-responsive" alt=""></a></li> 
-                    -->
-                    </ul>
-                </div>                        
-            </div><!--footer col-->
-        </div>
+                        {% if app.session.get('productSelection') is null %}
+                            {{ render(controller('DPCStoreBundle:Store:getCurrentSelection')) }}
+                        {% else %}
+                            {% for product in app.session.get('productSelection') %}
+                                <li>
+                                    <a href="{{ path('dpc_store_product', {'id': product.id}) }}">
+                                        <img src="{{ vich_uploader_asset(product.images[0], 'imageFile') }}" class="img-responsive" alt="{{ product.images[0].alt }}">
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        {% endif %}
+                </ul>
+            </div>                        
+        </div><!--footer col-->
     </div>
+</div>
 </footer><!--default footer end here-->

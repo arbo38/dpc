@@ -22,7 +22,8 @@ class ImageType extends AbstractType
             ->add('title')
             ->add('alt')
             ->add('imageFile', FileType::class, array('required' => false))
-            ->add('currentImage', HiddenType::class, array('data' => 'current_image', 'mapped' => false, 'required' => false));
+            /*
+            ->add('currentImage', HiddenType::class, array('data' => 'current_image', 'mapped' => false, 'required' => false))*/;
     }
     
     /**

@@ -27,7 +27,7 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
  */
 class AdminController extends Controller
 {
-	
+	/*
     public function indexAction()
     {
     	// Les utilisateurs :
@@ -36,7 +36,7 @@ class AdminController extends Controller
 
 
         return $this->render('DPCAdminBundle:admin:admin_index.html.twig', array('users' => $users,));
-    }
+    }*/
 
     public function productAction(Request $request)
     {

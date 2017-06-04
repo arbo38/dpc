@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new DPC\ContactBundle\DPCContactBundle(),
             new DPC\FAQBundle\DPCFAQBundle(),
             new DPC\ServiceBundle\DPCServiceBundle(),
+            new DPC\HomeBundle\DPCHomeBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
@@ -32,6 +33,8 @@ class AppKernel extends Kernel
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
+            $bundles[] = new CoreSphere\ConsoleBundle\CoreSphereConsoleBundle();
+
         }
 
         return $bundles;
