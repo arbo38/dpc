@@ -1,0 +1,5 @@
+dpc_home_homepage:
+    path:     /
+    defaults: { _controller: DPCHomeBundle:Home:home }
+
+

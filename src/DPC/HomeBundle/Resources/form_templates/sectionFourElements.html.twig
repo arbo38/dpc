@@ -1,0 +1,59 @@
+<h3>Section 3</h3>
+{{ form_label(form.sectionThreeElements, 'Section 3',{'label_attr': {'class': 'control-label'}})}}
+<div class='form-group'>
+
+    <div class='form-group'>
+        {{ form_label(form.sectionFourElements.vars.prototype.firstName, 'Prénom:', {'label_attr': {'class': 'col-lg-3 control-label'}})|e('html_attr') }}
+        {{ form_errors(form.sectionFourElements.vars.prototype.firstName)|e('html_attr') }}
+        <div class='col-lg-9'>
+            {{ form_widget(form.sectionFourElements.vars.prototype.firstName, {'attr': {'class': 'form-control'}})|e('html_attr') }}
+        </div>
+    </div>
+    <div class='form-group'>
+        {{ form_label(form.sectionFourElements.vars.prototype.status, 'Status:', {'label_attr': {'class': 'col-lg-3 control-label'}})|e('html_attr') }}
+        {{ form_errors(form.sectionFourElements.vars.prototype.status)|e('html_attr') }}
+        <div class='col-lg-9'>
+            {{ form_widget(form.sectionFourElements.vars.prototype.status, {'attr': {'class': 'form-control'}})|e('html_attr') }}
+        </div>
+    </div>
+    <div class='form-group'>
+        {{ form_label(form.sectionFourElements.vars.prototype.image, 'Photo:', {'label_attr': {'class': 'col-lg-3 control-label'}})|e('html_attr') }}
+        {{ form_errors(form.sectionFourElements.vars.prototype.image)|e('html_attr') }}
+        <div class='col-lg-9'>
+            <div class='form-group'>
+              {{ form_label(form.sectionFourElements.vars.prototype.image.title, 'Titre Image:', {'label_attr': {'class': 'col-lg-4 control-label'}})|e('html_attr') }}
+              {{ form_errors(form.sectionFourElements.vars.prototype.image.title)|e('html_attr') }}
+              <div class='col-lg-8'>
+                {{ form_widget(form.sectionFourElements.vars.prototype.image.title, {'attr': {'class': 'form-control'}})|e('html_attr') }}
+            </div>
+        </div>
+        <div class='form-group'>
+          {{ form_label(form.sectionFourElements.vars.prototype.image.alt, 'Texte Alertatif:', {'label_attr': {'class': 'col-lg-4 control-label'}})|e('html_attr') }}
+          {{ form_errors(form.sectionFourElements.vars.prototype.image.alt)|e('html_attr') }}
+          <div class='col-lg-8'>
+            {{ form_widget(form.sectionFourElements.vars.prototype.image.alt, {'attr': {'class': 'form-control'}})|e('html_attr') }}
+        </div>
+    </div>
+    <div class='form-group'>
+      {{ form_label(form.sectionFourElements.vars.prototype.image.imageFile, 'Fichier:', {'label_attr': {'class': 'col-lg-4 control-label'}})|e('html_attr') }}
+      {{ form_errors(form.sectionFourElements.vars.prototype.image.imageFile)|e('html_attr') }}
+      <div class='col-lg-8'>
+        {{ form_widget(form.sectionFourElements.vars.prototype.image.imageFile, {'attr': {'class': ''}})|e('html_attr') }}
+    </div>
+    
+</div>
+</div>
+</div>
+</div>
+
+{{ form_label(form.sectionFourElements.vars.prototype, {'label_attr': {'class': 'col-lg-3 control-label'}})|e('html_attr') }}
+
+<div class='form-group'>
+    {{ form_label(form.sectionFourElements.vars.prototype.image, 'Photo:', {'label_attr': {'class': 'col-lg-3 control-label'}})|e('html_attr') }}
+    {{ form_errors(form.sectionFourElements.vars.prototype.image)|e('html_attr') }}
+    <div class='col-lg-9'>
+        {{ form_widget(form.sectionFourElements.vars.prototype.image, {'attr': {'class': 'form-control'}})|e('html_attr') }}
+    </div>
+</div>
+
+{{ form_widget(form.sectionFourElements.vars.prototype.image, {'attr': {'class': 'form-control'}})|e('html_attr') }}

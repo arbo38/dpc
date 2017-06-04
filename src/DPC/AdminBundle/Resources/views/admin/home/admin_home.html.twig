@@ -1,0 +1,262 @@
+{% extends "DPCAdminBundle::admin_layout.html.twig" %}
+
+{% block admin_content %}
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel">
+            <header class="panel-heading">
+                <h2>{{ title|upper }}</h2>
+            </header> <!-- header.panel-heading -->
+            <div class="panel-body">
+                {{ form_start(form, {'attr': {'class': 'form-horizontal', 'role': 'form'}}) }}
+                {{ form_errors(form) }}
+                <h3>Slider</h3>
+                <div>
+                    <div id="slider_container" data-prototype="{{ include('@DPCAdminBundle/Resources/views/admin/home/slides_prototype.html.twig') }}" >
+                        {% for slide in form.slides %}
+                            <div class='form-group slide-form'>
+                                <div class='row text-right'>
+                                    {{ form_label(slide, 'Image',{'label_attr': {'class': 'control-label col-lg-4'}}) }}
+                                </div>
+                                <div class='form-group'>
+                                    {{ form_label(slide.title, 'Titre image:', {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                                    {{ form_errors(slide.title) }}
+                                    <div class='col-lg-9'>
+                                        {{ form_widget(slide.title, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+                                <div class='form-group'>
+                                    {{ form_label(slide.alt, 'Texte alternatif:', {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                                    {{ form_errors(slide.alt) }}
+                                    <div class='col-lg-9'>
+                                        {{ form_widget(slide.alt, {'attr': {'class': 'form-control'}})}}
+                                    </div>
+                                </div>
+                                <div class='form-group'>
+                                    {{ form_label(slide.imageFile, 'Fichier:', {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                                    {{ form_errors(slide.imageFile) }}
+                                    <div class='col-lg-4'>
+                                        {{ form_widget(slide.imageFile, {'attr': {'class': ''}}) }}
+                                    </div>
+                                    <div class='col-lg-4'>
+                                        <a href="#" class="thumbnail">
+                                            <img src="{{ vich_uploader_asset(home.slides[loop.index0], 'imageFile') }}" alt="{{ home.slides[loop.index0].alt }}">
+                                            <div class="caption">
+                                                Image actuelle
+                                            </div> <!-- div.caption -->
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class='delete-button' style='padding-left:30px' ></div>
+                            </div>
+                        {% endfor %}
+                    </div><!-- Section 3 container  -->
+                    <a href="#" id="add_slide" class="btn btn-sm btn-primary rounded">Ajouter un élément</a>
+                </div><!-- Section 3 form container  -->
+                <div class="form-group">
+                    {{ form_label(form.title, "Titre Accueil:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                    {{ form_errors(form.title) }}
+                    <div class="col-lg-9">
+                        {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+                <h3>Section 1</h3>
+                <div class="form-group">
+                    {{ form_label(form.sectionOne.title, "Titre:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                    {{ form_errors(form.sectionOne.title) }}
+                    <div class="col-lg-9">
+                        {{ form_widget(form.sectionOne.title, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.sectionOne.text, "Contenu:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                    {{ form_errors(form.sectionOne.text) }}
+                    <div class="col-lg-9">
+                        {{ form_widget(form.sectionOne.text, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+                <h3>Section 2 (bandeau bleu)</h3>
+                <div class="form-group">
+                    {{ form_label(form.sectionTwo.title1, "Titre 1:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                    {{ form_errors(form.sectionTwo.title1) }}
+                    <div class="col-lg-9">
+                        {{ form_widget(form.sectionTwo.title1, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.sectionTwo.text1, "Contenu 1:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                    {{ form_errors(form.sectionTwo.text1) }}
+                    <div class="col-lg-9">
+                        {{ form_widget(form.sectionTwo.text1, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.sectionTwo.icone1, "Icone 1:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                    {{ form_errors(form.sectionTwo.icone1) }}
+                    <div class="col-lg-9">
+                        {{ form_widget(form.sectionTwo.icone1, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.sectionTwo.title2, "Titre 2:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                    {{ form_errors(form.sectionTwo.title2) }}
+                    <div class="col-lg-9">
+                        {{ form_widget(form.sectionTwo.title2, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.sectionTwo.text2, "Contenu 2:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                    {{ form_errors(form.sectionTwo.text2) }}
+                    <div class="col-lg-9">
+                        {{ form_widget(form.sectionTwo.text2, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.sectionTwo.icone2, "Icone 2:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                    {{ form_errors(form.sectionTwo.icone2) }}
+                    <div class="col-lg-9">
+                        {{ form_widget(form.sectionTwo.icone2, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+
+                <h3>Section 3</h3>
+                <div class="form-group">
+                    {{ form_label(form.titleSectionThree, "Titre section 3:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                    {{ form_errors(form.titleSectionThree) }}
+                    <div class="col-lg-9">
+                        {{ form_widget(form.titleSectionThree, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+                <div>
+                    <div id="section_3_container" data-prototype="{{ include('@DPCAdminBundle/Resources/views/admin/home/section_3_prototype.html.twig') }}" >
+                        {% for s3e in form.sectionThreeElements %}
+                            <div class='form-group section-3'>
+                                <div style='padding-left:30px'>
+                                    {{ form_label(s3e, 'Element N°' ~ loop.index,{'label_attr': {'class': 'control-label'}}) }}
+                                </div>
+                                <div class='form-group'>
+                                    {{ form_label(s3e.title, 'Titre:', {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                                    {{ form_errors(s3e.title) }}
+                                    <div class='col-lg-9'>
+                                        {{ form_widget(s3e.title, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+                                <div class='form-group'>
+                                    {{ form_label(s3e.text, 'Contenu:', {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                                    {{ form_errors(s3e.text) }}
+                                    <div class='col-lg-9'>
+                                        {{ form_widget(s3e.text, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+                                <div class='form-group'>
+                                    {{ form_label(s3e.icone, 'Icone:', {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                                    {{ form_errors(s3e.icone) }}
+                                    <div class='col-lg-9'>
+                                        {{ form_widget(s3e.icone, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+                                <div class='form-group'>
+                                    {{ form_label(s3e.link, 'Lien:', {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                                    {{ form_errors(s3e.link) }}
+                                    <div class='col-lg-9'>
+                                        {{ form_widget(s3e.link, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+                                <div class='delete-button' style='padding-left:30px' ></div>
+                            </div>
+                        {% endfor %}
+                    </div><!-- Section 3 container  -->
+                    <a href="#" id="add_s3e" class="btn btn-sm btn-primary rounded">Ajouter un élément</a>
+                </div><!-- Section 3 form container  -->
+                <h3>Section 4 (l'équipe)</h3>
+                <div class="form-group">
+                    {{ form_label(form.titleSectionFour, "Titre section 4:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                    {{ form_errors(form.titleSectionFour) }}
+                    <div class="col-lg-9">
+                        {{ form_widget(form.titleSectionFour, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+                <div>
+                    <div id="section_4_container" class="section_4" data-prototype="{{ include('@DPCAdminBundle/Resources/views/admin/home/section_4_prototype.html.twig') }}" >
+                        {% for s4e in form.sectionFourElements %}
+                            <div class='form-group section-4'>
+                                <div style='padding-left:30px'>
+                                    {{ form_label(s4e, 'Equipier N°' ~ loop.index, {'label_attr': {'class': 'control-label'}}) }}
+                                </div>
+
+                                <div class='form-group'>
+                                    {{ form_label(s4e.firstName, 'Prénom:', {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                                    {{ form_errors(s4e.firstName) }}
+                                    <div class='col-lg-9'>
+                                        {{ form_widget(s4e.firstName, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+                                <div class='form-group'>
+                                    {{ form_label(s4e.status, 'Status:', {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                                    {{ form_errors(s4e.status) }}
+                                    <div class='col-lg-9'>
+                                        {{ form_widget(s4e.status, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+                                <div class='form-group'>
+                                    <div class='row text-right'>
+                                        {{ form_label(s4e.image, 'Image',{'label_attr': {'class': 'control-label col-lg-4'}}) }}
+                                    </div>
+                                    <div class='form-group'>
+                                        {{ form_label(s4e.image.title, 'Titre image:', {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                                        {{ form_errors(s4e.image.title) }}
+                                        <div class='col-lg-9'>
+                                            {{ form_widget(s4e.image.title, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                    </div>
+                                    <div class='form-group'>
+                                        {{ form_label(s4e.image.alt, 'Texte alternatif:', {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                                        {{ form_errors(s4e.image.alt) }}
+                                        <div class='col-lg-9'>
+                                            {{ form_widget(s4e.image.alt, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                    </div>
+                                    <div class='form-group'>
+                                        {{ form_label(s4e.image.imageFile, 'Fichier:', {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                                        {{ form_errors(s4e.image.imageFile) }}
+                                        <div class='col-lg-4'>
+                                            {{ form_widget(s4e.image.imageFile, {'attr': {'class': ''}}) }}
+                                        </div>
+                                        <div class='col-lg-4'>
+                                        <a href="#" class="thumbnail">
+                                            <img src="{{ vich_uploader_asset(home.sectionFourElements[loop.index0].image, 'imageFile') }}" alt="{{ home.sectionFourElements[loop.index0].image.alt }}">
+                                            <div class="caption">
+                                                Image actuelle
+                                            </div> <!-- div.caption -->
+                                        </a>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class='delete-button' style='padding-left:30px' ></div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <a href="#" id="add_s4e" class="btn btn-sm btn-primary rounded">Ajouter un élément</a>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                        <div class="pull-right">
+                            <button class="btn btn-lg btn-success rounded" type="submit">
+                                Editer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                {{ form_rest(form) }}
+                {{ form_end(form) }}
+            </div> <!-- div.panel-body -->
+        </div> <!-- div.panel -->
+    </div> <!-- div.col-md-6 -->
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    <script type="text/javascript">
+        {{ include('@DPCAdminBundle/Resources/views/admin/home/home.js') }}
+    </script>
+{% endblock %}
+

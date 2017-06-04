@@ -1,0 +1,7 @@
+{% for product in productSelection %}
+	<li>
+		<a href="{{ path('dpc_store_product', {'id': product.id }) }}">
+			<img src="{{ vich_uploader_asset(product.images[0], 'imageFile') }}" class="img-responsive" alt="{{ product.images[0].alt }}">
+		</a>
+	</li>
+{% endfor %}
