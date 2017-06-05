@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="DPC\StoreBundle\Repository\BrandRepository")
  * @ORM\HasLifecycleCallbacks()
  */
+
 class Brand
 {
     
@@ -210,5 +211,10 @@ class Brand
     public function getDescription()
     {
         return $this->description;
+    }
+
+    public function countProducts()
+    {
+        return count($this->products);
     }
 }

@@ -35,6 +35,7 @@ class AdminBrandController extends Controller
 
     public function addAction(Request $request)
     {
+        $action = 'add';
     	$brand = new Brand();
     	$form = $this->createForm(BrandType::class, $brand);   
         $title = "Créer une marque";
@@ -48,11 +49,12 @@ class AdminBrandController extends Controller
     			return $this->redirectToRoute('dpc_admin_brands');
     	}
 
-    	return $this->render('DPCAdminBundle:admin/brand:admin_brand.html.twig', array('form' => $form->createView(), 'title' => $title));
+    	return $this->render('DPCAdminBundle:admin/brand:admin_brand.html.twig', array('form' => $form->createView(), 'title' => $title, 'action' => $action));
     }
 
     public function editAction(Request $request, $id)
     {
+        $action = 'edit';
     	$brand = $this->getDoctrine()->getManager()->getRepository('DPCStoreBundle:Brand')->find($id);
         $title = "Modifier la marque";
     	$form = $this->createForm(BrandType::class, $brand);
@@ -79,6 +81,6 @@ class AdminBrandController extends Controller
                 return $this->redirectToRoute('dpc_admin_brands', array('id' => $brand->getId()));
         }
 
-    	return $this->render('DPCAdminBundle:admin/brand:admin_brand.html.twig', array('form' => $form->createView(), 'deleteForm' => $deleteForm->createView(), 'title' => $title));
+    	return $this->render('DPCAdminBundle:admin/brand:admin_brand.html.twig', array('form' => $form->createView(), 'deleteForm' => $deleteForm->createView(), 'title' => $title, 'brand' => $brand, 'action' => $action));
     }
 }

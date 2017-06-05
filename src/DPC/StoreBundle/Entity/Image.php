@@ -78,6 +78,11 @@ class Image
     private $updatedAt;
 
     /**
+     * @ORM\ManyToOne(targetEntity="DPC\HomeBundle\Entity\Home", inversedBy="slides")
+     */
+    private $home;
+
+    /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
      * of 'UploadedFile' is injected into this setter to trigger the  update. If this
      * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
@@ -226,5 +231,29 @@ class Image
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Set home
+     *
+     * @param \DPC\HomeBundle\Entity\Home $home
+     *
+     * @return Image
+     */
+    public function setHome(\DPC\HomeBundle\Entity\Home $home = null)
+    {
+        $this->home = $home;
+
+        return $this;
+    }
+
+    /**
+     * Get home
+     *
+     * @return \DPC\HomeBundle\Entity\Home
+     */
+    public function getHome()
+    {
+        return $this->home;
     }
 }

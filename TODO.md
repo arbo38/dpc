@@ -1,23 +1,27 @@
 Personnalisé les message d'erreur
 Mettre un message pour l'acces denied de l'admin
 
-Gestion des utilisateurs : 
-Personnalisé la page de login / logout => OK
+Finish : 
+- Terminer la vue Accueil avec les données en BDD => OK
+- Mettre en place une entité CompanyInformation => OK
+- CompanyInformation doit être stocké en session, quelquesoit la page sur laquelle on arrive en premier => OK
+- 9 derniers produits pour produit du moment => OK
+- Retravailler l'ensemble des formulaires Admin  => OK
+- / Validation / Forcer la validation des entités incluses dans une entité
+- Créer les fonctions spécialisé dans la récuparétion d'entité au sein des repository pour limité les requete SQL grâce au Join
+- Nettoyer les vues grâce au include et block pour qu'elle soient plus propres => OK
+- Message flash
+- Mettre en place les paramsConverters
+- Personnalisé les message d'erreur
+- l'admin doit pouvoir changer de mot de pass
 
-Vue produit liste : 
-- Géré les promos avec prix cassé = OK
-- Géré la description experct => OK
+Optionnelle : 
+- Ajouter les slugs, la recherche d'entité par slug et l'affichage des slug dans les URL
+- Ajouter un controle du flood sur le formulaire de contact via Ip
+- Newsletter
+- Retravailler les routes pour qu'elle soient dynamique (catégorie/produit)
 
-Contact : 
-- Géré le flood
-- Mettre l'envoi de message dans des services (accusé et message)
-- Dropdown menu ne fonctionne pas => OK
-- Optionnelle : Newsletter
-
-
-Entité : 
-- Forcer la validation des entités incluses dans une entité
-
-Global :
-
-Un service qui va chercher les 9 derniers produits ajoutés pour l'afficher dans le footer
+Aujourd'hui dans l'ordre :
+Retravailler toutes les vues (normales et admin)
+Epurer les controllers
+Repository

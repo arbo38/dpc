@@ -1,0 +1,56 @@
+{% extends "DPCServiceBundle::layout.html.twig" %}
+
+{% block dpc_service_body %}
+  
+    <!--breadcrumb start-->
+    <div class="breadcrumb-wrapper" >
+        <div class="container">
+            <h1>{{ title|upper }}</h1>
+        </div>
+    </div>
+    <!--end breadcrumb-->
+
+    <div class="space-60"></div>
+
+    <div class="container">
+        <div class="row">
+            {% for category in listServiceCategories %}
+                <div class="col-sm-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title text-center">{{ category.title }}</h3>
+                        </div>
+                        <div class="panel-body vertical-center" style="height:200px;">
+                            <div class="col-sm-6">
+                                <img src="{{ vich_uploader_asset(category.image, 'imageFile') }}" class="img-thumbnail" alt="Responsive image">
+                            </div>
+                            <div class="col-sm-6">
+                                {{ category.description }}
+                            </div>
+                        </div>
+                        <div class="panel-footer text-center">
+                            <a href="{{ path('dpc_service_category', {'id': category.id, 'categorie': category.title}) }}">Voir nos prestations</a>
+                        </div>
+                    </div>
+                </div> <!-- div.col-sm-6 -->
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <style type="text/css">
+        .panel-default > .panel-heading {
+            background-color: #337ab7;
+            color: white;
+        }
+
+        .vertical-center {
+            display: flex;
+            align-items: center;
+        }
+    </style>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "DPCFAQBundle::layout.html.twig" %}
+
+{% block dpc_faq_body %}
+    <!--breadcrumb start-->
+    <div class="breadcrumb-wrapper" >
+        <div class="container">
+            <h1>Foire Aux Questions</h1>
+        </div>
+    </div>
+    <!--end breadcrumb-->
+    <div class="divide80"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="center-heading">
+                    <h2>Vous avez des questions ?</h2>
+                    <span class="center-line"></span>
+                    <p class="lead">Notre objectif principal étant votre satisfaction plein et entière, nous souhaitons pouvoir répondre à toutes vos questions. Voici une liste des questions les plus courantes. Si la réponse que vous cherchez ne si trouve pas, n'hésitez à vous rendre sur notre <a href="{{ path('dpc_contact_homepage') }}">formulaire de contact</a> pour nous la poser.</p>
+                </div><!--center-heading-->
+            </div>
+        </div>
+        <div class="divide30"></div>
+        <div class="row">
+            <div class="col-md-12 ">
+                <div class="panel-group" id="accordion">
+                    {% for faqTheme in listFaqThemes %}
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h2 class="panel-title text-center bg-primary" style="padding:5px;color:white;" >
+                                    {{ faqTheme.title }}
+                                </h2>
+                            </div>
+                            {% for faq in faqTheme.faqs %}
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#faqId{{ faq.id }}">
+                                            {{ faq.title|capitalize }}
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="faqId{{ faq.id }}" class="panel-collapse collapse {% if loop.first %}in{% endif %}">
+                                    <div class="panel-body">
+                                        {{ faq.answer }}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div><!--collapse col-->
+        </div>
+    </div>
+{% endblock %}

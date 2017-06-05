@@ -1,0 +1,51 @@
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 margin30">
+                <div class="footer-col">
+                    {% if app.session.get('companyInformation') is null %}
+                        {{ render(controller('DPCContactBundle:Contact:description')) }}
+                    {% else %}
+                        <h3>{{ app.session.get('companyInformation').name }}</h3>
+                        <p>
+                            {{ app.session.get('companyInformation').description }}
+                        </p>
+                    {% endif %}
+                </div>                        
+            </div><!--footer col-->
+            <div class="col-md-4 col-sm-6 margin30">
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <ul class="list-unstyled contact">
+                        {% if app.session.get('companyInformation') is null %}
+                            {{ render(controller('DPCContactBundle:Contact:contactInfo')) }}
+                        {% else %}
+                            <li><p><strong><i class="fa fa-map-marker"></i> Adresse:</strong>{{ app.session.get('companyInformation').address }}</p></li> 
+                            <li><p><strong><i class="fa fa-envelope"></i> Email:</strong>{{ app.session.get('companyInformation').email }}</p></li>
+                            <li> <p><strong><i class="fa fa-phone"></i> Tel:</strong>{{ app.session.get('companyInformation').tel }}</p></li>
+                            <li> <p><strong><i class="fa fa-print"></i> Fax</strong>{{ app.session.get('companyInformation').fax }}</p></li>
+                        {% endif %}
+                    </ul>          
+                </div>                        
+            </div><!--footer col-->
+            <div class="col-md-4 col-sm-6 margin30">
+                <div class="footer-col">
+                    <h3>Produits du moment</h3>
+                    <ul class="list-inline f2-work">
+                        {% if app.session.get('productSelection') is null %}
+                            {{ render(controller('DPCStoreBundle:Store:getCurrentSelection')) }}
+                        {% else %}
+                            {% for product in app.session.get('productSelection') %}
+                                <li>
+                                    <a href="{{ path('dpc_store_product', {'id': product.id}) }}">
+                                        <img src="{{ vich_uploader_asset(product.images[0], 'imageFile') }}" class="img-responsive" alt="{{ product.images[0].alt }}">
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        {% endif %}
+                    </ul>
+                </div>                        
+            </div><!--footer col-->
+        </div>
+    </div>
+</footer><!--default footer end here-->

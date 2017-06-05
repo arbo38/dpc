@@ -1,0 +1,4 @@
+services:
+#    dpc_home.example:
+#        class: DPC\HomeBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

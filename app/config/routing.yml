@@ -1,3 +1,15 @@
+dpc_home:
+    resource: "@DPCHomeBundle/Resources/config/routing.yml"
+    prefix:   /
+
+dpc_service:
+    resource: "@DPCServiceBundle/Resources/config/routing.yml"
+    prefix:   /
+
+dpcfaq:
+    resource: "@DPCFAQBundle/Resources/config/routing.yml"
+    prefix:   /
+
 dpc_contact:
     resource: "@DPCContactBundle/Resources/config/routing.yml"
     prefix:   /

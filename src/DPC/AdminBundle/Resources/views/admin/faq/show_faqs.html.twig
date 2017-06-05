@@ -1,0 +1,63 @@
+{% extends "DPCAdminBundle::admin_layout.html.twig" %}
+
+{% block admin_content %}
+	<aside id="hoe-left-panel" hoe-position-type="absolute">
+		<ul class="nav panel-list">
+			{{ include('@DPCAdminBundle/Resources/views/components/menus/closed/home_page.html.twig') }}
+			{{ include('@DPCAdminBundle/Resources/views/components/menus/closed/contact_info.html.twig') }}
+			{{ include('@DPCAdminBundle/Resources/views/components/menus/closed/product.html.twig') }}
+			{{ include('@DPCAdminBundle/Resources/views/components/menus/closed/brand.html.twig') }}
+			{{ include('@DPCAdminBundle/Resources/views/components/menus/closed/category.html.twig') }}
+			{{ include('@DPCAdminBundle/Resources/views/components/menus/closed/image.html.twig') }}
+			{{ include('@DPCAdminBundle/Resources/views/components/menus/opened/faq.html.twig') }}
+			{{ include('@DPCAdminBundle/Resources/views/components/menus/closed/service.html.twig') }}
+		</ul>  
+	</aside><!--aside left menu end-->
+	
+	<section id="main-content">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="panel">
+					<header class="panel-heading">
+						<h2 class="panel-title">{{ title|upper }}</h2>
+					</header>
+					<div class="panel-body">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>ID</th>
+									
+									<th>Question</th>
+									<th>Thème</th>
+									<th>Status</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for faq in listFaqs %}
+									<tr>
+										<th scope="row">
+											<a href="{{ path('dpc_admin_edit_faq', {'id': faq.id}) }}">
+												{{ faq.id }}
+											</a>
+										</th>
+										<td>{{ faq.title }}</td>
+										<td>{{ faq.theme.title }}</td>
+										<td>
+											{% if faq.published %}
+												publiée
+											{% else %}
+												brouillon
+											{% endif %}
+										</td>
+									</tr>
+
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div><!--col end-->
+		</div><!--row end-->
+	</section><!--end main content-->
+{% endblock %}
+

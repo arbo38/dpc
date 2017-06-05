@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,29 +8,11 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <title>DPC admin</title>
         {% block stylesheets %}
-            <!-- Bootstrap -->
-            <link href="{{ asset('bundles/DPCAdmin/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-            <!--side menu plugin-->
-            <link href="{{ asset('bundles/DPCAdmin/plugins/hoe-nav/hoe.css') }}" rel="stylesheet">
-            <!-- icons-->
-            <link href="{{ asset('bundles/DPCAdmin/plugins/ionicons/css/ionicons.min.css') }}" rel="stylesheet">
-            <link href="{{ asset('bundles/DPCAdmin/plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-            <link href="{{ asset('bundles/DPCAdmin/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet" />
-            <link href="{{ asset('bundles/DPCAdmin/plugins/morris/morris-0.4.3.min.css') }}" rel="stylesheet">
-            <!--template custom css file-->
-            <link href="{{ asset('bundles/DPCAdmin/css/style.css') }}" rel="stylesheet">
-
-            <script src="{{ asset('bundles/DPCAdmin/js/modernizr.js') }}"></script>
-            <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-            <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-            <!--[if lt IE 9]>
-              <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-              <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-            <![endif]-->
+            {{ include('@DPCAdminBundle/Resources/views/components/admin_template_css.html.twig') }}
         {% endblock %}
     </head>
-    <body hoe-navigation-type="vertical" hoe-nav-placement="left" theme-layout="wide-layout">
 
+    <body hoe-navigation-type="vertical" hoe-nav-placement="left" theme-layout="wide-layout">
         <!--side navigation start-->
         <div id="hoeapp-wrapper" class="hoe-hide-lpanel" hoe-device-type="desktop">
             <header id="hoe-header" hoe-lpanel-effect="shrink">
@@ -42,7 +25,7 @@
                     </ul>
                     <ul class="right-navbar navbar-right">
 
-                        <li class="dropdown">
+                        <li class="dropdown"> 
                             <a href="#" data-toggle="dropdown" class="dropdown-toggle">{{ app.user.username }}</a>
                             <ul class="dropdown-menu dropdown-menu-scale user-dropdown">
                                 <li><a href="{{ path('fos_user_security_logout') }}"><i class="ion-log-out"></i>Déconnexion </a></li>
@@ -52,213 +35,17 @@
                 </div>
             </header>
             <div id="hoeapp-container" hoe-color-type="lpanel-bg7" hoe-lpanel-effect="shrink">
-                <aside id="hoe-left-panel" hoe-position-type="absolute">
 
-                    <ul class="nav panel-list">
+                {% block admin_content %}
+                        
+                {% endblock %}
 
-                        <li class="active">
-                            <a href="index.html">
-                                <i class="fa fa-home"></i>
-                                <span class="menu-text">Dashboard</span>
-                                <span class="selected"></span>
-                            </a>
-                        </li>
-                        <li class="hoe-has-menu" id="product_menu">
-                            <a href="javascript:void(0)">
-                                <i class="fa fa-shopping-bag"></i>
-                                <span class="menu-text">Produits</span>
-                                <span class="selected"></span>
-                            </a>
-                            <ul class="hoe-sub-menu">
-                                <li>
-                                    <a href="{{ path('dpc_admin_product_occasions') }}">
-                                        <span class="menu-text">Occasions</span>
-                                        <span class="selected"></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ path('dpc_admin_product_promotions') }}">
-                                        <span class="menu-text">Promotions</span>
-                                        <span class="selected"></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ path('dpc_admin_product_promotions') }}">
-                                        <span class="menu-text">En ligne</span>
-                                        <span class="selected"></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ path('dpc_admin_add_product') }}">
-                                        <span class="menu-text">Ajouter</span>
-                                        <span class="selected"></span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="hoe-has-menu" id="brand_menu" >
-                            <a href="javascript:void(0)">
-                                <i class="fa fa-flag"></i>
-                                <span class="menu-text">Marques</span>
-                                <span class="selected"></span>
-                            </a>
-                            <ul class="hoe-sub-menu">
-                                <li>
-                                    <a href="{{ path('dpc_admin_brands') }}">
-                                        <span class="menu-text">Liste</span>
-                                        <span class="selected"></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ path('dpc_admin_add_brand') }}">
-                                        <span class="menu-text">Ajouter</span>
-                                        <span class="selected"></span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="hoe-has-menu" id="category_menu">
-                            <a href="javascript:void(0)">
-                                <i class="fa fa-tags"></i>
-                                <span class="menu-text">Catégories</span>
-                                <span class="selected"></span>
-                            </a>
-                            <ul class="hoe-sub-menu">
-                                <li>
-                                    <a href="{{ path('dpc_admin_categories') }}">
-                                        <span class="menu-text">Liste</span>
-                                        <span class="selected"></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ path('dpc_admin_add_category') }}">
-                                        <span class="menu-text">Ajouter</span>
-                                        <span class="selected"></span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="hoe-has-menu" id="image_menu" >
-                            <a href="javascript:void(0)">
-                                <i class="fa fa-picture-o"></i>
-                                <span class="menu-text">Images</span>
-                                <span class="selected"></span>
-                            </a>
-                            <ul class="hoe-sub-menu">
-                                <li>
-                                    <a href="{{ path('dpc_admin_images') }}">
-                                        <span class="menu-text">Liste</span>
-                                        <span class="selected"></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ path('dpc_admin_add_image') }}">
-                                        <span class="menu-text">Ajouter</span>
-                                        <span class="selected"></span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="calendar.html">
-                                <i class="fa fa-calendar"></i>
-                                <span class="menu-text">Calendar</span>
-                                <span class="selected"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="user-profile.html">
-                                <i class="fa fa-user"></i>
-                                <span class="menu-text">User Profile</span>
-                                <span class="selected"></span>
-                            </a>
-                        </li>
-                        <li class="hoe-has-menu">
-                            <a href="javascript:void(0)">
-                                <i class="fa fa-envelope"></i>
-                                <span class="menu-text">Pages</span>
-                                <span class="selected"></span>
-                            </a>
-                            <ul class="hoe-sub-menu">
-                                <li>
-                                    <a href="page-login.html">
-                                        <span class="menu-text">Login</span>
-                                        <span class="selected"></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="page-register.html">
-                                        <span class="menu-text">Register</span>
-                                        <span class="selected"></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="page-404.html">
-                                        <span class="menu-text">404</span>
-                                        <span class="selected"></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="page-forget-password.html">
-                                        <span class="menu-text">Forget password</span>
-                                        <span class="selected"></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="page-empty.html">
-                                        <span class="menu-text">Empty page</span>
-                                        <span class="selected"></span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </aside><!--aside left menu end-->
-
-
-                <!--start main content-->
-                <section id="main-content">
-                    <div class="space-30"></div>
-                    {% block admin_content %}
-
-                    {% endblock %}
-
-                    <!--footer start-->
-                    <div class="footer">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <span>&copy; Copyright 2016. Assan</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--footer end-->
-                </section><!--end main content-->
             </div>
         </div><!--end wrapper-->
 
 
         {% block javascript %}
-        <!--Common plugins-->
-        <script src="{{ asset('bundles/DPCAdmin/plugins/jquery/dist/jquery.min.js') }}"></script>
-        <script src="{{ asset('bundles/DPCAdmin/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('bundles/DPCAdmin/plugins/hoe-nav/hoe.js') }}"></script>
-        <script src="{{ asset('bundles/DPCAdmin/plugins/pace/pace.min.js') }}"></script>
-        <script src="{{ asset('bundles/DPCAdmin/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
-        <script src="{{ asset('bundles/DPCAdmin/js/app.js') }}"></script>
-        <!--page scripts-->
-        <!-- Flot chart js -->
-        <script src="{{ asset('bundles/DPCAdmin/plugins/flot/jquery.flot.js') }}"></script>
-        <script src="{{ asset('bundles/DPCAdmin/plugins/flot/jquery.flot.tooltip.min.js') }}"></script>
-        <script src="{{ asset('bundles/DPCAdmin/plugins/flot/jquery.flot.resize.js') }}"></script>
-        <script src="{{ asset('bundles/DPCAdmin/plugins/flot/jquery.flot.pie.js') }}"></script>
-        <script src="{{ asset('bundles/DPCAdmin/plugins/flot/jquery.flot.time.js') }}"></script>
-        <!--vector map
-        <script src="{{ asset('bundles/DPCAdmin/plugins/vectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
-        <script src="{{ asset('bundles/DPCAdmin/plugins/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
-        ChartJS
-        <script src="{{ asset('bundles/DPCAdmin/plugins/chartJs/Chart.min.js') }}"></script>
-        <script src="{{ asset('bundles/DPCAdmin/js/dashboard.js') }}"></script>-->
+            {{ include('@DPCAdminBundle/Resources/views/components/admin_template_js.html.twig') }}
         {% endblock %}
     </body>
 </html>

@@ -1,0 +1,129 @@
+{% extends "DPCAdminBundle::admin_layout.html.twig" %}
+
+{% block admin_content %}
+    <aside id="hoe-left-panel" hoe-position-type="absolute">
+        <ul class="nav panel-list">
+            {{ include('@DPCAdminBundle/Resources/views/components/menus/closed/home_page.html.twig') }}
+            {{ include('@DPCAdminBundle/Resources/views/components/menus/opened/contact_info.html.twig') }}
+            {{ include('@DPCAdminBundle/Resources/views/components/menus/closed/product.html.twig') }}
+            {{ include('@DPCAdminBundle/Resources/views/components/menus/closed/brand.html.twig') }}
+            {{ include('@DPCAdminBundle/Resources/views/components/menus/closed/category.html.twig') }}
+            {{ include('@DPCAdminBundle/Resources/views/components/menus/closed/image.html.twig') }}
+            {{ include('@DPCAdminBundle/Resources/views/components/menus/closed/faq.html.twig') }}
+            {{ include('@DPCAdminBundle/Resources/views/components/menus/closed/service.html.twig') }}
+        </ul>  
+    </aside><!--aside left menu end-->
+
+    <section id="main-content">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel">
+                <header class="panel-heading">
+                    <h2>{{ title|upper }}</h2>
+                </header> <!-- header.panel-heading -->
+                <div class="panel-body">
+                    {{ form_start(form, {'attr': {'class': 'form-horizontal', 'role': 'form'}}) }}
+                    {{ form_errors(form) }}
+
+                    <div class='form-group'>
+                        <div class='row text-right'>
+                            {{ form_label(form.logo, 'Logo',{'label_attr': {'class': 'control-label col-lg-4'}}) }}
+                        </div>
+                        <div class='form-group'>
+                            {{ form_label(form.logo.title, 'Titre logo:', {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                            {{ form_errors(form.logo.title) }}
+                            <div class='col-lg-9'>
+                                {{ form_widget(form.logo.title, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                        </div>
+                        <div class='form-group'>
+                            {{ form_label(form.logo.alt, 'Texte alternatif:', {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                            {{ form_errors(form.logo.alt) }}
+                            <div class='col-lg-9'>
+                                {{ form_widget(form.logo.alt, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                        </div>
+                        <div class='form-group'>
+                            {{ form_label(form.logo.imageFile, 'Fichier:', {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                            {{ form_errors(form.logo.imageFile) }}
+                            <div class='col-lg-4'>
+                                {{ form_widget(form.logo.imageFile, {'attr': {'class': ''}}) }}
+                            </div>
+                            <div class='col-lg-4'>
+                                {% if companyInformation.logo is not empty %}
+                                    <a href="#" class="thumbnail">
+                                        <img src="{{ vich_uploader_asset(companyInformation.logo, 'imageFile') }}" alt="{{ companyInformation.logo.alt }}">
+                                        <div class="caption">
+                                            Image actuelle
+                                        </div> <!-- div.caption -->
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.name, "Nom de la société:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                        {{ form_errors(form.name) }}
+                        <div class="col-lg-9">
+                            {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.description, "Description:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                        {{ form_errors(form.description) }}
+                        <div class="col-lg-9">
+                            {{ form_widget(form.description, {'attr': {'class': 'form-control summernote-theme-1'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.address, "Adresse:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                        {{ form_errors(form.address) }}
+                        <div class="col-lg-9">
+                            {{ form_widget(form.address, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.email, "Email:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                        {{ form_errors(form.email) }}
+                        <div class="col-lg-9">
+                            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.tel, "Tel:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                        {{ form_errors(form.tel) }}
+                        <div class="col-lg-9">
+                            {{ form_widget(form.tel, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.fax, "Fax:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                        {{ form_errors(form.fax) }}
+                        <div class="col-lg-9">
+                            {{ form_widget(form.fax, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.siret, "Siret:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                        {{ form_errors(form.siret) }}
+                        <div class="col-lg-9">
+                            {{ form_widget(form.siret, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <div class="pull-right">
+                                <button class="btn btn-lg btn-success rounded" type="submit">
+                                    Editer
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    {{ form_rest(form) }}
+                    {{ form_end(form) }}
+                </div> <!-- div.panel-body -->
+            </div> <!-- div.panel -->
+        </div> <!-- div.col-md-6 -->
+    </section><!--end main content-->
+{% endblock %}
+
+

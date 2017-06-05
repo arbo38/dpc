@@ -1,0 +1,55 @@
+{% extends "DPCAdminBundle::admin_layout.html.twig" %}
+
+{% block admin_content %}
+	<aside id="hoe-left-panel" hoe-position-type="absolute">
+		<ul class="nav panel-list">
+			{{ include('@DPCAdminBundle/Resources/views/components/menus/closed/home_page.html.twig') }}
+			{{ include('@DPCAdminBundle/Resources/views/components/menus/closed/contact_info.html.twig') }}
+			{{ include('@DPCAdminBundle/Resources/views/components/menus/closed/product.html.twig') }}
+			{{ include('@DPCAdminBundle/Resources/views/components/menus/closed/brand.html.twig') }}
+			{{ include('@DPCAdminBundle/Resources/views/components/menus/closed/category.html.twig') }}
+			{{ include('@DPCAdminBundle/Resources/views/components/menus/closed/image.html.twig') }}
+			{{ include('@DPCAdminBundle/Resources/views/components/menus/opened/faq.html.twig') }}
+			{{ include('@DPCAdminBundle/Resources/views/components/menus/closed/service.html.twig') }}
+		</ul>  
+	</aside><!--aside left menu end-->
+
+	<section id="main-content">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="panel">
+					<header class="panel-heading">
+						<h2 class="panel-title">{{ title|upper }}</h2>
+					</header>
+					<div class="panel-body">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Titre</th>
+									<th>Nb de FAQ associées</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% if listThemes is not empty %}
+									{% for theme in listThemes %}
+										<tr>
+											<th scope="row">
+												<a href="{{ path('dpc_admin_edit_faq_theme', {'id': theme.id}) }}">
+													{{ theme.id }}
+												</a>
+											</th>
+											<td>{{ theme.title }}</td>
+											<td>{{ theme.countFaqs }}</td>
+										</tr>
+									{% endfor %}
+								{% endif %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div><!--col end-->
+		</div><!--row end-->
+	</section><!--end main content-->
+{% endblock %}
+

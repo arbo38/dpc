@@ -1,0 +1,8 @@
+{% if companyInformation is not null %}
+	<li><p><strong><i class="fa fa-map-marker"></i> Adresse:</strong>{{ companyInformation.address }}</p></li> 
+	<li><p><strong><i class="fa fa-envelope"></i> Email:</strong>{{ companyInformation.email }}</p></li>
+	<li> <p><strong><i class="fa fa-phone"></i> Tel:</strong>{{ companyInformation.tel }}</p></li>
+	<li> <p><strong><i class="fa fa-print"></i> Fax</strong>{{ companyInformation.fax }}</p></li>
+{% elseif %}
+	<p>En construction</p>
+{% endif %}

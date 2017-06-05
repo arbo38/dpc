@@ -1,0 +1,17 @@
+dpc_service_homepage:
+    path:     /services
+    defaults: { _controller: DPCServiceBundle:Service:index }
+
+dpc_service_category:
+    path:     /services/{categorie}/{id}
+    defaults: 
+        _controller: DPCServiceBundle:Service:showCategory
+    requirements: 
+        id: \d+
+
+dpc_service_details:
+    path:     /services/{id}
+    defaults: 
+        _controller: DPCServiceBundle:Service:showService
+    requirements: 
+        id: \d+

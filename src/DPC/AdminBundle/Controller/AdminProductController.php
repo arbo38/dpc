@@ -7,34 +7,17 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Request;
 use DPC\StoreBundle\Entity\Product;
 use DPC\StoreBundle\Form\ProductType;
-use DPC\StoreBundle\Entity\Brand;
-use DPC\StoreBundle\Form\BrandType;
-use DPC\StoreBundle\Entity\Image;
-use DPC\StoreBundle\Form\ImageType;
 use DPC\AdminBundle\Form\AdminActionType;
 use DPC\AdminBundle\Form\CustomFormClass\AdminAction;
-// Les use pour formulaire
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\FormType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType; 
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 /**
  * @Security("has_role('ROLE_ADMIN')")
  */
 class AdminProductController extends Controller
 {
-    public function showAllAction(){
-
-    }
 
     public function showPromotionsAction(){
-        $listProducts = $this->getDoctrine()->getManager()->getRepository('DPCStoreBundle:Product')->getAllPromos();
+        $listProducts = $this->getDoctrine()->getManager()->getRepository('DPCStoreBundle:Product')->adminGetPromotionsProducts();
         $title = "Promotions";
         return $this->render('DPCAdminBundle:admin/product:show_products.html.twig', compact('listProducts', 'title'));
     }
@@ -43,10 +26,6 @@ class AdminProductController extends Controller
         $listProducts = $this->getDoctrine()->getManager()->getRepository('DPCStoreBundle:Product')->getAllOccasions();
         $title = "Occasions";
         return $this->render('DPCAdminBundle:admin/product:show_products.html.twig', compact('listProducts', 'title'));
-    }
-
-    public function showOnlineAction(){
-        
     }
 
     public function editAction(Request $request, $id){
