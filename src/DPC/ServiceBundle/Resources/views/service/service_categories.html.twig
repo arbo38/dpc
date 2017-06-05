@@ -1,6 +1,7 @@
 {% extends "DPCServiceBundle::layout.html.twig" %}
 
-{% block dpcservice_body %}
+{% block dpc_service_body %}
+  
     <!--breadcrumb start-->
     <div class="breadcrumb-wrapper" >
         <div class="container">
@@ -10,6 +11,7 @@
     <!--end breadcrumb-->
 
     <div class="space-60"></div>
+
     <div class="container">
         <div class="row">
             {% for category in listServiceCategories %}
@@ -38,15 +40,17 @@
 {% endblock %}
 
 {% block stylesheets %}
-  {{ parent() }}
-  <style type="text/css">
-    .panel-default > .panel-heading {
-      background-color: #337ab7;
-      color: white;
-  }
-  .vertical-center {
-      display: flex;
-      align-items: center;
-  }
-</style>
+    {{ parent() }}
+
+    <style type="text/css">
+        .panel-default > .panel-heading {
+            background-color: #337ab7;
+            color: white;
+        }
+
+        .vertical-center {
+            display: flex;
+            align-items: center;
+        }
+    </style>
 {% endblock %}

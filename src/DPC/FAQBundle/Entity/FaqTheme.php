@@ -108,4 +108,8 @@ class FaqTheme
     {
         return $this->faqs;
     }
+
+    public function countFaqs(){
+        return count($this->faqs);
+    }
 }

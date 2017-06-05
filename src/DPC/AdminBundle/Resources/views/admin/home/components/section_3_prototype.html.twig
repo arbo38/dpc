@@ -1,0 +1,29 @@
+<div class='well'>
+    <div class='form-group'>
+        <div style='padding-left:30px'>
+            {{ form_label(form.sectionThreeElements.vars.prototype, '',{'label_attr': {'class': 'control-label'}})|e('html_attr') }}
+        </div>
+        <div class='form-group'>
+            {{ form_label(form.sectionThreeElements.vars.prototype.title, 'Titre:', {'label_attr': {'class': 'col-lg-3 control-label'}})|e('html_attr') }}
+            {{ form_errors(form.sectionThreeElements.vars.prototype.title)|e('html_attr') }}
+            <div class='col-lg-9'>
+                {{ form_widget(form.sectionThreeElements.vars.prototype.title, {'attr': {'class': 'form-control'}})|e('html_attr') }}
+            </div>
+        </div>
+        <div class='form-group'>
+            {{ form_label(form.sectionThreeElements.vars.prototype.text, 'Contenu:', {'label_attr': {'class': 'col-lg-3 control-label'}})|e('html_attr') }}
+            {{ form_errors(form.sectionThreeElements.vars.prototype.text)|e('html_attr') }}
+            <div class='col-lg-9'>
+                {{ form_widget(form.sectionThreeElements.vars.prototype.text, {'attr': {'class': 'form-control'}})|e('html_attr') }}
+            </div>
+        </div>
+        <div class='form-group'>
+            {{ form_label(form.sectionThreeElements.vars.prototype.icone, 'Icone:', {'label_attr': {'class': 'col-lg-3 control-label'}})|e('html_attr') }}
+            {{ form_errors(form.sectionThreeElements.vars.prototype.icone)|e('html_attr') }}
+            <div class='col-lg-9'>
+                {{ form_widget(form.sectionThreeElements.vars.prototype.icone, {'attr': {'class': 'form-control'}})|e('html_attr') }}
+            </div>
+        </div>
+        <div class='delete-button' style='padding-left:30px' ></div>
+    </div>
+</div> <!-- div.well -->

@@ -209,4 +209,9 @@ class Category
     {
         return $this->images;
     }
+
+    public function countProducts()
+    {
+        return count($this->products);
+    }
 }

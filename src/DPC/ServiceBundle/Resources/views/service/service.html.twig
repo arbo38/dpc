@@ -1,17 +1,18 @@
 {% extends "DPCServiceBundle::layout.html.twig" %}
-{% block dpcservice_body %}
+
+{% block dpc_service_body %}
 	<!--breadcrumb start-->
     <div class="breadcrumb-wrapper">
         <div class="container">
-            <h1>Product Detail</h1>
+            <h1>Service - Informations</h1>
         </div>
     </div>
     <!--end breadcrumb-->
 
     <div class="space-60"></div>
+
     <div class="container">
         <div class="row single-product">
-
             <div class="col-md-10 col-md-offset-1">
                 <div class="row">
                     <div class="col-md-4 margin-b-30">
@@ -26,25 +27,19 @@
                             <h3 class="title"><a href="#">{{ service.title}}</a></h3>
                             <h5 > <span class="price">A partir de {{ service.priceMin }}€</span> 
                             </h5>
-
-
                             <p>
                                 {{ service.longDescription }}
                             </p>
                             <div class="text-right">
                                 <a href="{{ path('dpc_contact_homepage') }}" class="btn btn-skin">Nous contacter</a>
                             </div>
-
                         </div>
                     </div>
                 </div><!--single product details end-->
-                <div class="space-40"></div>
             </div>
-
         </div>
-
     </div>
-    <div class="space-60"></div>
-</div><!-- container -->
-<div class="space-60"></div>
+
+    <div class="space-40"></div>
+
 {% endblock %}

@@ -32,21 +32,24 @@ class HomeType extends AbstractType
                     'allow_add' => true,
                     'allow_delete' => true,
                     'required' => false,
-                    'by_reference' => false
+                    'by_reference' => false,
+                    'label' => false
                 ))
             ->add('sectionFourElements', CollectionType::class, array(
                     'entry_type' => SectionFourElementType::class,
                     'allow_add' => true,
                     'allow_delete' => true,
                     'required' => false,
-                    'by_reference' => false
+                    'by_reference' => false,
+                    'label' => false
                 ))
             ->add('sectionThreeElements', CollectionType::class, array(
                     'entry_type' => SectionThreeElementType::class,
                     'allow_add' => true,
                     'allow_delete' => true,
                     'required' => false,
-                    'by_reference' => false
+                    'by_reference' => false,
+                    'label' => false
                 ));
     }
     

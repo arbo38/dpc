@@ -7,21 +7,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Request;
 use DPC\StoreBundle\Entity\Category;
 use DPC\StoreBundle\Form\CategoryType;
-use DPC\StoreBundle\Entity\Image;
-use DPC\StoreBundle\Form\ImageType;
 use DPC\AdminBundle\Form\AdminActionType;
 use DPC\AdminBundle\Form\CustomFormClass\AdminAction;
-// Les use pour formulaire
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\FormType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType; 
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 /**
  * @Security("has_role('ROLE_ADMIN')")
@@ -36,6 +23,7 @@ class AdminCategoryController extends Controller
     
     public function addAction(Request $request)
     {
+        $action = "add";
     	$category = new Category();
     	$form = $this->createForm(CategoryType::class, $category);   
         $title = "Créer une catégorie";
@@ -49,11 +37,12 @@ class AdminCategoryController extends Controller
     			return $this->redirectToRoute('dpc_admin_categories');
     	}
 
-    	return $this->render('DPCAdminBundle:admin/category:admin_category.html.twig', array('form' => $form->createView(), 'title' => $title));
+    	return $this->render('DPCAdminBundle:admin/category:admin_category.html.twig', array('form' => $form->createView(), 'title' => $title, 'action' => $action));
     }
 
     public function editAction(Request $request, $id)
     {
+        $action = "edit";
     	$category = $this->getDoctrine()->getManager()->getRepository('DPCStoreBundle:Category')->find($id);
         $title = "Modifier la catégorie";
     	$form = $this->createForm(CategoryType::class, $category);
@@ -80,6 +69,6 @@ class AdminCategoryController extends Controller
                 return $this->redirectToRoute('dpc_admin_categories');
         }
 
-    	return $this->render('DPCAdminBundle:admin/category:admin_category.html.twig', array('form' => $form->createView(), 'deleteForm' => $deleteForm->createView(), 'title' => $title, 'category' => $category));
+    	return $this->render('DPCAdminBundle:admin/category:admin_category.html.twig', array('form' => $form->createView(), 'deleteForm' => $deleteForm->createView(), 'title' => $title, 'category' => $category, 'action' => $action));
     }
 }

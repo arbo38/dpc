@@ -1,4 +1,8 @@
-<h3>{{ companyInformation.name }}</h3>
-<p>
-	{{ companyInformation.description }}
-</p>
+{% if companyInformation is not null %}
+	<h3>{{ companyInformation.name }}</h3>
+	<p>
+		{{ companyInformation.description }}
+	</p>
+{% elseif %}
+	<p>En construction</p>
+{% endif %}

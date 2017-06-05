@@ -1,82 +1,87 @@
 {% extends "DPCAdminBundle::admin_layout.html.twig" %}
 
 {% block admin_content %}
-  <div class="col-md-6 col-md-offset-3">
-    <div class="panel">
-      <header class="panel-heading">
-        <h2>{{ title|upper }}</h2>
-      </header> <!-- header.panel-heading -->
-      <div class="panel-body">
-        {{ form_start(form, {'attr': {'class': 'form-horizontal', 'role': 'form'}}) }}
-        {{ form_errors(form) }}
-        <div class="form-group">
-          {{ form_label(form.title, "Titre du thème:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
-          {{ form_errors(form.title) }}
-          <div class="col-lg-9">
-            {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-lg-offset-2 col-lg-10">
-            <div class="pull-right">
-              <button class="btn btn-success rounded" type="submit">
-                {% if action == 'add' %}
-                Ajouter
-                {% else %}
-                  Editer
-                {% endif %}
-              </button>
-            </div>
-          </div>
-        </div>
-        {{ form_rest(form) }}
-        {# Fermeture de la balise <form> du formulaire HTML #}
-        {{ form_end(form) }}
-      </div> <!-- div.panel-body -->
-    </div> <!-- div.panel -->
-  </div> <!-- div.col-md-6 -->
+    <aside id="hoe-left-panel" hoe-position-type="absolute">
+          <ul class="nav panel-list">
+              {{ include('@DPCAdminBundle/Resources/views/components/menus/closed/home_page.html.twig') }}
+              {{ include('@DPCAdminBundle/Resources/views/components/menus/closed/contact_info.html.twig') }}
+              {{ include('@DPCAdminBundle/Resources/views/components/menus/closed/product.html.twig') }}
+              {{ include('@DPCAdminBundle/Resources/views/components/menus/closed/brand.html.twig') }}
+              {{ include('@DPCAdminBundle/Resources/views/components/menus/closed/category.html.twig') }}
+              {{ include('@DPCAdminBundle/Resources/views/components/menus/closed/image.html.twig') }}
+              {{ include('@DPCAdminBundle/Resources/views/components/menus/opened/faq.html.twig') }}
+              {{ include('@DPCAdminBundle/Resources/views/components/menus/closed/service.html.twig') }}
+          </ul>  
+      </aside><!--aside left menu end-->
 
+      <section id="main-content">
+          <div class="col-md-8 col-md-offset-2">
+              <div class="panel">
+                  <header class="panel-heading">
+                      <h2>{{ title|upper }}</h2>
+                  </header> <!-- header.panel-heading -->
+                  <div class="panel-body">
+                      {{ form_start(form, {'attr': {'class': 'form-horizontal', 'role': 'form'}}) }}
+                      {{ form_errors(form) }}
+                      <div class="form-group">
+                          {{ form_label(form.title, "Titre du thème:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                          {{ form_errors(form.title) }}
+                          <div class="col-lg-9">
+                              {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="col-lg-offset-2 col-lg-10">
+                              <div class="pull-right">
+                                  <button class="btn btn-success rounded" type="submit">
+                                      {% if action == 'add' %}
+                                      Ajouter
+                                      {% else %}
+                                        Editer
+                                      {% endif %}
+                                  </button>
+                              </div>
+                          </div>
+                      </div>
+                      {{ form_rest(form) }}
+                      {{ form_end(form) }}
+                  </div> <!-- div.panel-body -->
+              </div> <!-- div.panel -->
+          </div> <!-- div.col-md-6 -->
 
-  {% if deleteForm is defined %}
-    <div class="col-md-6 col-md-offset-3">
-      <div class="panel">
-        <div class="panel-body">
-          <header class="panel-heading">
-            <h2>SUPPRIMER LE THEME FAQ</h2>
-          </header> <!-- header.panel-heading -->
-          <div class="panel-body">
-            {{ form_start(deleteForm, {'attr': {'class': 'form-horizontal', 'role': 'form'}}) }}
-            {{ form_errors(deleteForm) }}
-              {{ form_label(deleteForm.delete, "Supprimer le Thème:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
-              {{ form_errors(deleteForm.delete) }}
-              <div class="col-lg-3">
-                {{ form_widget(deleteForm.delete, {'attr': {'class': 'form-control'}}) }}
-              </div>
-              
-            <div class="form-group">
-              <div class="col-lg-offset-2 col-lg-10">
+          {% if deleteForm is defined %}
+              <div class="col-md-8 col-md-offset-2">
+                  <div class="panel">
+                      <header class="panel-heading">
+                          <h2>SUPPRIMER LE THEME FAQ</h2>
+                      </header> <!-- header.panel-heading -->
+                      <div class="panel-body">
+                          {{ form_start(deleteForm, {'attr': {'class': 'form-horizontal', 'role': 'form'}}) }}
+                          {{ form_errors(deleteForm) }}
+                          {{ form_label(deleteForm.delete, "Supprimer le Thème:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                          {{ form_errors(deleteForm.delete) }}
+                          <div class="col-lg-3">
+                              {{ form_widget(deleteForm.delete, {'attr': {'class': 'form-control'}}) }}
+                          </div>
+                          <div class="form-group">
+                              <div class="col-lg-offset-2 col-lg-10">
+                                  <div class="pull-right">
+                                      <button class="btn btn-danger rounded"
+                                      {% if theme.faqs is not empty %}
+                                      disabled data-toggle="tooltip" data-placement="left" title="Des FAQs sont attachées à ce thème"
+                                      {% endif %}
+                                      type="submit">
+                                          Supprimer
+                                    </button>
+                                  </div>
+                              </div>
+                          </div>
+                          {{ form_rest(deleteForm) }}
+                          {{ form_end(deleteForm) }}
+                      </div> <!-- div.panel-body -->
+                  </div> <!-- div.panel -->
+              </div> <!-- div.col-md-6 -->
+          {% endif %}
+    </section><!--end main content-->
+{% endblock %}
 
-                <div class="pull-right">
-                  <button class="btn btn-danger rounded" type="submit">Supprimer</button>
-                </div>
-              </div>
-            </div>
-            {{ form_rest(deleteForm) }}
-            {# Fermeture de la balise <form> du formulaire HTML #}
-            {{ form_end(deleteForm) }}
-          </div> <!-- div.panel-body -->
-        </div> <!-- div.panel -->
-      </div> <!-- div.col-md-6 -->
-    {% endif %}
-
-  {% endblock %}
-
-  {% block stylesheets %}
-    {{ parent() }}
-    <style> 
-      .form-horizontal .form-group .form-group {
-        margin-right: 15px !important;
-        margin-left: 15px !important;
-      }
-    </style>
-  {% endblock %}

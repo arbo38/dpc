@@ -94,4 +94,22 @@ class ProductRepository extends \Doctrine\ORM\EntityRepository
 
     	return new Paginator($query, true);
 	}
+
+	// Admin
+	
+	public function adminGetPromotionsProducts(){
+		$query = $this->createQueryBuilder('p')
+		  ->andWhere('p.promo = true')
+	      ->leftJoin('p.images', 'i')
+	      ->addSelect('i')
+	      ->leftJoin('p.categories', 'c')
+	      ->addSelect('c')
+	      ->leftJoin('p.brand', 'b')
+	      ->addSelect('c')
+	      ->orderBy('p.id', 'DESC')
+	      ->getQuery();
+
+
+    	return $query->getResult();
+	}
 }

@@ -138,6 +138,6 @@ class AdminFAQController extends Controller
                 return $this->redirectToRoute('dpc_admin_faq_themes');
         }
 
-        return $this->render('DPCAdminBundle:admin/faq:admin_faq_theme.html.twig', array('form' => $form->createView(), 'deleteForm' => $deleteForm->createView(), 'title' => $title, 'action' => $action));
+        return $this->render('DPCAdminBundle:admin/faq:admin_faq_theme.html.twig', array('form' => $form->createView(), 'deleteForm' => $deleteForm->createView(), 'title' => $title, 'action' => $action, 'theme' => $theme));
     }
 }

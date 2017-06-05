@@ -1,89 +1,92 @@
 {% extends "DPCStoreBundle::layout.html.twig" %}
-{% block dpcstore_body %}
+
+{% block dpc_store_body %}
+
 	<!--breadcrumb start-->
-        <div class="breadcrumb-wrapper">
-            <div class="container">
-                <h1>Product Detail</h1>
-            </div>
-        </div>
-        <!--end breadcrumb-->
-
-        <div class="space-60"></div>
+    <div class="breadcrumb-wrapper">
         <div class="container">
-            <div class="row single-product">
+            <h1>Product Detail</h1>
+        </div>
+    </div>
+    <!--end breadcrumb-->
 
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-md-5 margin-b-30">
-                            <div id="product-single"  class="owl-carousel owl-theme single-product-slider">
-                            	{% for image in product.images %}
-								<div class="item">
+    <div class="space-60"></div>
+
+    <div class="container">
+        <div class="row single-product">
+
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-5 margin-b-30">
+                        <div id="product-single"  class="owl-carousel owl-theme single-product-slider">
+                            {% for image in product.images %}
+                                <div class="item">
                                     <a href="{{ vich_uploader_asset(image, 'imageFile') }}" data-lightbox="roadtrip"> <img src="{{ vich_uploader_asset(image, 'imageFile') }}" alt="{{ image.alt }}" class="img-responsive"></a>
                                 </div>
-                            	{% endfor %}
-                            </div>
+                            {% endfor %}
                         </div>
-                        <div class="col-md-7">
-                            <div class="product-detail-desc">
-                                <h3 class="title"><a href="#">{{ product.title}}</a></h3>
-                                <h5 >Type: 
-											{% if product.promo and  product.occasion %}
-												<a href="#">Promotion</a> - <a href="#">Occasion</a>
-											{% elseif product.promo %}
-												<a href="#">Promotion</a>
-											{% elseif product.occasion %}
-												<a href="#">Occasion</a>
-											{% endif %}
-										</h5>
-										<h5>Catégories: 
-											{% for category in product.categories %}
-												<a href="#">{{ category.title }}</a> {% if not loop.last %}/{% endif %}
-											{% endfor %}
-										</h5>
-										<h5>Garantie: {{ product.warranty }} mois
-										</h5>
-                                <span class="price">{% if product.discount %}<del>{{ product.PriceBeforeDiscount }}</del>{% endif %} {{ product.price }}€</span> 
-                                </span>
-                           
-                                <p>
-                                    {{ product.descriptionExcerpt }}
-                                </p>
-                                <div class="text-right">
+                    </div>
+                    <div class="col-md-7">
+                        <div class="product-detail-desc">
+                            <h3 class="title"><a href="#">{{ product.title}}</a></h3>
+
+                            <h5 >Type: 
+                                {% if product.promo and  product.occasion %}
+                                    <a href="#">Promotion</a> - <a href="#">Occasion</a>
+                                {% elseif product.promo %}
+                                    <a href="#">Promotion</a>
+                                {% elseif product.occasion %}
+                                    <a href="#">Occasion</a>
+                                {% endif %}
+                            </h5>
+
+                            <h5>Catégories: 
+                                {% for category in product.categories %}
+                                    <a href="#">{{ category.title }}</a> {% if not loop.last %}/{% endif %}
+                                {% endfor %}
+                            </h5>
+
+                            <h5>Garantie: {{ product.warranty }} mois</h5>
+
+                            <span class="price">{% if product.discount %}<del>{{ product.PriceBeforeDiscount }}</del>{% endif %} {{ product.price }}€</span>
+
+                            <p>
+                                {{ product.descriptionExcerpt }}
+                            </p>
+
+                            <div class="text-right">
                                 <a href="{{ path('dpc_contact_homepage') }}" class="btn btn-skin">Nous contacter</a>
                             </div>
-
-                            </div>
                         </div>
-                    </div><!--single product details end-->
-                    <div class="space-40"></div>
-                    <div class="row">
-                        <div class="col-md-12 item-more-info">
-                            <div>
+                    </div>
+                </div><!--single product details end-->
+            </div>
+        </div>
 
-                                <!-- Nav tabs -->
-                                <ul class="nav nav-justified" role="tablist">
-                                    <li role="presentation" class="active"><a href="#desc" aria-controls="desc" role="tab" data-toggle="tab">Description Détaillée</a></li>
-                                </ul>
+        <div class="space-40"></div>
 
-                                <!-- Tab panes -->
-                                <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane active" id="desc">
-                                        <p>
-                                            {{ product.description }}
-                                        </p>
-                                    </div>
-                                </div>
-                            
-                                </div>
+        <div class="row">
+            <div class="col-md-12 item-more-info">
+                <div>
 
-                            </div>
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-justified" role="tablist">
+                        <li role="presentation" class="active"><a href="#desc" aria-controls="desc" role="tab" data-toggle="tab">Description Détaillée</a></li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="desc">
+                            <p>
+                                {{ product.description }}
+                            </p>
                         </div>
                     </div>
 
                 </div>
 
             </div>
-            <div class="space-60"></div>
-        </div><!-- container -->
-        <div class="space-60"></div>
+        </div>
+    </div>
+    
 {% endblock %}

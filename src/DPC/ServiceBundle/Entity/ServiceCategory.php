@@ -169,4 +169,9 @@ class ServiceCategory
     {
         return $this->image;
     }
+
+    public function countServices()
+    {
+        return count($this->services);
+    }
 }

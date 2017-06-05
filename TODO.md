@@ -5,13 +5,12 @@ Finish :
 - Terminer la vue Accueil avec les données en BDD => OK
 - Mettre en place une entité CompanyInformation => OK
 - CompanyInformation doit être stocké en session, quelquesoit la page sur laquelle on arrive en premier => OK
-- 9 derniers produits pour produit du moment
-- Vues pour les menus
-- Retravailler l'ensemble des formulaires Admin / Validation
-- Forcer la validation des entités incluses dans une entité
+- 9 derniers produits pour produit du moment => OK
+- Retravailler l'ensemble des formulaires Admin  => OK
+- / Validation / Forcer la validation des entités incluses dans une entité
 - Créer les fonctions spécialisé dans la récuparétion d'entité au sein des repository pour limité les requete SQL grâce au Join
-- Nettoyer les vues grâce au include et block pour qu'elle soient plus propres
-- Retravailler les routes pour qu'elle soient dynamique (catégorie/produit)
+- Nettoyer les vues grâce au include et block pour qu'elle soient plus propres => OK
+- Message flash
 - Mettre en place les paramsConverters
 - Personnalisé les message d'erreur
 - l'admin doit pouvoir changer de mot de pass
@@ -20,3 +19,9 @@ Optionnelle :
 - Ajouter les slugs, la recherche d'entité par slug et l'affichage des slug dans les URL
 - Ajouter un controle du flood sur le formulaire de contact via Ip
 - Newsletter
+- Retravailler les routes pour qu'elle soient dynamique (catégorie/produit)
+
+Aujourd'hui dans l'ordre :
+Retravailler toutes les vues (normales et admin)
+Epurer les controllers
+Repository

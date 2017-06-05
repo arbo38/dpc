@@ -1,7 +1,11 @@
-<a 
-	class="navbar-brand" 
-	href="{{ path('dpc_home_homepage') }}">
-	<img 
-	src="{{ vich_uploader_asset(companyInformation.logo, 'imageFile') }}" 
-	alt="{{ companyInformation.logo.alt }}">
-</a>
+{% if companyInformation is not null %}
+	<a 
+		class="navbar-brand" 
+		href="{{ path('dpc_home_homepage') }}">
+		<img 
+		src="{{ vich_uploader_asset(companyInformation.logo, 'imageFile') }}" 
+		alt="{{ companyInformation.logo.alt }}">
+	</a>
+{% elseif %}
+	<p>En construction</p>
+{% endif %}

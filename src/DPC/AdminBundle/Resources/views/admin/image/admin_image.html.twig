@@ -1,28 +1,32 @@
 {% extends "DPCAdminBundle::admin_layout.html.twig" %}
 
 {% block admin_content %}
-<div class="well">
-	<h3>Formulaire image</h3>
+	<aside id="hoe-left-panel" hoe-position-type="absolute">
+		<ul class="nav panel-list">
+			{{ include('@DPCAdminBundle/Resources/views/components/menus/closed/home_page.html.twig') }}
+			{{ include('@DPCAdminBundle/Resources/views/components/menus/closed/contact_info.html.twig') }}
+			{{ include('@DPCAdminBundle/Resources/views/components/menus/closed/product.html.twig') }}
+			{{ include('@DPCAdminBundle/Resources/views/components/menus/closed/brand.html.twig') }}
+			{{ include('@DPCAdminBundle/Resources/views/components/menus/closed/category.html.twig') }}
+			{{ include('@DPCAdminBundle/Resources/views/components/menus/opened/image.html.twig') }}
+			{{ include('@DPCAdminBundle/Resources/views/components/menus/closed/faq.html.twig') }}
+			{{ include('@DPCAdminBundle/Resources/views/components/menus/closed/service.html.twig') }}
+		</ul>  
+	</aside><!--aside left menu end-->
 
-	<div class="well">
-		{{ form(form) }}
-	</div>
-	{% if deleteForm is defined %}
-      <h3>SUPPRIMER L'IMAGE</h3>
-      <div class="well">
-        {{ form(deleteForm) }}
-      </div>
-    {% endif %}
-</div> <!-- div.well -->
-	
-{% endblock %}
+	<section id="main-content">
+		<div class="well">
+			<h3>Formulaire image</h3>
 
-{% block stylesheets %}
-	{{ parent() }}
-	<style>	
-		.form-horizontal .form-group .form-group {
-			margin-right: 15px !important;
-			margin-left: 15px !important;
-		}
-	</style>
+			<div class="well">
+				{{ form(form) }}
+			</div>
+			{% if deleteForm is defined %}
+				<h3>SUPPRIMER L'IMAGE</h3>
+				<div class="well">
+					{{ form(deleteForm) }}
+				</div>
+			{% endif %}
+		</div> <!-- div.well -->
+	</section><!--end main content-->
 {% endblock %}
