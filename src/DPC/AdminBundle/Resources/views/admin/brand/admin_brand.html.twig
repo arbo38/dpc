@@ -9,7 +9,6 @@
             {{ include('@DPCAdminBundle/Resources/views/components/menus/closed/product.html.twig') }}
             {{ include('@DPCAdminBundle/Resources/views/components/menus/opened/brand.html.twig') }}
             {{ include('@DPCAdminBundle/Resources/views/components/menus/closed/category.html.twig') }}
-            {{ include('@DPCAdminBundle/Resources/views/components/menus/closed/image.html.twig') }}
             {{ include('@DPCAdminBundle/Resources/views/components/menus/closed/faq.html.twig') }}
             {{ include('@DPCAdminBundle/Resources/views/components/menus/closed/service.html.twig') }}
         </ul>
@@ -47,7 +46,7 @@
                               </div>
                           </div>
                           <div>
-                              <div id="images_container" data-prototype="{{ include('@DPCAdminBundle/Resources/views/admin/brand/components/images_prototype.html.twig') }}" >
+                              <div id="images_container" data-prototype="{{ include('@DPCAdminBundle/Resources/views/components/images-form/images_prototype.html.twig') }}" >
                                   {% for image in form.images %}
                                       <div class="well" >
                                           <div class='form-group image-form'>
@@ -150,6 +149,6 @@
 {% block javascript %}
     {{ parent() }}
     <script type="text/javascript">
-        {{ include('@DPCAdminBundle/Resources/views/admin/brand/components/brand.js') }}
+        {{ include('@DPCAdminBundle/Resources/views/components/images-form/images.js') }}
     </script>
 {% endblock %}

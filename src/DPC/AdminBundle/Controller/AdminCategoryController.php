@@ -16,7 +16,7 @@ use DPC\AdminBundle\Form\CustomFormClass\AdminAction;
 class AdminCategoryController extends Controller
 {
     public function showAllAction(){
-        $listCategories = $this->getDoctrine()->getManager()->getRepository('DPCStoreBundle:Category')->findAll();
+        $listCategories = $this->getDoctrine()->getManager()->getRepository('DPCStoreBundle:Category')->findAllCategories();
         $title = "Liste des catégories";
         return $this->render('DPCAdminBundle:admin/category:show_categories.html.twig', compact('listCategories', 'title'));
     }
@@ -43,7 +43,7 @@ class AdminCategoryController extends Controller
     public function editAction(Request $request, $id)
     {
         $action = "edit";
-    	$category = $this->getDoctrine()->getManager()->getRepository('DPCStoreBundle:Category')->find($id);
+    	$category = $this->getDoctrine()->getManager()->getRepository('DPCStoreBundle:Category')->findCategory($id);
         $title = "Modifier la catégorie";
     	$form = $this->createForm(CategoryType::class, $category);
         $adminAction = new AdminAction();

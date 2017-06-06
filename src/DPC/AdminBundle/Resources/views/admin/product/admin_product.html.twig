@@ -8,119 +8,183 @@
           {{ include('@DPCAdminBundle/Resources/views/components/menus/opened/product.html.twig') }}
           {{ include('@DPCAdminBundle/Resources/views/components/menus/closed/brand.html.twig') }}
           {{ include('@DPCAdminBundle/Resources/views/components/menus/closed/category.html.twig') }}
-          {{ include('@DPCAdminBundle/Resources/views/components/menus/closed/image.html.twig') }}
           {{ include('@DPCAdminBundle/Resources/views/components/menus/closed/faq.html.twig') }}
           {{ include('@DPCAdminBundle/Resources/views/components/menus/closed/service.html.twig') }}
       </ul>  
     </aside><!--aside left menu end-->
 
     <section id="main-content">
-      <div class="well">  
-          <h3>{{ title|upper }}</h3>
-          <div class="well">
-              {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
-              {{ form_errors(form) }}
-              {{ form_row(form.title) }}
-              {{ form_row(form.description) }}
-              {{ form_row(form.price) }}
-              {{ form_row(form.discount) }}
-              {{ form_row(form.warranty) }}
-              {{ form_row(form.occasion) }}
-              {{ form_row(form.promo) }}
-              {{ form_row(form.images) }}
-              <a href="#" id="add_image" class="btn btn-default">Ajouter une image</a>
-              {{ form_row(form.categories) }}
-              {{ form_row(form.brand) }}
-              {{ form_rest(form) }}
-              {# Fermeture de la balise <form> du formulaire HTML #}
-              {{ form_end(form) }}
-          </div>
-          {% if deleteForm is defined %}
-              <h3>SUPPRIMER LE PRODUIT</h3>
-              <div class="well">
-                  {{ form(deleteForm) }}
-              </div>
-          {% endif %}
-      </div>
-    </section>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel">
+                <header class="panel-heading">
+                    <h2>{{ title|upper }}</h2>
+                </header> <!-- header.panel-heading -->
+                <div class="panel-body">
+                    {{ form_start(form, {'attr': {'class': 'form-horizontal', 'role': 'form'}}) }}
+                    {{ form_errors(form) }}
+                    <div class="form-group">
+                        {{ form_label(form.title, "Nom:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                        {{ form_errors(form.title) }}
+                        <div class="col-lg-9">
+                            {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.description, "Description:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                        {{ form_errors(form.description) }}
+                        <div class="col-lg-9">
+                            {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.price, "Prix:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                        {{ form_errors(form.price) }}
+                        <div class="col-lg-9">
+                            {{ form_widget(form.price, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.discount, "Réduction (en %):", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                        {{ form_errors(form.discount) }}
+                        <div class="col-lg-9">
+                            {{ form_widget(form.discount, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.occasion, "Occasion:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                        {{ form_errors(form.occasion) }}
+                        <div class="col-lg-1">
+                            {{ form_widget(form.occasion, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.promo, "Promotion:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                        {{ form_errors(form.promo) }}
+                        <div class="col-lg-1">
+                            {{ form_widget(form.promo, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.warranty, "Garantie (en mois):", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                        {{ form_errors(form.warranty) }}
+                        <div class="col-lg-9">
+                            {{ form_widget(form.warranty, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        {{ form_label(form.categories, "Catégorie:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                        {{ form_errors(form.categories) }}
+                        <div class="col-lg-9">
+                            {{ form_widget(form.categories, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.brand, "Marque:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                        {{ form_errors(form.brand) }}
+                        <div class="col-lg-9">
+                            {{ form_widget(form.brand, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div>
+                        <div id="images_container" data-prototype="{{ include('@DPCAdminBundle/Resources/views/components/images-form/images_prototype.html.twig') }}" >
+                            {% for image in form.images %}
+                                <div class="well" >
+                                    <div class='form-group image-form'>
+                                        <div style='padding-left:30px'>
+                                            {{ form_label(image, 'Image N°' ~ loop.index,{'label_attr': {'class': 'control-label'}}) }}
+                                        </div>
+                                        <div class='form-group'>
+                                            {{ form_label(image.title, 'Titre image:', {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                                            {{ form_errors(image.title) }}
+                                            <div class='col-lg-9'>
+                                                {{ form_widget(image.title, {'attr': {'class': 'form-control'}}) }}
+                                            </div>
+                                        </div>
+                                        <div class='form-group'>
+                                            {{ form_label(image.alt, 'Texte alternatif:', {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                                            {{ form_errors(image.alt) }}
+                                            <div class='col-lg-9'>
+                                                {{ form_widget(image.alt, {'attr': {'class': 'form-control'}})}}
+                                            </div>
+                                        </div>
+                                        <div class='form-group'>
+                                            {{ form_label(image.imageFile, 'Fichier:', {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                                            {{ form_errors(image.imageFile) }}
+                                            <div class='col-lg-4'>
+                                                {{ form_widget(image.imageFile, {'attr': {'class': ''}}) }}
+                                            </div>
+                                            <div class='col-lg-2'>
+                                                <a href="#" class="thumbnail">
+                                                    <img src="{{ vich_uploader_asset(product.images[loop.index0], 'imageFile') }}" alt="{{ product.images[loop.index0].alt }}">
+                                                    <div class="caption">
+                                                        Image actuelle
+                                                    </div> <!-- div.caption -->
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class='delete-button' style='padding-left:30px' ></div>
+                                    </div>
+                                </div> <!-- div.well -->
+                            {% endfor %}
+                        </div><!-- Section 3 container  -->
+                        <a href="#" id="add_image" class="btn btn-sm btn-primary rounded">Ajouter un élément</a>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <div class="pull-right">
+                                <button class="btn btn-success rounded" type="submit">
+                                    {% if action == 'add' %}
+                                    Ajouter
+                                    {% else %}
+                                      Editer
+                                    {% endif %}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    {{ form_rest(form) }}
+                    {{ form_end(form) }}
+                </div> <!-- div.panel-body -->
+            </div> <!-- div.panel -->
+        </div> <!-- div.col-md-6 -->
+
+        {% if deleteForm is defined %}
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel">
+                    <div class="panel-body">
+                        <header class="panel-heading">
+                              <h2>SUPPRIMER LE PRODUIT</h2>
+                        </header> <!-- header.panel-heading -->
+                        <div class="panel-body">
+                            {{ form_start(deleteForm, {'attr': {'class': 'form-horizontal', 'role': 'form'}}) }}
+                            {{ form_errors(deleteForm) }}
+                            {{ form_label(deleteForm.delete, "Supprimer le produit:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                            {{ form_errors(deleteForm.delete) }}
+                            <div class="col-lg-3">
+                                {{ form_widget(deleteForm.delete, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-offset-2 col-lg-10">
+                                    <div class="pull-right">
+                                        <button class="btn btn-danger rounded" type="submit">Supprimer</button>
+                                    </div>
+                                </div>
+                            </div>
+                            {{ form_rest(deleteForm) }}
+                            {{ form_end(deleteForm) }}
+                        </div> <!-- div.panel-body -->
+                    </div><!-- div.panel-body -->
+                </div> <!-- div.panel -->
+            </div> <!-- div.col-md-6 -->
+        {% endif %}
+    </section><!--end main content-->
 {% endblock %}
 
 {% block javascript %}
-  {{ parent() }}
-  <script type="text/javascript">
-    $(document).ready(function() {
-
-    // Changement du label pour les images déjà liées à la catégorie
-    var currentImagesMasterLabel = $('div#dpc_storebundle_product_images > div.form-group > label.control-label');
-    currentImageCounter = 0;
-    currentImagesMasterLabel = Array.from(currentImagesMasterLabel);
-    currentImagesMasterLabel.forEach(function(label){
-      label.innerHTML = 'Image n°' + (currentImageCounter+1);
-      currentImageCounter++;
-    });
-    // On récupère la balise <div> en question qui contient l'attribut « data-prototype » qui nous intéresse.
-    var $container = $('div#dpc_storebundle_product_images');
-
-    // On définit un compteur unique pour nommer les champs qu'on va ajouter dynamiquement
-    var index = $container.find(':hidden').length;
-    
-    // On ajoute un nouveau champ à chaque clic sur le lien d'ajout.
-    $('#add_image').click(function(e) {
-      addImage($container);
-
-      e.preventDefault(); // évite qu'un # apparaisse dans l'URL
-      return false;
-    });
-
-    // On ajoute un premier champ automatiquement s'il n'en existe pas déjà un (cas d'une nouvelle annonce par exemple).
-    if (index == 0) {
-      addImage($container);
-    } else {
-      // S'il existe déjà des catégories, on ajoute un lien de suppression pour chacune d'entre elles
-      $container.children('div').each(function() {
-        addDeleteLink($(this));
-      });
-    }
-
-    // La fonction qui ajoute un formulaire productType
-    function addImage($container) {
-      // Dans le contenu de l'attribut « data-prototype », on remplace :
-      // - le texte "__name__label__" qu'il contient par le label du champ
-      // - le texte "__name__" qu'il contient par le numéro du champ
-      var template = $container.attr('data-prototype')
-      .replace(/__name__label__/g, 'Image n°' + (index+1))
-      .replace(/__name__/g, index)
-      ;
-
-      // On crée un objet jquery qui contient ce template
-      var $prototype = $(template);
-
-      // On ajoute au prototype un lien pour pouvoir supprimer la catégorie
-      addDeleteLink($prototype);
-
-      // On ajoute le prototype modifié à la fin de la balise <div>
-      $container.append($prototype);
-
-      // Enfin, on incrémente le compteur pour que le prochain ajout se fasse avec un autre numéro
-      index++;
-    }
-
-    // La fonction qui ajoute un lien de suppression d'une catégorie
-    function addDeleteLink($prototype) {
-      // Création du lien
-      var $deleteLink = $('<a href="#" class="btn btn-danger">Supprimer</a>');
-
-      // Ajout du lien
-      $prototype.append($deleteLink);
-
-      // Ajout du listener sur le clic du lien pour effectivement supprimer la catégorie
-      $deleteLink.click(function(e) {
-        $prototype.remove();
-
-        e.preventDefault(); // évite qu'un # apparaisse dans l'URL
-        return false;
-      });
-    }
-  });
-  </script>
+    {{ parent() }}
+    <script type="text/javascript">
+        {{ include('@DPCAdminBundle/Resources/views/components/images-form/images.js') }}
+    </script>
 {% endblock %}

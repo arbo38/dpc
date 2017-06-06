@@ -23,14 +23,14 @@ class StoreController extends Controller
         return $this->render('DPCStoreBundle:Store/product:show_product.html.twig', compact('product'));
     }
 
-    public function catalogueAction($page){
+    public function catalogueAction($page = 1){
         if ($page < 1) {
           throw $this->createNotFoundException("La page ".$page." n'existe pas.");
         }
 
         $title = "Catalogue";
 
-        $nbPerPage = 6;
+        $nbPerPage = 2;
 
         $listProducts = $this->getDoctrine()
             ->getManager()

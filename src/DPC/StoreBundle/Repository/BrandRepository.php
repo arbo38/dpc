@@ -10,4 +10,29 @@ namespace DPC\StoreBundle\Repository;
  */
 class BrandRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function findAllBrands(){
+		$qb = $this->createQueryBuilder('b');
+
+		$query = $qb
+	    ->leftJoin('b.products', 'p')
+	    ->addSelect('p')
+	    ->leftJoin('b.images', 'i')
+	    ->addSelect('i')
+		->getQuery();
+
+		return $query->getResult();
+	}
+
+	public function findBrand($id){
+		$qb = $this->createQueryBuilder('b');
+
+		$query = $qb
+		->where('b.id = :id')
+    	->setParameter('id', $id)
+	    ->leftJoin('b.images', 'i')
+	    ->addSelect('i')
+		->getQuery();
+
+		return $query->getOneOrNullResult();
+	}
 }

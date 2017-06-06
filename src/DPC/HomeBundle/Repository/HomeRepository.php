@@ -10,4 +10,26 @@ namespace DPC\HomeBundle\Repository;
  */
 class HomeRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function getHomeWithSections($id){
+		$qb = $this->createQueryBuilder('h');
+
+		$query = $qb
+		->andWhere('h.id = :id')
+	    ->setParameter('id', $id)
+	    ->leftJoin('h.sectionOne', 's1')
+	    ->addSelect('s1')
+	    ->leftJoin('h.sectionTwo', 's2')
+	    ->addSelect('s2')
+	    ->leftJoin('h.sectionThreeElements', 's3')
+	    ->addSelect('s3')
+	    ->leftJoin('h.sectionFourElements', 's4')
+	    ->addSelect('s4')
+	    ->leftJoin('s4.image', 's4i')
+	    ->addSelect('s4i')
+	    ->leftJoin('h.slides', 'sl')
+	    ->addSelect('sl')
+		->getQuery();
+
+		return $query->getOneOrNullResult();
+	}
 }

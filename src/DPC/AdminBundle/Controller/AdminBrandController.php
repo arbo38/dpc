@@ -28,7 +28,7 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 class AdminBrandController extends Controller
 {
     public function showAllAction(){
-        $listBrands = $this->getDoctrine()->getManager()->getRepository('DPCStoreBundle:Brand')->findAll();
+        $listBrands = $this->getDoctrine()->getManager()->getRepository('DPCStoreBundle:Brand')->findAllBrands();
         $title = "Liste des marques";
         return $this->render('DPCAdminBundle:admin/brand:show_brands.html.twig', compact('listBrands', 'title'));
     }
@@ -55,7 +55,7 @@ class AdminBrandController extends Controller
     public function editAction(Request $request, $id)
     {
         $action = 'edit';
-    	$brand = $this->getDoctrine()->getManager()->getRepository('DPCStoreBundle:Brand')->find($id);
+    	$brand = $this->getDoctrine()->getManager()->getRepository('DPCStoreBundle:Brand')->findBrand($id);
         $title = "Modifier la marque";
     	$form = $this->createForm(BrandType::class, $brand);
         $adminAction = new AdminAction();

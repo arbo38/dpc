@@ -8,9 +8,11 @@ dpc_admin_contact:
 
 # Route Admin Produits
 
-dpc_admin_product:
-    path:     /product
-    defaults: { _controller: DPCAdminBundle:Admin:product }
+dpc_admin_products:
+    path:     /catalogue/{page}
+    defaults: 
+        _controller: DPCAdminBundle:AdminProduct:showProducts
+        page: 1
 
 dpc_admin_product_promotions:
     path:     /product/promotions

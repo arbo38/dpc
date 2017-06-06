@@ -26,7 +26,7 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 class AdminServiceController extends Controller
 {
     public function showAllAction(){
-        $listServices = $this->getDoctrine()->getManager()->getRepository('DPCServiceBundle:Service')->findAll();
+        $listServices = $this->getDoctrine()->getManager()->getRepository('DPCServiceBundle:Service')->findAllServices();
         $title = "Liste des Services";
         return $this->render('DPCAdminBundle:admin/service:show_services.html.twig', compact('listServices', 'title'));
     }
@@ -52,7 +52,7 @@ class AdminServiceController extends Controller
 
     public function editAction(Request $request, $id)
     {
-    	$service = $this->getDoctrine()->getManager()->getRepository('DPCServiceBundle:Service')->find($id);
+    	$service = $this->getDoctrine()->getManager()->getRepository('DPCServiceBundle:Service')->findServiceWithImage($id);
         $title = "Modifier un Service";
         $form = $this->createForm(ServiceType::class, $service);
         $adminAction = new AdminAction();

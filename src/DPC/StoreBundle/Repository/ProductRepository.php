@@ -19,8 +19,12 @@ class ProductRepository extends \Doctrine\ORM\EntityRepository
 		$query = $qb
 		->where('p.id = :id')
     	->setParameter('id', $id)
-		->innerJoin('p.images', 'i')
-      	->addSelect('i')
+		->leftJoin('p.images', 'i')
+	    ->addSelect('i')
+	    ->innerJoin('p.categories', 'c')
+	    ->addSelect('c')
+	    ->leftJoin('p.brand', 'b')
+	    ->addSelect('c')
 		->getQuery();
 
 		return $query->getOneOrNullResult();
@@ -30,8 +34,12 @@ class ProductRepository extends \Doctrine\ORM\EntityRepository
 		$qb = $this->createQueryBuilder('p');
 
 		$query = $qb
-		->innerJoin('p.images', 'i')
-      	->addSelect('i')
+		->leftJoin('p.images', 'i')
+	    ->addSelect('i')
+	    ->leftJoin('p.categories', 'c')
+	    ->addSelect('c')
+	    ->leftJoin('p.brand', 'b')
+	    ->addSelect('c')
       	->orderBy('p.id', 'DESC')
       	->setMaxResults($limit)
 		->getQuery();
@@ -39,7 +47,7 @@ class ProductRepository extends \Doctrine\ORM\EntityRepository
 		return $query->getResult();
 	}
 
-	public function getCatalogueProducts($page, $nbPerPage){
+	public function getCatalogueProducts($page = null, $nbPerPage = null){
 		$query = $this->createQueryBuilder('p')
 	      ->leftJoin('p.images', 'i')
 	      ->addSelect('i')
@@ -50,6 +58,10 @@ class ProductRepository extends \Doctrine\ORM\EntityRepository
 	      ->orderBy('p.id', 'DESC')
 	      ->getQuery();
 
+	    if(is_null($page) && is_null($nbPerPage)){
+	    	return $query->getResult();
+	    }
+
 	    $query
 	      ->setFirstResult(($page-1) * $nbPerPage)
 	      ->setMaxResults($nbPerPage);
@@ -57,7 +69,7 @@ class ProductRepository extends \Doctrine\ORM\EntityRepository
     	return new Paginator($query, true);
 	}
 
-	public function getPromotionsProducts($page, $nbPerPage){
+	public function getPromotionsProducts($page = null, $nbPerPage = null){
 		$query = $this->createQueryBuilder('p')
 		  ->andWhere('p.promo = true')
 	      ->leftJoin('p.images', 'i')
@@ -69,6 +81,10 @@ class ProductRepository extends \Doctrine\ORM\EntityRepository
 	      ->orderBy('p.id', 'DESC')
 	      ->getQuery();
 
+	    if(is_null($page) && is_null($nbPerPage)){
+	    	return $query->getResult();
+	    }
+
 	    $query
 	      ->setFirstResult(($page-1) * $nbPerPage)
 	      ->setMaxResults($nbPerPage);
@@ -76,7 +92,7 @@ class ProductRepository extends \Doctrine\ORM\EntityRepository
     	return new Paginator($query, true);
 	}
 
-	public function getOccasionsProducts($page, $nbPerPage){
+	public function getOccasionsProducts($page = null, $nbPerPage = null){
 		$query = $this->createQueryBuilder('p')
 		  ->andWhere('p.occasion = true')
 	      ->leftJoin('p.images', 'i')
@@ -88,6 +104,10 @@ class ProductRepository extends \Doctrine\ORM\EntityRepository
 	      ->orderBy('p.id', 'DESC')
 	      ->getQuery();
 
+	    if(is_null($page) && is_null($nbPerPage)){
+	    	return $query->getResult();
+	    }
+
 	    $query
 	      ->setFirstResult(($page-1) * $nbPerPage)
 	      ->setMaxResults($nbPerPage);
@@ -95,21 +115,41 @@ class ProductRepository extends \Doctrine\ORM\EntityRepository
     	return new Paginator($query, true);
 	}
 
-	// Admin
-	
-	public function adminGetPromotionsProducts(){
-		$query = $this->createQueryBuilder('p')
-		  ->andWhere('p.promo = true')
-	      ->leftJoin('p.images', 'i')
-	      ->addSelect('i')
-	      ->leftJoin('p.categories', 'c')
-	      ->addSelect('c')
-	      ->leftJoin('p.brand', 'b')
-	      ->addSelect('c')
-	      ->orderBy('p.id', 'DESC')
-	      ->getQuery();
+	public function search($title, $occasion, $promo, $category, $brand){
+		$query = $this->createQueryBuilder('p');
+	      if(!is_null($title)){
+	      	$query
+	      	->andWhere('p.title LIKE :zbra')
+	      	->setParameter('zbra', $title);
+	      }
+	      if(!is_null($promo)){
+	      	$query
+	      	->andWhere('p.promo = true');
+	      }
+	      if(!is_null($promo)){
+	      	$query
+	      	->andWhere('p.promo = true');
+	      }
+	      if(!is_null($occasion)){
+	      	$query
+	      	->andWhere('p.occasion = true');
+	      }
+	      if(!is_null($category)){
+	      	$query
+	      	->leftJoin('p.categories', 'c')
+	      	->addSelect('c')
+	      	->andWhere('c.id = :category')
+	      	->setParameter('category', $category->getId());
+	      }
+	      if(!is_null($brand)){
+	      	$query
+	      	->andWhere('p.brand = :brand')
+	      	->setParameter('brand', $brand);
+	      }
 
+	    $query->orderBy('p.id', 'DESC');
 
-    	return $query->getResult();
+	    return $query->getQuery()->getResult();
+
 	}
 }

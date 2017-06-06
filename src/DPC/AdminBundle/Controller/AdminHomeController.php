@@ -15,7 +15,7 @@ class AdminHomeController extends Controller
     public function homeAction(Request $request)
     {
     	
-    	$home = $this->getDoctrine()->getManager()->getRepository('DPCHomeBundle:Home')->find(1);
+    	$home = $this->getDoctrine()->getManager()->getRepository('DPCHomeBundle:Home')->getHomeWithSections(1);
         if(!$home){
             $home = new Home();
         }

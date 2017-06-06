@@ -29,7 +29,7 @@ class ProductType extends AbstractType
             ->add('title', TextType::class, array('label' => 'Titre'))
             ->add('description', TextareaType::class)
             ->add('price', NumberType::class)
-            ->add('discount', IntegerType::class)
+            ->add('discount', IntegerType::class, array('required' => false))
             ->add('occasion', CheckboxType::class, array('required' => false))
             ->add('promo', CheckboxType::class, array('required' => false))
             ->add('warranty', IntegerType::class)
@@ -38,7 +38,8 @@ class ProductType extends AbstractType
                 'allow_add' => true,
                 'allow_delete' => true,
                 'required' => false,
-                'prototype' => true,
+                'by_reference' => false,
+                'label' => false
             ))
             ->add('categories', EntityType::class, array(
                 'class'        => 'DPCStoreBundle:Category',
@@ -51,8 +52,7 @@ class ProductType extends AbstractType
                 'choice_label' => 'Title',
                 'multiple'     => false,
                 'required' => true
-              ))
-            ->add('Envoyer', SubmitType::class);
+              ));
     }
     
     /**

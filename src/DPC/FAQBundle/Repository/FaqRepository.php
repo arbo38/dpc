@@ -10,4 +10,27 @@ namespace DPC\FAQBundle\Repository;
  */
 class FaqRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function findAllFAQS(){
+		$qb = $this->createQueryBuilder('f');
+
+		$query = $qb
+	    ->leftJoin('f.theme', 't')
+	    ->addSelect('t')
+		->getQuery();
+
+		return $query->getResult();
+	}
+
+	public function findFAQ($id){
+		$qb = $this->createQueryBuilder('f');
+
+		$query = $qb
+		->where('f.id = :id')
+    	->setParameter('id', $id)
+	    ->leftJoin('f.theme', 't')
+	    ->addSelect('t')
+		->getQuery();
+
+		return $query->getOneOrNullResult();
+	}
 }

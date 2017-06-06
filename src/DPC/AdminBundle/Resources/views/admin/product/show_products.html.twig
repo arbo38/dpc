@@ -8,13 +8,55 @@
 			{{ include('@DPCAdminBundle/Resources/views/components/menus/opened/product.html.twig') }}
 			{{ include('@DPCAdminBundle/Resources/views/components/menus/closed/brand.html.twig') }}
 			{{ include('@DPCAdminBundle/Resources/views/components/menus/closed/category.html.twig') }}
-			{{ include('@DPCAdminBundle/Resources/views/components/menus/closed/image.html.twig') }}
 			{{ include('@DPCAdminBundle/Resources/views/components/menus/closed/faq.html.twig') }}
 			{{ include('@DPCAdminBundle/Resources/views/components/menus/closed/service.html.twig') }}
 		</ul>  
 	</aside><!--aside left menu end-->
 
 	<section id="main-content">
+		{% if productSearchForm is defined %}
+			<div class="row">
+				<div class="col-md-12">
+					<div class="panel">
+						<header class="panel-heading">
+							<h2 class="panel-title">{{ 'Recherche produit'|upper }}</h2>
+						</header>
+						<div class="panel-body">
+							{{ form_start(productSearchForm, {'attr': {'class': 'form-inline', 'role': 'form'}}) }}
+							<div class="form-group">
+	                            {{ form_label(productSearchForm.title, "Nom:", {'label_attr': {'class': 'control-label'}}) }}
+	                            {{ form_errors(productSearchForm.title) }}
+	                            {{ form_widget(productSearchForm.title, {'attr': {'class': 'form-control'}}) }}
+                          	</div>
+                          	<div class="form-group">
+	                            {{ form_label(productSearchForm.category, "Catégorie:", {'label_attr': {'class': 'control-label'}}) }}
+	                            {{ form_errors(productSearchForm.category) }}
+	                            {{ form_widget(productSearchForm.category, {'attr': {'class': 'form-control'}}) }}
+                          	</div>
+                          	<div class="form-group">
+	                            {{ form_label(productSearchForm.brand, "Marque:", {'label_attr': {'class': 'control-label'}}) }}
+	                            {{ form_errors(productSearchForm.brand) }}
+	                            {{ form_widget(productSearchForm.brand, {'attr': {'class': 'form-control'}}) }}
+                          	</div>
+                          	<div class="form-group col-lg-1">
+	                            {{ form_label(productSearchForm.occasion, "Occasion:", {'label_attr': {'class': 'control-label'}}) }}
+	                            {{ form_errors(productSearchForm.occasion) }}
+	                            {{ form_widget(productSearchForm.occasion, {'attr': {'class': 'form-control'}}) }}
+                          	</div>
+                          	<div class="form-group col-lg-1">
+	                            {{ form_label(productSearchForm.promo, "Promotion:", {'label_attr': {'class': 'control-label'}}) }}
+	                            {{ form_errors(productSearchForm.promo) }}
+	                            {{ form_widget(productSearchForm.promo, {'attr': {'class': 'form-control'}}) }}
+                          	</div>
+                          	<button class="btn btn-lg btn-primary rounded" type="submit">
+								Rechercher
+                            </button>
+							{{ form_end(productSearchForm) }}
+						</div>
+					</div>
+				</div><!--col end-->
+		</div><!--row end-->
+		{% endif %}
 
 		<div class="row">
 			<div class="col-md-12">
@@ -85,6 +127,19 @@
 				</div>
 			</div><!--col end-->
 		</div><!--row end-->
+		<div class="row">
+			<div class="text-center">.
+				<ul class="pagination">
+					{% if nbPages is defined %}
+						{% for p in range(1, nbPages) %}
+							<li {% if p == page %}class="active"{% endif %}>
+								<a href="{{ path('dpc_admin_products', {'page': p}) }}" class="catalogue">{{ p }}</a>
+							</li>
+						{% endfor %}
+					{% endif %}
+				</ul>
+			</div> <!-- div.text-center -->
+		</div> <!-- div.row -->
 	</section>
 {% endblock %}
 

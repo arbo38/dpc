@@ -28,7 +28,7 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 class AdminFAQController extends Controller
 {
     public function showAllAction(){
-        $listFaqs = $this->getDoctrine()->getManager()->getRepository('DPCFAQBundle:Faq')->findAll();
+        $listFaqs = $this->getDoctrine()->getManager()->getRepository('DPCFAQBundle:Faq')->findAllFAQS();
         $title = "Liste des Faqs";
         return $this->render('DPCAdminBundle:admin/faq:show_faqs.html.twig', compact('listFaqs', 'title'));
     }
@@ -54,7 +54,7 @@ class AdminFAQController extends Controller
 
     public function editAction(Request $request, $id)
     {
-    	$faq = $this->getDoctrine()->getManager()->getRepository('DPCFAQBundle:Faq')->find($id);
+    	$faq = $this->getDoctrine()->getManager()->getRepository('DPCFAQBundle:Faq')->findFAQ($id);
         $title = "Modifier une FAQ";
         $form = $this->createForm(FaqType::class, $faq);
         $adminAction = new AdminAction();
@@ -85,7 +85,7 @@ class AdminFAQController extends Controller
     }
 
     public function showThemesAction(){
-        $listThemes = $this->getDoctrine()->getManager()->getRepository('DPCFAQBundle:FaqTheme')->findAll();
+        $listThemes = $this->getDoctrine()->getManager()->getRepository('DPCFAQBundle:FaqTheme')->getPublished();
         $title = "Liste des Thèmes FAQ";
         return $this->render('DPCAdminBundle:admin/faq:show_faq_themes.html.twig', compact('listThemes', 'title'));
     }

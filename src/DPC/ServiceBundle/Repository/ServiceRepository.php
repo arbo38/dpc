@@ -10,4 +10,30 @@ namespace DPC\ServiceBundle\Repository;
  */
 class ServiceRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function findAllServices(){
+		$qb = $this->createQueryBuilder('s');
+
+		$query = $qb
+	    ->leftJoin('s.image', 'i')
+	    ->addSelect('i')
+	    ->leftJoin('s.category', 'c')
+	    ->addSelect('c')
+		->getQuery();
+
+		return $query->getResult();
+	}
+	public function findServiceWithImage($id){
+		$qb = $this->createQueryBuilder('s');
+
+		$query = $qb
+		->andWhere('s.id = :id')
+	    ->setParameter('id', $id)
+	    ->leftJoin('s.image', 'i')
+	    ->addSelect('i')
+	    ->leftJoin('s.category', 'c')
+	    ->addSelect('c')
+		->getQuery();
+
+		return $query->getOneOrNullResult();
+	}
 }

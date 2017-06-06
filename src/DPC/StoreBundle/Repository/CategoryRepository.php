@@ -10,4 +10,29 @@ namespace DPC\StoreBundle\Repository;
  */
 class CategoryRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function findAllCategories(){
+		$qb = $this->createQueryBuilder('c');
+
+		$query = $qb
+	    ->leftJoin('c.products', 'p')
+	    ->addSelect('p')
+	    ->leftJoin('c.images', 'i')
+	    ->addSelect('i')
+		->getQuery();
+
+		return $query->getResult();
+	}
+
+	public function findCategory($id){
+		$qb = $this->createQueryBuilder('c');
+
+		$query = $qb
+		->where('c.id = :id')
+    	->setParameter('id', $id)
+	    ->leftJoin('c.images', 'i')
+	    ->addSelect('i')
+		->getQuery();
+
+		return $query->getOneOrNullResult();
+	}
 }
