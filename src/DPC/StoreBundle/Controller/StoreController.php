@@ -13,36 +13,41 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
 
 class StoreController extends Controller
 {
-    // Principales
+    private $nbPerPage = 6; // Pagination
 
-    public function productDetailAction($id){
+    public function productDetailAction($id)
+    {
         $product = $this->getDoctrine()->getManager()->getRepository('DPCStoreBundle:Product')->getProductDetail($id);
-        if($product == null){
+
+        if($product == null)
+        {
             throw $this->createNotFoundException("Le produit n'existe pas.");
         }
+
         return $this->render('DPCStoreBundle:Store/product:show_product.html.twig', compact('product'));
     }
 
-    public function catalogueAction($page = 1){
-        if ($page < 1) {
+    public function catalogueAction($page = 1, Request $request)
+    {
+        if ($page < 1) 
+        {
           throw $this->createNotFoundException("La page ".$page." n'existe pas.");
         }
 
         $title = "Catalogue";
-
-        $nbPerPage = 2;
-
         $listProducts = $this->getDoctrine()
             ->getManager()
             ->getRepository('DPCStoreBundle:Product')
-            ->getCatalogueProducts($page, $nbPerPage);
+            ->getCatalogueProducts($page, $this->nbPerPage);
+        $nbPages = ceil(count($listProducts) / $this->nbPerPage);
 
-
-        $nbPages = ceil(count($listProducts) / $nbPerPage);
-
-        if ($page > $nbPages) {
+        if ($page > $nbPages) 
+        {
           throw $this->createNotFoundException("La page ".$page." n'existe pas.");
         }
+
+        $request->getSession()->getFlashBag()->add('notice', 'Marque enregistré');
+
 
         return $this->render('DPCStoreBundle:Store/product:list_products.html.twig', array(
             'listProducts' => $listProducts,
@@ -52,24 +57,22 @@ class StoreController extends Controller
         ));
   }
 
-    public function promotionsAction($page){
-        if ($page < 1) {
+    public function promotionsAction($page)
+    {
+        if ($page < 1) 
+        {
           throw $this->createNotFoundException("La page ".$page." n'existe pas.");
         }
 
         $title = "Promotions";
-
-        $nbPerPage = 6;
-
         $listProducts = $this->getDoctrine()
             ->getManager()
             ->getRepository('DPCStoreBundle:Product')
-            ->getPromotionsProducts($page, $nbPerPage);
+            ->getPromotionsProducts($page, $this->nbPerPage);
+        $nbPages = ceil(count($listProducts) / $this->nbPerPage);
 
-
-        $nbPages = ceil(count($listProducts) / $nbPerPage);
-
-        if ($page > $nbPages) {
+        if ($page > $nbPages) 
+        {
           throw $this->createNotFoundException("La page ".$page." n'existe pas.");
         }
 
@@ -81,24 +84,22 @@ class StoreController extends Controller
         ));
     }
 
-    public function occasionsAction($page){
-        if ($page < 1) {
+    public function occasionsAction($page)
+    {
+        if ($page < 1) 
+        {
             throw $this->createNotFoundException("La page ".$page." n'existe pas.");
         }
 
         $title = "Occasions";
-
-        $nbPerPage = 6;
-
         $listProducts = $this->getDoctrine()
             ->getManager()
             ->getRepository('DPCStoreBundle:Product')
-            ->getOccasionsProducts($page, $nbPerPage);
+            ->getOccasionsProducts($page, $this->nbPerPage);
+        $nbPages = ceil(count($listProducts) / $this->nbPerPage);
 
-
-        $nbPages = ceil(count($listProducts) / $nbPerPage);
-
-        if ($page > $nbPages) {
+        if ($page > $nbPages) 
+        {
           throw $this->createNotFoundException("La page ".$page." n'existe pas.");
         }
 
@@ -108,23 +109,27 @@ class StoreController extends Controller
             'page'        => $page,
             'title'       => $title
         ));
-
     }
 
-    public function getCurrentSelectionAction(Request $request){
+    public function getCurrentSelectionAction(Request $request)
+    {
         $productSelection = $this->getDoctrine()->getManager()->getRepository('DPCStoreBundle:Product')->getCurrentSelection();
         $this->globalizeCurrentSelection($productSelection, $request);
+
         return $this->render('DPCStoreBundle:Store/product:current_selection.html.twig', compact('productSelection'));
     }
 
     // Secondaires
-    public function brandAction($id){
+    public function brandAction($id)
+    {
         $brand = $this->getDoctrine()->getManager()->getRepository('DPCStoreBundle:Brand')->find($id);
+
         return $this->render('DPCStoreBundle:Store:brand.html.twig', compact('brand'));
     }
 
     // Privées
-    private function globalizeCurrentSelection($productSelection, Request $request){
+    private function globalizeCurrentSelection($productSelection, Request $request)
+    {
         $session = $request->getSession();
         $session->set('productSelection', $productSelection);
     }

@@ -8,7 +8,7 @@
                     {% else %}
                         <h3>{{ app.session.get('companyInformation').name }}</h3>
                         <p>
-                            {{ app.session.get('companyInformation').description }}
+                            {{ app.session.get('companyInformation').description|raw }}
                         </p>
                     {% endif %}
                 </div>                        

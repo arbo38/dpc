@@ -1,7 +1,7 @@
 {% if companyInformation is not null %}
 	<h3>{{ companyInformation.name }}</h3>
 	<p>
-		{{ companyInformation.description }}
+		{{ companyInformation.description|raw }}
 	</p>
 {% elseif %}
 	<p>En construction</p>

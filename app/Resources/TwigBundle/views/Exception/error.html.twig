@@ -1,0 +1,35 @@
+{% extends "dpc_base_layout.html.twig" %}
+
+{% block title %}
+  Erreur - {{ status_text }}
+{% endblock %}
+
+{% block bundle_body %}
+    <div class="breadcrumb-wrapper">
+        <div class="container">
+            <h1>Une erreur est survenue</h1>
+        </div>
+    </div>
+    <!--end breadcrumb-->
+
+    <div class="space-60"></div>
+
+    <div class="container">
+        <div class="row">
+            <h2>Le serveur a retourné une erreur "{{ status_code }} {{ status_text }}".</h2>
+
+            <div>
+                Nous sommes sincèrement désolé pour le désagrément. N'hésitez pas à nous contacter via notre
+                <a href="{{ path('dpc_contact_homepage') }}">Page de contact</a> pour nous en informer. Nous ferons
+                le maximum pour remédier au problème.
+                <p>
+                  Cordialement, l'équipe DPC.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="space-60"></div>
+    <div class="space-60"></div>
+{% endblock %}
+

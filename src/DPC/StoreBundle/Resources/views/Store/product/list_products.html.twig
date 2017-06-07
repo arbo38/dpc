@@ -42,7 +42,7 @@
 									</h5>
 									<span class="price">{% if product.discount %}<del>{{ product.PriceBeforeDiscount }}</del>{% endif %} {{ product.price }}€</span> 
 									<p>
-										{{ product.descriptionExcerpt }}
+										{{ product.descriptionExcerpt|raw }}
 									</p>
 									<div class="icon-list">
 										<a href="{{ path('dpc_store_product', { 'id': product.id }) }}" class="btn btn-skin">Voir le produit</a>

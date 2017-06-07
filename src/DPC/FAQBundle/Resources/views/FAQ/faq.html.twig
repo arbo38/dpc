@@ -40,7 +40,7 @@
                                 </div>
                                 <div id="faqId{{ faq.id }}" class="panel-collapse collapse {% if loop.first %}in{% endif %}">
                                     <div class="panel-body">
-                                        {{ faq.answer }}
+                                        {{ faq.answer|raw }}
                                     </div>
                                 </div>
                             {% endfor %}

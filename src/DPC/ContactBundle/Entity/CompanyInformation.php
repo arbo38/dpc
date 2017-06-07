@@ -3,6 +3,7 @@
 namespace DPC\ContactBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * CompanyInformation
@@ -71,7 +72,8 @@ class CompanyInformation
     private $siret;
 
     /**
-     * @ORM\OneToOne(targetEntity="DPC\StoreBundle\Entity\Image", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="DPC\StoreBundle\Entity\Image", cascade={"persist", "remove"})
+     * @Assert\Valid()
      */
     private $logo;
 

@@ -3,6 +3,7 @@
 namespace DPC\HomeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * SectionFourElement
@@ -41,7 +42,8 @@ class SectionFourElement
     private $home;
 
     /**
-     * @ORM\OneToOne(targetEntity="DPC\StoreBundle\Entity\Image", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="DPC\StoreBundle\Entity\Image", cascade={"persist", "remove"})
+     * @Assert\Valid()
      */
     private $image;
 

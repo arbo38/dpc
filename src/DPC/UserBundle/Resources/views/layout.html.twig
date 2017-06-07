@@ -1,18 +1,47 @@
-
 {% extends "::dpc_base_layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <!--side menu plugin-->
+    <link href="{{ asset('bundles/DPCUser/plugins/hoe-nav/hoe.css') }}" rel="stylesheet">
+    <!-- icons-->
+    <link href="{{ asset('bundles/DPCUser/plugins/ionicons/css/ionicons.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/DPCUser/plugins/iCheck/custom.css') }}" rel="stylesheet">
+    <!--template custom css file-->
+    <link href="{{ asset('bundles/DPCUser/css/style.css') }}" rel="stylesheet">
+{% endblock %}
 
 {% block bundle_body %}
 
-  {% for key, messages in app.session.flashbag.all() %}
-    {% for message in messages %}
-      <div class="alert alert-{{ key }}">
-        {{ message|trans({}, 'FOSUserBundle') }}
-      </div>
+    {% for key, messages in app.session.flashbag.all() %}
+        {% for message in messages %}
+            <div class="row">
+                <div class="col-md-12 alert alert-{{ key }} text-center">
+                    {{ message|trans({}, 'FOSUserBundle') }}
+                </div>
+            </div> <!-- div.row -->
+        {% endfor %}
     {% endfor %}
-  {% endfor %}
 
-  {# On définit ce block, dans lequel vont venir s'insérer les autres vues du bundle #}
-  {% block fos_user_content %}
-  {% endblock fos_user_content %}
+    {% block fos_user_content %}
 
+    {% endblock fos_user_content %}
+
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/DPCUser/plugins/hoe-nav/hoe.js') }}"></script>
+    <script src="{{ asset('bundles/DPCUser/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
+    <script src="{{ asset('bundles/DPCUser/js/app.js') }}"></script>
+    <!-- iCheck -->
+    <script src="{{ asset('bundles/DPCUser/plugins/iCheck/icheck.min.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_flat-blue',
+                radioClass: 'icheckbox_flat-blue'
+            });
+        });
+    </script>
 {% endblock %}

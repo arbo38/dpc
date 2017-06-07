@@ -24,5 +24,15 @@ Optionnelle :
 
 Aujourd'hui dans l'ordre :
 
-Checker l'ensemble des controllers ADMIN et épurer les USES et vérifier les méthodes
-Passer les méthodes redondantes des controllers dans des services.
+_Checker l'ensemble des controllers ADMIN et épurer les USES et vérifier les méthodes_
+_Passer les méthodes redondantes des controllers dans des services._
+_Introduire les messages Flash dans les vues_
+_Personnaliser les message d'erreurs_
+_Vérifier l'ensemble des entité, ajouter la validation et vérifier les array collection_
+_Mettre le changement de mot de pass pour l'admin_
+_Ajouter TinyMCE au vues Admin et vérifier l'affichage des texts dans les vues client._
+_Vérifier que la "registration" est impossible_
+_Vérifier les suppression en cascade et suppression des fichiers d'images_
+
+Nettoyer la BDD
+Mettre en ligne le site version Alpha

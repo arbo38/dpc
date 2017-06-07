@@ -28,7 +28,7 @@
                             <h5 > <span class="price">A partir de {{ service.priceMin }}€</span> 
                             </h5>
                             <p>
-                                {{ service.longDescription }}
+                                {{ service.longDescription|raw }}
                             </p>
                             <div class="text-right">
                                 <a href="{{ path('dpc_contact_homepage') }}" class="btn btn-skin">Nous contacter</a>

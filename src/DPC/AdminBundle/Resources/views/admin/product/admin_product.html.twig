@@ -14,6 +14,7 @@
     </aside><!--aside left menu end-->
 
     <section id="main-content">
+        {{ include('@DPCAdminBundle/Resources/views/components/flash_message.html.twig') }}
         <div class="col-md-8 col-md-offset-2">
             <div class="panel">
                 <header class="panel-heading">
@@ -23,50 +24,64 @@
                     {{ form_start(form, {'attr': {'class': 'form-horizontal', 'role': 'form'}}) }}
                     {{ form_errors(form) }}
                     <div class="form-group">
+                        <div class="col-lg-12">
+                            {{ form_errors(form.title) }}   
+                        </div> <!-- div.col-lg-12 -->
                         {{ form_label(form.title, "Nom:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
-                        {{ form_errors(form.title) }}
                         <div class="col-lg-9">
                             {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
                         </div>
                     </div>
                     <div class="form-group">
+                        <div class="col-lg-12">
+                            {{ form_errors(form.description) }}  
+                        </div> <!-- div.col-lg-12 -->
                         {{ form_label(form.description, "Description:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
-                        {{ form_errors(form.description) }}
                         <div class="col-lg-9">
-                            {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_widget(form.description, {'attr': {'class': 'form-control tinyMCE'}}) }}
                         </div>
                     </div>
                     <div class="form-group">
+                        <div class="col-lg-12">
+                            {{ form_errors(form.price) }}   
+                        </div> <!-- div.col-lg-12 -->
                         {{ form_label(form.price, "Prix:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
-                        {{ form_errors(form.price) }}
                         <div class="col-lg-9">
                             {{ form_widget(form.price, {'attr': {'class': 'form-control'}}) }}
                         </div>
                     </div>
                     <div class="form-group">
-                        {{ form_label(form.discount, "Réduction (en %):", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
-                        {{ form_errors(form.discount) }}
+                        <div class="col-lg-12">
+                            {{ form_errors(form.discount) }}  
+                        </div> <!-- div.col-lg-12 -->
+                        {{ form_label(form.discount, "Réduction (%):", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
                         <div class="col-lg-9">
                             {{ form_widget(form.discount, {'attr': {'class': 'form-control'}}) }}
                         </div>
                     </div>
                     <div class="form-group">
+                        <div class="col-lg-12">
+                            {{ form_errors(form.occasion) }}   
+                        </div> <!-- div.col-lg-12 -->
                         {{ form_label(form.occasion, "Occasion:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
-                        {{ form_errors(form.occasion) }}
                         <div class="col-lg-1">
                             {{ form_widget(form.occasion, {'attr': {'class': 'form-control'}}) }}
                         </div>
                     </div>
                     <div class="form-group">
+                        <div class="col-lg-12">
+                            {{ form_errors(form.promo) }}   
+                        </div> <!-- div.col-lg-12 -->
                         {{ form_label(form.promo, "Promotion:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
-                        {{ form_errors(form.promo) }}
                         <div class="col-lg-1">
                             {{ form_widget(form.promo, {'attr': {'class': 'form-control'}}) }}
                         </div>
                     </div>
                     <div class="form-group">
+                        <div class="col-lg-12">
+                            {{ form_errors(form.warranty) }}  
+                        </div> <!-- div.col-lg-12 -->
                         {{ form_label(form.warranty, "Garantie (en mois):", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
-                        {{ form_errors(form.warranty) }}
                         <div class="col-lg-9">
                             {{ form_widget(form.warranty, {'attr': {'class': 'form-control'}}) }}
                         </div>
@@ -74,15 +89,19 @@
 
 
                     <div class="form-group">
+                        <div class="col-lg-12">
+                            {{ form_errors(form.categories) }}  
+                        </div> <!-- div.col-lg-12 -->
                         {{ form_label(form.categories, "Catégorie:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
-                        {{ form_errors(form.categories) }}
                         <div class="col-lg-9">
                             {{ form_widget(form.categories, {'attr': {'class': 'form-control'}}) }}
                         </div>
                     </div>
                     <div class="form-group">
+                        <div class="col-lg-12">
+                            {{ form_errors(form.brand) }}
+                        </div> <!-- div.col-lg-12 -->
                         {{ form_label(form.brand, "Marque:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
-                        {{ form_errors(form.brand) }}
                         <div class="col-lg-9">
                             {{ form_widget(form.brand, {'attr': {'class': 'form-control'}}) }}
                         </div>
@@ -96,22 +115,28 @@
                                             {{ form_label(image, 'Image N°' ~ loop.index,{'label_attr': {'class': 'control-label'}}) }}
                                         </div>
                                         <div class='form-group'>
+                                            <div class="col-lg-12">
+                                                {{ form_errors(image.title) }}
+                                            </div> <!-- div.col-lg-12 -->
                                             {{ form_label(image.title, 'Titre image:', {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
-                                            {{ form_errors(image.title) }}
                                             <div class='col-lg-9'>
                                                 {{ form_widget(image.title, {'attr': {'class': 'form-control'}}) }}
                                             </div>
                                         </div>
                                         <div class='form-group'>
+                                            <div class="col-lg-12">
+                                                {{ form_errors(image.alt) }}
+                                            </div> <!-- div.col-lg-12 -->
                                             {{ form_label(image.alt, 'Texte alternatif:', {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
-                                            {{ form_errors(image.alt) }}
                                             <div class='col-lg-9'>
                                                 {{ form_widget(image.alt, {'attr': {'class': 'form-control'}})}}
                                             </div>
                                         </div>
                                         <div class='form-group'>
+                                            <div class="col-lg-12">
+                                                {{ form_errors(image.imageFile) }}
+                                            </div> <!-- div.col-lg-12 -->
                                             {{ form_label(image.imageFile, 'Fichier:', {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
-                                            {{ form_errors(image.imageFile) }}
                                             <div class='col-lg-4'>
                                                 {{ form_widget(image.imageFile, {'attr': {'class': ''}}) }}
                                             </div>

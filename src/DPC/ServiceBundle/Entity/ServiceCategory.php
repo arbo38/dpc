@@ -3,6 +3,7 @@
 namespace DPC\ServiceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * ServiceCategory
@@ -42,7 +43,8 @@ class ServiceCategory
     private $services;
 
     /**
-     * @ORM\OneToOne(targetEntity="DPC\StoreBundle\Entity\Image", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="DPC\StoreBundle\Entity\Image", cascade={"persist", "remove"})
+     * @Assert\Valid()
      */
     private $image;
 

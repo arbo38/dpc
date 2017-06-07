@@ -21,9 +21,7 @@ class ImageType extends AbstractType
         $builder
             ->add('title')
             ->add('alt')
-            ->add('imageFile', FileType::class, array('required' => false))
-            /*
-            ->add('currentImage', HiddenType::class, array('data' => 'current_image', 'mapped' => false, 'required' => false))*/;
+            ->add('imageFile', FileType::class, array('required' => true));
     }
     
     /**

@@ -4,6 +4,7 @@ namespace DPC\HomeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Home
@@ -31,12 +32,14 @@ class Home
 
     /**
      * @ORM\OneToOne(targetEntity="DPC\HomeBundle\Entity\SectionOne", cascade={"persist"})
+     * @Assert\Valid()
      * @ORM\JoinColumn(nullable=false)
      */
     private $sectionOne;
 
     /**
      * @ORM\OneToOne(targetEntity="DPC\HomeBundle\Entity\SectionTwo", cascade={"persist"})
+     * @Assert\Valid()
      */
     private $sectionTwo;
 
@@ -55,17 +58,20 @@ class Home
     private $titleSectionFour;
 
     /**
-     * @ORM\OneToMany(targetEntity="DPC\HomeBundle\Entity\SectionThreeElement", mappedBy="home", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="DPC\HomeBundle\Entity\SectionThreeElement", mappedBy="home", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @Assert\Valid()
      */
     private $sectionThreeElements;
 
     /**
-     * @ORM\OneToMany(targetEntity="DPC\HomeBundle\Entity\SectionFourElement", mappedBy="home", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="DPC\HomeBundle\Entity\SectionFourElement", mappedBy="home", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @Assert\Valid()
      */
     private $sectionFourElements;
 
     /**
-     * @ORM\OneToMany(targetEntity="DPC\StoreBundle\Entity\Image", mappedBy="home", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="DPC\StoreBundle\Entity\Image", mappedBy="home", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @Assert\Valid()
      */
     private $slides;
 

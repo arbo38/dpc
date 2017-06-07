@@ -27,17 +27,21 @@ class AdminCategoryController extends Controller
     	$category = new Category();
     	$form = $this->createForm(CategoryType::class, $category);   
         $title = "Créer une catégorie";
-    	if($request->isMethod('POST') &&  $form->handleRequest($request)->isValid()){
-    			$em = $this->getDoctrine()->getManager();
-    			$em->persist($category);
-    			$em->flush();
+    	if($request->isMethod('POST') &&  $form->handleRequest($request)->isValid())
+        {
+			$em = $this->getDoctrine()->getManager();
+			$em->persist($category);
+			$em->flush();
 
-    			$request->getSession()->getFlashBag()->add('notice', 'Catégorie enregistré');
+			$request->getSession()->getFlashBag()->add('notice', 'Catégorie enregistré');
 
-    			return $this->redirectToRoute('dpc_admin_categories');
+			return $this->redirectToRoute('dpc_admin_categories');
     	}
 
-    	return $this->render('DPCAdminBundle:admin/category:admin_category.html.twig', array('form' => $form->createView(), 'title' => $title, 'action' => $action));
+    	return $this->render(
+            'DPCAdminBundle:admin/category:admin_category.html.twig',
+            array('form' => $form->createView(), 'title' => $title, 'action' => $action, 'category' => $category)
+            );
     }
 
     public function editAction(Request $request, $id)
@@ -49,26 +53,31 @@ class AdminCategoryController extends Controller
         $adminAction = new AdminAction();
         $deleteForm = $this->createForm(AdminActionType::class, $adminAction);
 
-    	if($request->isMethod('POST') &&  $form->handleRequest($request)->isValid()){
-    			$em = $this->getDoctrine()->getManager();
-    			$em->persist($category);
-    			$em->flush();
+    	if($request->isMethod('POST') &&  $form->handleRequest($request)->isValid())
+        {
+			$em = $this->getDoctrine()->getManager();
+			$em->persist($category);
+			$em->flush();
 
-    			$request->getSession()->getFlashBag()->add('notice', 'Catégorie enregistré');
+			$request->getSession()->getFlashBag()->add('notice', 'Catégorie enregistré');
 
-    			return $this->redirectToRoute('dpc_admin_edit_category', array('id' => $category->getId()));
+			return $this->redirectToRoute('dpc_admin_edit_category', array('id' => $category->getId()));
     	}
 
-        if($request->isMethod('POST') &&  $deleteForm->handleRequest($request)->isValid()){
-                $em = $this->getDoctrine()->getManager();
-                $em->remove($category);
-                $em->flush();
+        if($request->isMethod('POST') &&  $deleteForm->handleRequest($request)->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($category);
+            $em->flush();
 
-                $request->getSession()->getFlashBag()->add('notice', 'Marque supprimé');
+            $request->getSession()->getFlashBag()->add('notice', 'Marque supprimé');
 
-                return $this->redirectToRoute('dpc_admin_categories');
+            return $this->redirectToRoute('dpc_admin_categories');
         }
 
-    	return $this->render('DPCAdminBundle:admin/category:admin_category.html.twig', array('form' => $form->createView(), 'deleteForm' => $deleteForm->createView(), 'title' => $title, 'category' => $category, 'action' => $action));
+    	return $this->render(
+            'DPCAdminBundle:admin/category:admin_category.html.twig', 
+            array('form' => $form->createView(), 'deleteForm' => $deleteForm->createView(), 'title' => $title, 'category' => $category, 'action' => $action)
+            );
     }
 }

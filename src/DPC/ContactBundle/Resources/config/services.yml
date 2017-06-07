@@ -1,4 +1,10 @@
 services:
-#    dpc_contact.example:
-#        class: DPC\ContactBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    contact_mailer:
+        class: DPC\ContactBundle\Service\ContactMailer
+        arguments:
+            - "@mailer"
+            - %contact_mailer_admin_mail%
+            - "@templating"
+
+parameters:
+    contact_mailer_admin_mail: beau.antony@gmail.com

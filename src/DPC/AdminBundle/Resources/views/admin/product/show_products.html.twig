@@ -14,6 +14,7 @@
 	</aside><!--aside left menu end-->
 
 	<section id="main-content">
+		{{ include('@DPCAdminBundle/Resources/views/components/flash_message.html.twig') }}
 		{% if productSearchForm is defined %}
 			<div class="row">
 				<div class="col-md-12">

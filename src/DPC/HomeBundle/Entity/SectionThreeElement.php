@@ -3,6 +3,7 @@
 namespace DPC\HomeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * SectionThreeElement
@@ -145,9 +146,16 @@ class SectionThreeElement
      *
      * @return SectionThreeElement
      */
-    public function setHome(\DPC\HomeBundle\Entity\Home $home)
+    public function setHome(\DPC\HomeBundle\Entity\Home $home = null)
     {
         $this->home = $home;
+
+        return $this;
+    }
+
+    public function unsetHome()
+    {
+        unset($this->home);
 
         return $this;
     }

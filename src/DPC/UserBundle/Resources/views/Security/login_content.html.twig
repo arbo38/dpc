@@ -1,8 +1,23 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
+    <div class="breadcrumb-wrapper" >
+        <div class="container">
+            <h1>{{ 'Page de connexion'|upper }}</h1>
+        </div>
+    </div>
+    <!--end breadcrumb-->
+
     {% if error %}
-        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 alert alert-warning text-center">
+                {{ error.messageKey|trans(error.messageData, 'security') }}
+            </div>
+        </div> <!-- div.row -->
     {% endif %}
+
+    <div class="space-60"></div>
+
+    <div class="container">
     <div class="page-center">
         <div class="page-center-in">
             <form class="sign-box" action="{{ path("fos_user_security_check") }}" method="post">
@@ -26,4 +41,5 @@
             </form>
         </div><!--page center in-->
     </div><!--page center-->
+</div>
 

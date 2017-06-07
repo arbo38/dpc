@@ -60,9 +60,9 @@ class Contact
      * 
      *@Assert\Length(
      *      min = 30,
-     *      max = 300,
+     *      max = 500,
      *      minMessage = "Votre message ne peut faire moins de {{ limit }} caractères.",
-     *      maxMessage = "Votre message ne pet faire plus de 300 caractères."
+     *      maxMessage = "Votre message ne pet faire plus de {{ limit }} caractères."
      *)
      * @ORM\Column(name="message", type="text")
      */

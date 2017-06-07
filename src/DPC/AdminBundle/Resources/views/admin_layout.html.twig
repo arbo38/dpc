@@ -24,11 +24,11 @@
                 <div class="hoe-right-header" hoe-position-type="relative">
                     </ul>
                     <ul class="right-navbar navbar-right">
-
                         <li class="dropdown"> 
                             <a href="#" data-toggle="dropdown" class="dropdown-toggle">{{ app.user.username }}</a>
                             <ul class="dropdown-menu dropdown-menu-scale user-dropdown">
                                 <li><a href="{{ path('fos_user_security_logout') }}"><i class="ion-log-out"></i>Déconnexion </a></li>
+                                <li><a href="{{ path('fos_user_change_password') }}"><i class="ion-log-out"></i>Changer mot de passe</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -46,6 +46,13 @@
 
         {% block javascript %}
             {{ include('@DPCAdminBundle/Resources/views/components/admin_template_js.html.twig') }}
+            <script type="text/javascript">
+                tinymce.init({
+                    selector: '.tinyMCE',
+                    plugins : 'advlist autolink link image lists charmap print preview',
+                    //toolbar: 'undo redo | styleselect | bold italic | link image'
+                });
+            </script>
         {% endblock %}
     </body>
 </html>

@@ -16,7 +16,7 @@
                 <div class="center-heading">
                     <h2>{{ home.sectionOne.title }}</h2>
                     <span class="center-line"></span>
-                    <p class="sub-text margin40">{{ home.sectionOne.text }}</p>
+                    <p class="sub-text margin40">{{ home.sectionOne.text|raw }}</p>
                 </div>
             </div>
         </div><!--center heading end-->
@@ -33,7 +33,7 @@
                         <div class="services-box-info">
                             <h4>{{ home.sectionTwo.title1 }}</h4>
                             <p>
-                                {{ home.sectionTwo.text1 }}
+                                {{ home.sectionTwo.text1|raw }}
                             </p>
                         </div>
                     </div><!--service box-->
@@ -46,7 +46,7 @@
                         <div class="services-box-info">
                             <h4>{{ home.sectionTwo.title2 }}</h4>
                             <p>
-                                {{ home.sectionTwo.text2 }}
+                                {{ home.sectionTwo.text2|raw }}
                             </p>
                         </div>
                     </div><!--service box-->
@@ -76,7 +76,7 @@
                             <div class="services-box-info">
                                 <h4><a href="{{ sectionThreeElement.link }}">{{ sectionThreeElement.title }}</a></h4>
                                 <p>
-                                    {{ sectionThreeElement.text }}
+                                    {{ sectionThreeElement.text|raw }}
                                 </p>
                             </div>
                         </div><!--services box-->

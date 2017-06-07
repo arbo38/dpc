@@ -1,0 +1,31 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+	<!--breadcrumb start-->
+	<div class="breadcrumb-wrapper" >
+		<div class="container">
+			<h1>{{ 'Compte utilisateur'|upper }}</h1>
+		</div>
+	</div>
+	<!--end breadcrumb-->
+
+	<div class="space-60"></div>
+
+	<div class="container">
+		<div class="row">
+
+			<div class="col-sm-6 col-sm-offset-2">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						Votre compte
+					</div>
+					<div class="panel-body vertical-center" style="height:200px;">
+						<div class="fos_user_user_show">
+							<p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+							<p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+						</div>
+
+					</div>
+				</div>
+			</div> <!-- div.col-sm-6 -->
+		</div>
+	</div>

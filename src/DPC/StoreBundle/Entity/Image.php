@@ -5,6 +5,7 @@ namespace DPC\StoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Image
@@ -28,6 +29,7 @@ class Image
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotNull(message = "Vous devez entrer un titre ou supprimer l'élément image.")
      */
     private $title;
 
@@ -36,6 +38,7 @@ class Image
      * @var string
      *
      * @ORM\Column(name="alt", type="string", length=255, nullable=true)
+     * @Assert\NotNull(message = "Vous devez entrer un text alternatif ou supprimer l'élément image.")
      */
     private $alt;
 
@@ -49,7 +52,7 @@ class Image
 
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
-     * 
+     * @Assert\Image()
      * @Vich\UploadableField(mapping="image", fileNameProperty="imageName", size="imageSize")
      * 
      * @var File
