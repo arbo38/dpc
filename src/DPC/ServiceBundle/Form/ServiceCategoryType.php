@@ -20,7 +20,7 @@ class ServiceCategoryType extends AbstractType
     {
         $builder
             ->add('title', TextType::class)
-            ->add('description', TextareaType::class)
+            ->add('description', TextareaType::class, array('required' => false))
             ->add('image', ImageType::class);
     }
     

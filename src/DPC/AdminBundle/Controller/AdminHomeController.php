@@ -16,20 +16,20 @@ class AdminHomeController extends Controller
     public function homeAction(Request $request)
     {
     	
-    	$home = $this->getDoctrine()->getManager()->getRepository('DPCHomeBundle:Home')->getHomeWithSections(1);
+    	$home = $this->getDoctrine()->getManager()->getRepository('DPCHomeBundle:Home')->getHomeWithSections();
         $title = "Page d'accueil DPC";
-        $form = $this->createForm(HomeType::class, $home);
 
-        if(!$home)
+        if($home === null)
         {
             $home = new Home();
         }
+        $form = $this->createForm(HomeType::class, $home);
         
         if($request->isMethod('POST') &&  $form->handleRequest($request)->isValid())
         {
             $em = $this->getDoctrine()->getManager();
+            $em->persist($home);
             $em->flush();
-
             $request->getSession()->getFlashBag()->add('notice', 'Informations enregistrées');
 
             return $this->redirectToRoute('dpc_admin_homepage');

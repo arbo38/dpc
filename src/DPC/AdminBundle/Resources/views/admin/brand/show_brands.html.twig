@@ -55,6 +55,9 @@
 								{% endfor %}
 							</tbody>
 						</table>
+						{% if listBrands is empty %}
+							<div class="text-center">Aucune marque pour le moment</div>
+						{% endif %}
 					</div>
 				</div>
 			</div><!--col end-->

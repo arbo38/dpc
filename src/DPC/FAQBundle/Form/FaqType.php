@@ -21,7 +21,7 @@ class FaqType extends AbstractType
     {
         $builder
             ->add('title', TextType::class)
-            ->add('answer', TextareaType::class)
+            ->add('answer', TextareaType::class, array('required' => false))
             ->add('published', CheckboxType::class)
             ->add('theme', EntityType::class, array(
                 'class'        => 'DPCFAQBundle:FaqTheme',

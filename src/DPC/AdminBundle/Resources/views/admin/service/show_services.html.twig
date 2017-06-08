@@ -55,6 +55,9 @@
 								{% endif %}
 							</tbody>
 						</table>
+						{% if listServices is empty %}
+							<div class="text-center">Aucun service pour le moment</div>
+						{% endif %}
 					</div>
 				</div>
 			</div><!--col end-->

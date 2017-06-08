@@ -15,14 +15,15 @@ class AdminContactController extends Controller
 {
     public function contactInfoAction(Request $request)
     {
-    	$companyInformation = $this->getDoctrine()->getManager()->getRepository('DPCContactBundle:CompanyInformation')->find(1);
+    	$companyInformation = $this->getDoctrine()->getManager()->getRepository('DPCContactBundle:CompanyInformation')->getContactInformation();
         $title = "Informations de contact DPC";
-        $form = $this->createForm(CompanyInformationType::class, $companyInformation);
-
-        if(!$companyInformation)
+        
+        if($companyInformation === null)
         {
             $companyInformation = new CompanyInformation();
         }
+
+        $form = $this->createForm(CompanyInformationType::class, $companyInformation);
 
         if($request->isMethod('POST') &&  $form->handleRequest($request)->isValid())
         {

@@ -23,8 +23,8 @@ class ServiceType extends AbstractType
     {
         $builder
             ->add('title', TextType::class)
-            ->add('shortDescription', TextareaType::class)
-            ->add('longDescription', TextareaType::class)
+            ->add('shortDescription', TextareaType::class, array('required' => false))
+            ->add('longDescription', TextareaType::class, array('required' => false))
             ->add('priceMin', NumberType::class)
             ->add('category', EntityType::class, array(
                 'class'        => 'DPCServiceBundle:ServiceCategory',

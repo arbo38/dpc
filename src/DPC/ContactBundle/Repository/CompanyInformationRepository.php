@@ -10,4 +10,16 @@ namespace DPC\ContactBundle\Repository;
  */
 class CompanyInformationRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function getContactInformation(){
+		
+		$qb = $this->createQueryBuilder('c');
+
+		$query = $qb
+	    ->leftJoin('c.logo', 'l')
+	    ->addSelect('l')
+	    ->setMaxResults(1)
+		->getQuery();
+
+		return $query->getOneOrNullResult();
+	}
 }

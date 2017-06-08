@@ -48,7 +48,7 @@ class AdminProductController extends Controller
         // Dans tous les cas 
         $nbPages = ceil(count($listProducts) / $this->nbPerPage);
 
-        if ($page > $nbPages) 
+        if ($page > $nbPages && $nbPages != 0) 
         {
           throw $this->createNotFoundException("La page ".$page." n'existe pas.");
         }

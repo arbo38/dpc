@@ -19,7 +19,7 @@ class CompanyInformationType extends AbstractType
     {
         $builder
             ->add('name', TextType::class)
-            ->add('description', TextareaType::class)
+            ->add('description', TextareaType::class, array('required' => false))
             ->add('address', TextType::class)
             ->add('email', TextType::class)
             ->add('tel', TextType::class)

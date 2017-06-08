@@ -53,6 +53,9 @@
 								{% endfor %}
 							</tbody>
 						</table>
+						{% if listCategories is empty %}
+							<div class="text-center">Aucune catégorie pour le moment</div>
+						{% endif %}
 					</div>
 				</div>
 			</div><!--col end-->

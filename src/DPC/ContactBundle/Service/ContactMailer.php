@@ -55,6 +55,6 @@ class ContactMailer{
 
 		$this->mailer->send($acknowledgment);
 
-		$request->getSession()->getFlashBag()->add('notice', 'Message Envoyé, vous recevrez un accusé réception par mail.');
+		$request->getSession()->getFlashBag()->add('notice-contact', 'Message Envoyé, vous recevrez un accusé réception par mail.');
 	}
 }

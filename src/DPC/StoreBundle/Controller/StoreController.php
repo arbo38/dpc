@@ -18,13 +18,13 @@ class StoreController extends Controller
     public function productDetailAction($id)
     {
         $product = $this->getDoctrine()->getManager()->getRepository('DPCStoreBundle:Product')->getProductDetail($id);
-
+        $title = "Détail du produit";
         if($product == null)
         {
             throw $this->createNotFoundException("Le produit n'existe pas.");
         }
 
-        return $this->render('DPCStoreBundle:Store/product:show_product.html.twig', compact('product'));
+        return $this->render('DPCStoreBundle:Store/product:show_product.html.twig', compact('product', 'title'));
     }
 
     public function catalogueAction($page = 1, Request $request)

@@ -124,6 +124,9 @@
 								{% endfor %}
 							</tbody>
 						</table>
+						{% if listProducts is empty %}
+							<div class="text-center">Aucun produit pour le moment</div>
+						{% endif %}
 					</div>
 				</div>
 			</div><!--col end-->
@@ -131,7 +134,7 @@
 		<div class="row">
 			<div class="text-center">.
 				<ul class="pagination">
-					{% if nbPages is defined %}
+					{% if nbPages is defined and nbPages != 0 %}
 						{% for p in range(1, nbPages) %}
 							<li {% if p == page %}class="active"{% endif %}>
 								<a href="{{ path('dpc_admin_products', {'page': p}) }}" class="catalogue">{{ p }}</a>

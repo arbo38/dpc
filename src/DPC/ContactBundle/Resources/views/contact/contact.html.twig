@@ -23,7 +23,13 @@
 	<div class="divide60"></div>
 
 	<div class="container">
-		{{ include('@DPCAdminBundle/Resources/views/components/flash_message.html.twig') }}
+		<div class="row text-center">
+		    {% for flashMessage in app.session.flashbag.get('notice-contact') %}
+		        <div class="alert alert-info">
+		            {{ flashMessage }}
+		        </div> <!-- div.alert alert-info -->
+		    {% endfor %}
+		</div> <!-- div.row -->
 		<div class="row">
 			<div class="col-md-8 margin30">
 				<h3 class="heading">Toujours à votre écoute</h3>
