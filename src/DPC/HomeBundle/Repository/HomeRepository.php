@@ -11,7 +11,7 @@ namespace DPC\HomeBundle\Repository;
 class HomeRepository extends \Doctrine\ORM\EntityRepository
 {
 	public function getHomeWithSections(){
-			    //->setParameter('id', $id)
+
 		$qb = $this->createQueryBuilder('h');
 
 		$query = $qb
@@ -27,7 +27,6 @@ class HomeRepository extends \Doctrine\ORM\EntityRepository
 	    ->addSelect('s4i')
 	    ->leftJoin('h.slides', 'sl')
 	    ->addSelect('sl')
-	    ->setMaxResults(1)
 		->getQuery();
 
 		return $query->getOneOrNullResult();

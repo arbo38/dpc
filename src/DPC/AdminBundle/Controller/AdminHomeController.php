@@ -24,6 +24,7 @@ class AdminHomeController extends Controller
             $home = new Home();
         }
         $form = $this->createForm(HomeType::class, $home);
+        dump($home);
         
         if($request->isMethod('POST') &&  $form->handleRequest($request)->isValid())
         {
