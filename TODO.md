@@ -36,3 +36,5 @@ _Vérifier les suppression en cascade et suppression des fichiers d'images_
 
 Nettoyer la BDD
 Mettre en ligne le site version Alpha
+
+Parametter google map api
