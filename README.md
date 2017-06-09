@@ -17,6 +17,7 @@ Pour ce projet j'ai utilisés entre autres les technos suivantes :
 - bootstrap, http://getbootstrap.com/
 - jQuery, https://jquery.com/
 - google map Javascript API, https://developers.google.com/maps/documentation/javascript
+- tinyMCE, un plugin Javascript permettant une interface wysiwyg pour le traitement de text, https://www.tinymce.com/
 
 Les bundles symfony "tiers" utilisés sont les suivants:
 - le bundle coresphere pour la console, https://github.com/CoreSphere/ConsoleBundle
