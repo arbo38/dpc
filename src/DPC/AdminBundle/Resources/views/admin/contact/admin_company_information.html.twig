@@ -132,6 +132,24 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <div class="col-lg-12">
+                            {{ form_errors(form.titleContactFormIntro) }}
+                        </div> <!-- div.col-lg-12 -->
+                        {{ form_label(form.titleContactFormIntro, "Titre introductif au formulaire de contact:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                        <div class="col-lg-9">
+                            {{ form_widget(form.titleContactFormIntro, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-12">
+                            {{ form_errors(form.contentContactFormIntro) }}
+                        </div> <!-- div.col-lg-12 -->
+                        {{ form_label(form.contentContactFormIntro, "Contenu introductif au formulaire de contact:", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                        <div class="col-lg-9">
+                            {{ form_widget(form.contentContactFormIntro, {'attr': {'class': 'form-control tinyMCE'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <div class="col-lg-offset-2 col-lg-10">
                             <div class="pull-right">
                                 <button class="btn btn-lg btn-success rounded" type="submit">

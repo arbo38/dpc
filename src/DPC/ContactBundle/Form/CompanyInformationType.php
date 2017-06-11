@@ -25,7 +25,9 @@ class CompanyInformationType extends AbstractType
             ->add('tel', TextType::class)
             ->add('fax', TextType::class)
             ->add('siret', TextType::class)
-            ->add('logo', ImageType::class, array('required' => true));
+            ->add('logo', ImageType::class, array('required' => true))
+            ->add('titleContactFormIntro', TextType::class)
+            ->add('contentContactFormIntro', TextareaType::class, array('required' => false));
     }
     
     /**

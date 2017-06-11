@@ -1,0 +1,8 @@
+{% if companyInformation is not null %}
+	<h3 class="heading">{{ companyInformation.titleContactFormIntro }}</h3>
+	<p>
+		{{ companyInformation.contentContactFormIntro }}
+	</p>
+{% else %}
+	<p>En construction</p>
+{% endif %}

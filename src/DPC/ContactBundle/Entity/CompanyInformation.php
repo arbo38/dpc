@@ -26,6 +26,7 @@ class CompanyInformation
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $name;
 
@@ -33,6 +34,7 @@ class CompanyInformation
      * @var string
      *
      * @ORM\Column(name="description", type="text")
+     * @Assert\NotBlank()
      */
     private $description;
 
@@ -40,6 +42,7 @@ class CompanyInformation
      * @var string
      *
      * @ORM\Column(name="address", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $address;
 
@@ -47,6 +50,7 @@ class CompanyInformation
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $email;
 
@@ -54,6 +58,7 @@ class CompanyInformation
      * @var string
      *
      * @ORM\Column(name="tel", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $tel;
 
@@ -61,6 +66,7 @@ class CompanyInformation
      * @var string
      *
      * @ORM\Column(name="fax", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $fax;
 
@@ -68,8 +74,25 @@ class CompanyInformation
      * @var string
      *
      * @ORM\Column(name="siret", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $siret;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title_contact_form_intro", type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    private $titleContactFormIntro = "Un titre d'introduction avant le formulaire de contact";
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="content_contact_form_intro", type="text")
+     * @Assert\NotBlank()
+     */
+    private $contentContactFormIntro = "Une introduction avant le formulaire de contact";
 
     /**
      * @ORM\OneToOne(targetEntity="DPC\StoreBundle\Entity\Image", cascade={"persist", "remove"})
@@ -278,5 +301,53 @@ class CompanyInformation
     public function getLogo()
     {
         return $this->logo;
+    }
+
+    /**
+     * Set titleContactFormIntro
+     *
+     * @param string $titleContactFormIntro
+     *
+     * @return CompanyInformation
+     */
+    public function setTitleContactFormIntro($titleContactFormIntro)
+    {
+        $this->titleContactFormIntro = $titleContactFormIntro;
+
+        return $this;
+    }
+
+    /**
+     * Get titleContactFormIntro
+     *
+     * @return string
+     */
+    public function getTitleContactFormIntro()
+    {
+        return $this->titleContactFormIntro;
+    }
+
+    /**
+     * Set contentContactFormIntro
+     *
+     * @param string $contentContactFormIntro
+     *
+     * @return CompanyInformation
+     */
+    public function setContentContactFormIntro($contentContactFormIntro)
+    {
+        $this->contentContactFormIntro = $contentContactFormIntro;
+
+        return $this;
+    }
+
+    /**
+     * Get contentContactFormIntro
+     *
+     * @return string
+     */
+    public function getContentContactFormIntro()
+    {
+        return $this->contentContactFormIntro;
     }
 }

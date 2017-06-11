@@ -3,6 +3,7 @@
 namespace DPC\FAQBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * FaqTheme
@@ -25,6 +26,7 @@ class FaqTheme
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255, unique=true)
+     * @Assert\NotBlank()
      */
     private $title;
 

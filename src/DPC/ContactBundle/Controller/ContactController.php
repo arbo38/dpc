@@ -55,6 +55,14 @@ class ContactController extends Controller
 		return $this->render('DPCContactBundle:company_information:contact_info.html.twig', compact('companyInformation'));
 	}
 
+	public function contactIntroAction(Request $request)
+	{
+		$companyInformation = $this->getCompanyInformation();
+		$this->globalizeCompanyInformation($companyInformation, $request);
+
+		return $this->render('DPCContactBundle:company_information:contact_intro.html.twig', compact('companyInformation'));
+	}
+
 	private function globalizeCompanyInformation($companyInformation, Request $request)
 	{
 		$session = $request->getSession();
