@@ -7,7 +7,7 @@ A Symfony project created on May 19, 2017, 10:15 am.
 
 ## Qu'est ce que c'est ?
 
-Ce projet symfony est destiné à une entreprise de vente et réparation de matériel informatique sur Annecy. L'objectif est de leur fournir un site vitrine dynamique ou ils puissent communiquer sur le produits et services et permettre à leurs clients de les contacter via le site.
+Ce projet symfony est destiné à une entreprise de vente et réparation de matériel informatique sur Annecy. L'objectif est de leur fournir un site vitrine dynamique ou ils puissent communiquer sur leurs produits et services et permettre à leurs clients de les contacter via le site.
 Au programme un CRUD permettant l'ajout de produits, de services, de FAQ etc..
 
 ## Les ressources utilisées
@@ -38,6 +38,28 @@ Dans _src/DPC_ se trouvent 7 bundles chacun répondant à un besoin particulier 
 - ContactBundle, regroupe l'ensemble des élements relatifs à la page de contact
 - UserBundle, bundle enfant de fosUserBundle pour la personnalisations des vues notamment.
 - AdminBundle, regroupe l'ensemble des éléments relatif à l'administration (assets, controller, views etc...). Il utilise l'ensemble des autres bundles et gère la partie administration de leurs entités.
+
+## Les futurs améliorations
+
+### Gestion des slugs et routes dynamiques
+
+Pour aider au référencement et améliorer les routes du sites un Bundle de gestion des slugs sera intégré et les catégories seront éditer afin que leurs noms soit un champ unique (accessible aux futurs paramsConverters). Ainsi les produits seront disponibles sous la forme _nom-catégorie/slug-du-produit_
+
+### Mise en place de paramsConverters
+
+Afin d'alléger le code métier des controllers et grâce aux routes dynamiques des paramsConverters seront mis en place pour toutes les principales entités
+
+### Control du flood pour le formulair de contact via un log par IP
+
+Le formulaire de contact sera amélioré afin de gérer un log ou sera stocké l'IP du client. Un nombre maximum de formulaires par durée de temps et par IP sera mis en place afin de prévenir le flood.
+
+### Ajout d'une Newsletter
+
+Afin d'aider l'entreprise à mieux communiquer avec ses clients un fonctionnalité newsletter sera ajouté.
+
+## Démo
+
+Une démo du site est disponible à l'adresse http://dpc-alpha.terminus-development.net/
 
 
 

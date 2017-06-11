@@ -27,8 +27,8 @@
                         <li class="dropdown"> 
                             <a href="#" data-toggle="dropdown" class="dropdown-toggle">{{ app.user.username }}</a>
                             <ul class="dropdown-menu dropdown-menu-scale user-dropdown">
+                                <li><a href="{{ path('fos_user_change_password') }}"><i class="fa fa-key"></i>Changer mot de passe</a></li>
                                 <li><a href="{{ path('fos_user_security_logout') }}"><i class="ion-log-out"></i>Déconnexion </a></li>
-                                <li><a href="{{ path('fos_user_change_password') }}"><i class="ion-log-out"></i>Changer mot de passe</a></li>
                             </ul>
                         </li>
                     </ul>

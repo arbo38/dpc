@@ -15,7 +15,6 @@ class FaqThemeRepository extends \Doctrine\ORM\EntityRepository
 		    ->createQueryBuilder('t')
 		    ->leftJoin('t.faqs', 'f')
 		    ->addSelect('f')
-		    ->andWhere('f.published = true')
 		    ->getQuery()
 		    ->getResult();
 	}

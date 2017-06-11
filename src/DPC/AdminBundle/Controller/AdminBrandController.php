@@ -77,7 +77,7 @@ class AdminBrandController extends Controller
 
                 $request->getSession()->getFlashBag()->add('notice', 'Marque supprimé');
 
-                return $this->redirectToRoute('dpc_admin_brands', array('id' => $brand->getId()));
+                return $this->redirectToRoute('dpc_admin_brands');
         }
 
     	return $this->render(

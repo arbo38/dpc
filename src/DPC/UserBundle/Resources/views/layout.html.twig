@@ -12,6 +12,13 @@
 {% endblock %}
 
 {% block bundle_body %}
+    <div class="breadcrumb-wrapper" >
+        <div class="container">
+            <h1>{% block page_title %}{% endblock %}</h1>
+        </div>
+    </div>
+    <!--end breadcrumb-->
+    
 
     {% for key, messages in app.session.flashbag.all() %}
         {% for message in messages %}
@@ -22,6 +29,7 @@
             </div> <!-- div.row -->
         {% endfor %}
     {% endfor %}
+    <div class="space-60"></div>
 
     {% block fos_user_content %}
 

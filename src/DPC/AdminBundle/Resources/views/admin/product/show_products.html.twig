@@ -58,12 +58,11 @@
 				</div><!--col end-->
 		</div><!--row end-->
 		{% endif %}
-
 		<div class="row">
 			<div class="col-md-12">
 				<div class="panel">
 					<header class="panel-heading">
-						<h2 class="panel-title">{{ title|upper }}</h2>
+						<h2 class="panel-title">{{ title|upper }}</h2><a href="{{ path('dpc_admin_add_product') }}" class="pull-right btn btn-success rounded">Ajouter un produit</a>
 					</header>
 					<div class="panel-body">
 						<table class="table table-hover">
@@ -118,9 +117,7 @@
 												</a>
 											{% endfor %}
 										</td>
-
 									</tr>
-
 								{% endfor %}
 							</tbody>
 						</table>
