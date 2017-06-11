@@ -46,9 +46,6 @@ class StoreController extends Controller
           throw $this->createNotFoundException("La page ".$page." n'existe pas.");
         }
 
-        $request->getSession()->getFlashBag()->add('notice', 'Marque enregistré');
-
-
         return $this->render('DPCStoreBundle:Store/product:list_products.html.twig', array(
             'listProducts' => $listProducts,
             'nbPages'     => $nbPages,

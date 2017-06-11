@@ -72,7 +72,7 @@ class AdminCategoryController extends Controller
             $em->remove($category);
             $em->flush();
 
-            $request->getSession()->getFlashBag()->add('notice', 'Marque supprimé');
+            $request->getSession()->getFlashBag()->add('notice', 'Catégorie supprimé');
 
             return $this->redirectToRoute('dpc_admin_categories');
         } elseif ($request->isMethod('POST')) {
