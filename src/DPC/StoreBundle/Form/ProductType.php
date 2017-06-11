@@ -26,6 +26,7 @@ class ProductType extends AbstractType
         $builder
             ->add('title', TextType::class, array('label' => 'Titre'))
             ->add('description', TextareaType::class, array('required' => false))
+            ->add('shortDescription', TextareaType::class)
             ->add('price', NumberType::class)
             ->add('discount', IntegerType::class, array('required' => false))
             ->add('occasion', CheckboxType::class, array('required' => false))

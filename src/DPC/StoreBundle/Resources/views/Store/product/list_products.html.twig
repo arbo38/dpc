@@ -15,62 +15,64 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				{% for product in listProducts %}
-					<div class="product-list">
-						<div class="row">
-							<div class="col-md-4 margin-b-30">
-								<div class="product-list-thumb">
-									<a href="#"> <img src="{{ vich_uploader_asset(product.images[0], 'imageFile') }}" alt="Product image" class="img-responsive"></a>
-								</div>
+			{% for product in listProducts %}
+				<div class="product-list">
+					<div class="row">
+						<div class="col-md-4 margin-b-30">
+							<div class="product-list-thumb">
+								<a href="#"> <img src="{{ vich_uploader_asset(product.images[0], 'imageFile') }}" alt="Product image" class="img-responsive"></a>
 							</div>
-							<div class="col-md-8">
-								<div class="product-list-desc">
-									<h3 class="title"><a href="{{ path('dpc_store_product', { 'id': product.id }) }}">{{ product.title|upper }}</a></h3>
-									<h5 >Type: 
-										{% if product.promo and  product.occasion %}
-											<a href="#">Promotion</a> - <a href="#">Occasion</a>
-										{% elseif product.promo %}
-											<a href="#">Promotion</a>
-										{% elseif product.occasion %}
-											<a href="#">Occasion</a>
-										{% endif %}
-									</h5>
-									<h5>Catégories: 
-										{% for category in product.categories %}
-											<a href="#">{{ category.title }}</a> {% if not loop.last %}/{% endif %}
-										{% endfor %}
-									</h5>
-									<span class="price">{% if product.discount %}<del>{{ product.PriceBeforeDiscount }}</del>{% endif %} {{ product.price }}€</span> 
+						</div>
+						<div class="col-md-8">
+							<div class="product-list-desc">
+								<h3 class="title"><a href="{{ path('dpc_store_product', { 'id': product.id }) }}">{{ product.title|upper }}</a></h3>
+								<h5 >Type: 
+									{% if product.promo and  product.occasion %}
+										<a href="#">Promotion</a> - <a href="#">Occasion</a>
+									{% elseif product.promo %}
+										<a href="#">Promotion</a>
+									{% elseif product.occasion %}
+										<a href="#">Occasion</a>
+									{% endif %}
+								</h5>
+								<h5>Catégories: 
+									{% for category in product.categories %}
+										<a href="#">{{ category.title }}</a> {% if not loop.last %}/{% endif %}
+									{% endfor %}
+								</h5>
+								<span class="price">{% if product.discount %}<del>{{ product.PriceBeforeDiscount }}</del>{% endif %} {{ product.price }}€</span> 
 									<p>
-										{{ product.descriptionExcerpt|raw }}
+										{{ product.shortDescription }}
 									</p>
 									<div class="icon-list">
 										<a href="{{ path('dpc_store_product', { 'id': product.id }) }}" class="btn btn-skin">Voir le produit</a>
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> <!-- div.row -->
 					</div><!--products list-->
-				{% endfor %}
-			</div>
-		</div>
-		<div class="row">
-			<div class="text-center">.
-				<ul class="pagination">
-					{% for p in range(1, nbPages) %}
-						<li {% if p == page %}class="active"{% endif %}>
-							{% if title == "Occasions" %}
-								<a href="{{ path('dpc_store_occasions', {'page': p}) }}" class="occasions">{{ p }}</a>
-							{% elseif title == "Promotions" %}
-								<a href="{{ path('dpc_store_promotions', {'page': p}) }}" class="promotions">{{ p }}</a>
-							{% else %}
-								<a href="{{ path('dpc_store_catalogue', {'page': p}) }}" class="catalogue">{{ p }}</a>
-							{% endif %}
-						</li>
-					{% endfor %}
-				</ul>
-			</div> <!-- div.text-center -->
-		</div> <!-- div.row -->
-	</div>
 
-{% endblock %}
+				{% endfor %}
+
+			</div>
+			<div class="row">
+				<div class="text-center">.
+					<ul class="pagination">
+						{% for p in range(1, nbPages) %}
+							<li {% if p == page %}class="active"{% endif %}>
+								{% if title == "Occasions" %}
+									<a href="{{ path('dpc_store_occasions', {'page': p}) }}" class="occasions">{{ p }}</a>
+								{% elseif title == "Promotions" %}
+									<a href="{{ path('dpc_store_promotions', {'page': p}) }}" class="promotions">{{ p }}</a>
+								{% else %}
+									<a href="{{ path('dpc_store_catalogue', {'page': p}) }}" class="catalogue">{{ p }}</a>
+								{% endif %}
+							</li>
+						{% endfor %}
+					</ul>
+				</div> <!-- div.text-center -->
+			</div> <!-- div.row -->
+		</div>
+	</div> <!-- div.col-md-12 -->
+
+	{% endblock %}

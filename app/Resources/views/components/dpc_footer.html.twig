@@ -28,7 +28,7 @@
                     </ul>          
                 </div>                        
             </div><!--footer col-->
-            <div class="col-md-4 col-sm-6 margin30">
+            <div class="col-md-3 col-sm-6 margin30">
                 <div class="footer-col">
                     <h3>Produits du moment</h3>
                     <ul class="list-inline f2-work">
@@ -38,7 +38,7 @@
                             {% for product in app.session.get('productSelection') %}
                                 <li>
                                     <a href="{{ path('dpc_store_product', {'id': product.id}) }}">
-                                        <img src="{{ vich_uploader_asset(product.images[0], 'imageFile') }}" class="img-responsive" alt="{{ product.images[0].alt }}">
+                                        <img src="{{ vich_uploader_asset(product.images[0], 'imageFile') }}" class="img-responsive" alt="{{ product.images[0].alt }}" style="max-height:50px;">
                                     </a>
                                 </li>
                             {% endfor %}

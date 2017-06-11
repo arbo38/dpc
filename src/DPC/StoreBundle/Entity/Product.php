@@ -49,10 +49,18 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text", nullable=true)
+     * @ORM\Column(name="description", type="text")
      * @Assert\NotBlank()
      */
     private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description_short", type="text", nullable=false)
+     * @Assert\NotBlank()
+     */
+    private $shortDescription;
 
     /**
      * @var string
@@ -219,16 +227,6 @@ class Product
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescriptionExcerpt()
-    {
-        return (substr($this->description, 0, 200) . '...'); 
     }
 
     /**
@@ -455,4 +453,28 @@ class Product
         return reset($this->categories);
     }
 
+
+    /**
+     * Set shortDescription
+     *
+     * @param string $shortDescription
+     *
+     * @return Product
+     */
+    public function setShortDescription($shortDescription)
+    {
+        $this->shortDescription = $shortDescription;
+
+        return $this;
+    }
+
+    /**
+     * Get shortDescription
+     *
+     * @return string
+     */
+    public function getShortDescription()
+    {
+        return $this->shortDescription;
+    }
 }

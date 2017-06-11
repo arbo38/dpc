@@ -1,8 +1,8 @@
 {% if productSelection is not null %}
 	{% for product in productSelection %}
 		<li>
-			<a class="thumbnail" href="{{ path('dpc_store_product', {'id': product.id }) }}">
-				<img src="{{ vich_uploader_asset(product.images[0], 'imageFile') }}" class="" alt="{{ product.images[0].alt }}">
+			<a href="{{ path('dpc_store_product', {'id': product.id }) }}">
+				<img src="{{ vich_uploader_asset(product.images[0], 'imageFile') }}" class="img-responsive" alt="{{ product.images[0].alt }}" style="max-height:50px;" >
 			</a>
 		</li>
 	{% endfor %}

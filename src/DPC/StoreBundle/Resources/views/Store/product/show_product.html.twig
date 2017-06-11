@@ -51,7 +51,7 @@
                             <span class="price">{% if product.discount %}<del>{{ product.PriceBeforeDiscount }}</del>{% endif %} {{ product.price }}€</span>
 
                             <p>
-                                {{ product.descriptionExcerpt|raw }}
+                                {{ product.shortDescription }}
                             </p>
 
                             <div class="text-right">
