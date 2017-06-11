@@ -70,6 +70,7 @@
 								<tr>
 									<th>ID</th>
 									<th>Titre</th>
+									<th>Catégorie</th>
 									<th>Crée le</th>
 									<th>MAJ le</th>
 									<th>Prix</th>
@@ -90,10 +91,11 @@
 											</a>
 										</th>
 										<td>{{ product.title }}</td>
+										<td>{% for category in product.categories %}{{ category.title }} {% endfor%}</td>
 										<td>{{ product.date|date('d/m/Y') }}</td>
 										<td>{{ product.updateDate|date('d/m/Y') }}</td>
 										<td>{{ product.price }}</td>
-										<td>{{ product.discount }}</td>
+										<td>{% if product.discount %}{{ product.discount }}%{% else %}Non{% endif %}</td>
 										<td>{% if product.occasion %}
 											Oui
 										{% else %}
