@@ -28,11 +28,12 @@ $(document).ready(function() {
       ;
 
       var $prototype = $(template);
-
+      
       addDeleteLink($prototype);
 
       $container.append($prototype);
 
+      $container.find('.image-upload').attr('required', true);
       indexImage++;
     }
 

@@ -26,6 +26,7 @@ class Service
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $title;
 
@@ -33,6 +34,7 @@ class Service
      * @var string
      *
      * @ORM\Column(name="short_description", type="text")
+     * @Assert\NotBlank()
      */
     private $shortDescription;
 
@@ -40,6 +42,7 @@ class Service
      * @var string
      *
      * @ORM\Column(name="long_description", type="text")
+     * @Assert\NotBlank()
      */
     private $longDescription;
 
@@ -47,6 +50,10 @@ class Service
      * @var float
      *
      * @ORM\Column(name="price_min", type="float")
+     *  @Assert\Type(
+     *     type="float",
+     *     message="The value {{ value }} is not a valid {{ type }}."
+     * )
      */
     private $priceMin;
 

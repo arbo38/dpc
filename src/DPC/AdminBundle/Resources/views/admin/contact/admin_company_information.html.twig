@@ -54,7 +54,7 @@
                             </div> <!-- div.col-lg-12 -->
                             {{ form_label(form.logo.imageFile, 'Fichier:', {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
                             <div class='col-lg-4'>
-                                {{ form_widget(form.logo.imageFile, {'attr': {'class': ''}}) }}
+                                {{ form_widget(form.logo.imageFile, {'attr': {'class': 'image-upload'}}) }}
                             </div>
                             <div class='col-lg-4'>
                                 {% if companyInformation.logo is not empty %}
@@ -146,6 +146,17 @@
             </div> <!-- div.panel -->
         </div> <!-- div.col-md-6 -->
     </section><!--end main content-->
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    {% if companyInformation.logo is not empty %}
+        <script type="text/javascript">
+            $( document ).ready(function() {
+                $('.image-upload').removeAttr('required');
+            });        
+        </script>
+    {% endif %}
 {% endblock %}
 
 

@@ -32,7 +32,7 @@ class ServiceType extends AbstractType
                 'multiple'     => false,
                 'required' => true,
               ))
-            ->add('image', ImageType::class);
+            ->add('image', ImageType::class, array('required' => true));
     }
     
     /**

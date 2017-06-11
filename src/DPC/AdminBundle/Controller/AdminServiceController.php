@@ -77,7 +77,7 @@ class AdminServiceController extends Controller
         }
 
         return $this->render('DPCAdminBundle:admin/service:admin_service.html.twig', 
-            array('form' => $form->createView(), 'deleteForm' => $deleteForm->createView(), 'title' => $title, 'action' => $action)
+            array('form' => $form->createView(), 'deleteForm' => $deleteForm->createView(), 'title' => $title, 'action' => $action, 'service' => $service)
             );
     }
 }

@@ -26,6 +26,7 @@ class SectionFourElement
      * @var string
      *
      * @ORM\Column(name="firstName", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $firstName;
 
@@ -33,11 +34,13 @@ class SectionFourElement
      * @var string
      *
      * @ORM\Column(name="status", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $status;
 
     /**
      * @ORM\ManyToOne(targetEntity="DPC\HomeBundle\Entity\Home", inversedBy="sectionFourElements")
+     * 
      */
     private $home;
 

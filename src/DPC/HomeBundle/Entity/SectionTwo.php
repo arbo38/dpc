@@ -26,6 +26,7 @@ class SectionTwo
      * @var string
      *
      * @ORM\Column(name="title_1", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $title1;
 
@@ -33,6 +34,7 @@ class SectionTwo
      * @var string
      *
      * @ORM\Column(name="text_1", type="text")
+     * @Assert\NotBlank()
      */
     private $text1;
 
@@ -40,6 +42,7 @@ class SectionTwo
      * @var string
      *
      * @ORM\Column(name="icone_1", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $icone1;
 
@@ -47,6 +50,7 @@ class SectionTwo
      * @var string
      *
      * @ORM\Column(name="title_2", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $title2;
 
@@ -54,6 +58,7 @@ class SectionTwo
      * @var string
      *
      * @ORM\Column(name="text_2", type="text")
+     * @Assert\NotBlank()
      */
     private $text2;
 
@@ -61,6 +66,7 @@ class SectionTwo
      * @var string
      *
      * @ORM\Column(name="icone_2", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $icone2;
 

@@ -28,6 +28,7 @@ class Product
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $title;
 
@@ -49,6 +50,7 @@ class Product
      * @var string
      *
      * @ORM\Column(name="description", type="text", nullable=true)
+     * @Assert\NotBlank()
      */
     private $description;
 
@@ -56,6 +58,7 @@ class Product
      * @var string
      *
      * @ORM\Column(name="price", type="decimal", precision=10, scale=2)
+     * @Assert\NotBlank()
      */
     private $price;
 
@@ -84,6 +87,7 @@ class Product
      * @var bool
      *
      * @ORM\Column(name="warranty", type="integer")
+     * @Assert\NotBlank()
      */
     private $warranty = 3;
 

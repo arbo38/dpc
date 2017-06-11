@@ -33,6 +33,8 @@ class AdminHomeController extends Controller
             $request->getSession()->getFlashBag()->add('notice', 'Informations enregistrées');
 
             return $this->redirectToRoute('dpc_admin_homepage');
+        } elseif ($request->isMethod('POST')) {
+            $request->getSession()->getFlashBag()->add('notice', "Le formulaire contient des erreurs, les changements n'ont pas été enregistrés");
         }
 
         return $this->render(

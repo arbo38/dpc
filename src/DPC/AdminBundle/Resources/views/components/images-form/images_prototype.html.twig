@@ -7,21 +7,21 @@
             {{ form_label(form.images.vars.prototype.title, 'Titre image:', {'label_attr': {'class': 'col-lg-3 control-label'}})|e('html_attr') }}
             {{ form_errors(form.images.vars.prototype.title)|e('html_attr') }}
             <div class='col-lg-9'>
-                {{ form_widget(form.images.vars.prototype.title, {'attr': {'class': 'form-control'}})|e('html_attr') }}
+                {{ form_widget(form.images.vars.prototype.title, {'attr': {'class': 'form-control', 'required': 'required'}})|e('html_attr') }}
             </div>
         </div>
         <div class='form-group'>
             {{ form_label(form.images.vars.prototype.alt, 'Texte alternatif:', {'label_attr': {'class': 'col-lg-3 control-label'}})|e('html_attr') }}
             {{ form_errors(form.images.vars.prototype.alt)|e('html_attr') }}
             <div class='col-lg-9'>
-                {{ form_widget(form.images.vars.prototype.alt, {'attr': {'class': 'form-control'}})|e('html_attr') }}
+                {{ form_widget(form.images.vars.prototype.alt, {'attr': {'class': 'form-control', 'required': 'required'}})|e('html_attr') }}
             </div>
         </div>
         <div class='form-group'>
             {{ form_label(form.images.vars.prototype.imageFile, 'Fichier:', {'label_attr': {'class': 'col-lg-3 control-label'}})|e('html_attr') }}
             {{ form_errors(form.images.vars.prototype.imageFile)|e('html_attr') }}
             <div class='col-lg-8'>
-                {{ form_widget(form.images.vars.prototype.imageFile, {'attr': {'class': ''}})|e('html_attr') }}
+                {{ form_widget(form.images.vars.prototype.imageFile, {'attr': {'class': 'image-upload'}})|e('html_attr') }}
             </div>
         </div>
         <div class='delete-button' style='padding-left:30px' ></div>

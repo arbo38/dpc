@@ -27,6 +27,7 @@ class Home
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $title;
 
@@ -47,6 +48,7 @@ class Home
      * @var string
      *
      * @ORM\Column(name="title_section_3", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $titleSectionThree;
 
@@ -54,6 +56,7 @@ class Home
      * @var string
      *
      * @ORM\Column(name="title_section_4", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $titleSectionFour;
 

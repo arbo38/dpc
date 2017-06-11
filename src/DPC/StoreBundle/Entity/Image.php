@@ -56,6 +56,7 @@ class Image
      * @Vich\UploadableField(mapping="image", fileNameProperty="imageName", size="imageSize")
      * 
      * @var File
+     * 
      */
     private $imageFile;
 

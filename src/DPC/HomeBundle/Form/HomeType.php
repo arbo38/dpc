@@ -22,7 +22,7 @@ class HomeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', TextType::class, array('label' => 'Titre Accueil'))
+            ->add('title', TextType::class)
             ->add('sectionOne', SectionOneType::class)
             ->add('sectionTwo', SectionTwoType::class)
             ->add('titleSectionThree', TextType::class)

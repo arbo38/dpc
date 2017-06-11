@@ -10,6 +10,8 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\PropertyAccess\PropertyPath;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ImageType extends AbstractType
 {
@@ -19,9 +21,9 @@ class ImageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('alt')
-            ->add('imageFile', FileType::class, array('required' => true));
+            ->add('title', TextType::class,array('required' => true))
+            ->add('alt', TextType::class ,array('required' => true))
+            ->add('imageFile', FileType::class, ['required' => true]);
     }
     
     /**

@@ -29,6 +29,7 @@ class Brand
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $title;
 
@@ -36,6 +37,7 @@ class Brand
      * @var string
      *
      * @ORM\Column(name="description", type="text", nullable=true)
+     * @Assert\NotBlank()
      */
     private $description;
 

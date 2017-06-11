@@ -26,6 +26,7 @@ class SectionThreeElement
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $title;
 
@@ -33,6 +34,7 @@ class SectionThreeElement
      * @var string
      *
      * @ORM\Column(name="text", type="text")
+     * @Assert\NotBlank()
      */
     private $text;
 
@@ -40,13 +42,14 @@ class SectionThreeElement
      * @var string
      *
      * @ORM\Column(name="icone", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $icone;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="link", type="string", length=255)
+     * @ORM\Column(name="link", type="string", length=255, nullable=true)
      */
     private $link;
 

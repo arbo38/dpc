@@ -43,10 +43,10 @@
 											<td>{{ serviceCategory.title }}</td>
 											<td>{{ serviceCategory.countServices }}</td>
 											<td>
-												<a href="{{ vich_uploader_asset(serviceCategory.image, 'imageFile') }}">
-													<img src="{{ vich_uploader_asset(serviceCategory.image, 'imageFile') }}" alt="{{ serviceCategory.image.alt }}" class="img-responsive">
-												</a>
-											</td>
+                                                <a href="{{ vich_uploader_asset(serviceCategory.image, 'imageFile') }}">
+                                                    <img src="{{ vich_uploader_asset(serviceCategory.image, 'imageFile') }}" alt="{{ serviceCategory.image.alt }}" class="img-responsive">
+                                                </a>
+                                            </td>
 										</tr>
 									{% endfor %}
 								{% endif %}

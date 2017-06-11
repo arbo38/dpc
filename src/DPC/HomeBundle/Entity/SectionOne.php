@@ -33,6 +33,7 @@ class SectionOne
      * @var string
      *
      * @ORM\Column(name="text", type="text")
+     * @Assert\NotBlank()
      */
     private $text;
 
