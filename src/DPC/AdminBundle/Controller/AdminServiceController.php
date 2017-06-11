@@ -38,6 +38,8 @@ class AdminServiceController extends Controller
             $request->getSession()->getFlashBag()->add('notice', 'Nouveau Service enregistré');
 
             return $this->redirectToRoute('dpc_admin_services');
+        } elseif ($request->isMethod('POST')) {
+            $request->getSession()->getFlashBag()->add('notice', "Le formulaire contient des erreurs, les changements n'ont pas été enregistrés");
         }
 
         return $this->render(
@@ -74,6 +76,8 @@ class AdminServiceController extends Controller
             $request->getSession()->getFlashBag()->add('notice', 'Service supprimé');
 
             return $this->redirectToRoute('dpc_admin_services');
+        } elseif ($request->isMethod('POST')) {
+            $request->getSession()->getFlashBag()->add('notice', "Le formulaire contient des erreurs, les changements n'ont pas été enregistrés");
         }
 
         return $this->render('DPCAdminBundle:admin/service:admin_service.html.twig', 

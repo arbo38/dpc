@@ -36,7 +36,9 @@ class AdminCategoryController extends Controller
 			$request->getSession()->getFlashBag()->add('notice', 'Catégorie enregistré');
 
 			return $this->redirectToRoute('dpc_admin_categories');
-    	}
+    	} elseif ($request->isMethod('POST')) {
+            $request->getSession()->getFlashBag()->add('notice', "Le formulaire contient des erreurs, les changements n'ont pas été enregistrés");
+        }
 
     	return $this->render(
             'DPCAdminBundle:admin/category:admin_category.html.twig',
@@ -73,6 +75,8 @@ class AdminCategoryController extends Controller
             $request->getSession()->getFlashBag()->add('notice', 'Marque supprimé');
 
             return $this->redirectToRoute('dpc_admin_categories');
+        } elseif ($request->isMethod('POST')) {
+            $request->getSession()->getFlashBag()->add('notice', "Le formulaire contient des erreurs, les changements n'ont pas été enregistrés");
         }
 
     	return $this->render(

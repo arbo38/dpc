@@ -39,6 +39,8 @@ class AdminServiceCategoryController extends Controller
             $request->getSession()->getFlashBag()->add('notice', 'Nouvelle Catégorie de Service enregistré');
 
             return $this->redirectToRoute('dpc_admin_service_categories');
+        } elseif ($request->isMethod('POST')) {
+            $request->getSession()->getFlashBag()->add('notice', "Le formulaire contient des erreurs, les changements n'ont pas été enregistrés");
         }
 
         return $this->render(
@@ -76,6 +78,8 @@ class AdminServiceCategoryController extends Controller
             $request->getSession()->getFlashBag()->add('notice', 'Catégorie de Service supprimé');
 
             return $this->redirectToRoute('dpc_admin_service_categories');
+        } elseif ($request->isMethod('POST')) {
+            $request->getSession()->getFlashBag()->add('notice', "Le formulaire contient des erreurs, les changements n'ont pas été enregistrés");
         }
 
         return $this->render(

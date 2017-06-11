@@ -40,8 +40,7 @@ class AdminProductController extends Controller
                 'DPCAdminBundle:admin/product:show_products.html.twig', 
                 array('listProducts' => $listProducts, 'title' => $title, 'productSearchForm' => $productSearchForm->createView())
                 );
-        } 
-        else {
+        } else {
             $listProducts = $this->getDoctrine()->getManager()->getRepository('DPCStoreBundle:Product')->getCatalogueProducts($page, $this->nbPerPage);
         }
 
@@ -101,8 +100,8 @@ class AdminProductController extends Controller
             $request->getSession()->getFlashBag()->add('notice', 'Produit supprimé');
 
             return $this->redirectToRoute('dpc_admin_products', array('id' => $product->getId()));
-        } elseif($request->isMethod('POST')) {
-            $request->getSession()->getFlashBag()->add('notice', 'Une erreur est survenue');
+        } elseif ($request->isMethod('POST')) {
+            $request->getSession()->getFlashBag()->add('notice', "Le formulaire contient des erreurs, les changements n'ont pas été enregistrés");
         }
 
         return $this->render(
@@ -126,6 +125,8 @@ class AdminProductController extends Controller
             $request->getSession()->getFlashBag()->add('notice', 'Produit enregistré');
 
             return $this->redirectToRoute('dpc_admin_edit_product', array('id' => $product->getId()));
+        } elseif ($request->isMethod('POST')) {
+            $request->getSession()->getFlashBag()->add('notice', "Le formulaire contient des erreurs, les changements n'ont pas été enregistrés");
         }
 
         return $this->render(

@@ -34,6 +34,8 @@ class AdminContactController extends Controller
             $request->getSession()->getFlashBag()->add('notice', 'Informations enregistrées');
 
             return $this->redirectToRoute('dpc_admin_contact');
+        } elseif ($request->isMethod('POST')) {
+            $request->getSession()->getFlashBag()->add('notice', "Le formulaire contient des erreurs, les changements n'ont pas été enregistrés");
         }
 
         return $this->render(

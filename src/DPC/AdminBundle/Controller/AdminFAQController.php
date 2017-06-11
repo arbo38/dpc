@@ -40,6 +40,8 @@ class AdminFAQController extends Controller
             $request->getSession()->getFlashBag()->add('notice', 'Nouvelle FAQ enregistré');
 
             return $this->redirectToRoute('dpc_admin_faqs');
+        } elseif ($request->isMethod('POST')) {
+            $request->getSession()->getFlashBag()->add('notice', "Le formulaire contient des erreurs, les changements n'ont pas été enregistrés");
         }
 
         return $this->render('DPCAdminBundle:admin/faq:admin_faq.html.twig', 
@@ -75,6 +77,8 @@ class AdminFAQController extends Controller
             $request->getSession()->getFlashBag()->add('notice', 'FAQ supprimé');
 
             return $this->redirectToRoute('dpc_admin_faqs');
+        } elseif ($request->isMethod('POST')) {
+            $request->getSession()->getFlashBag()->add('notice', "Le formulaire contient des erreurs, les changements n'ont pas été enregistrés");
         }
 
         return $this->render('DPCAdminBundle:admin/faq:admin_faq.html.twig', 
@@ -106,6 +110,8 @@ class AdminFAQController extends Controller
             $request->getSession()->getFlashBag()->add('notice', 'Thème FAQ enregistré');
 
             return $this->redirectToRoute('dpc_admin_faq_themes');
+        } elseif ($request->isMethod('POST')) {
+            $request->getSession()->getFlashBag()->add('notice', "Le formulaire contient des erreurs, les changements n'ont pas été enregistrés");
         }
 
         return $this->render('DPCAdminBundle:admin/faq:admin_faq_theme.html.twig', 
@@ -142,6 +148,8 @@ class AdminFAQController extends Controller
             $request->getSession()->getFlashBag()->add('notice', 'Thème FAQ supprimé');
 
             return $this->redirectToRoute('dpc_admin_faq_themes');
+        } elseif ($request->isMethod('POST')) {
+            $request->getSession()->getFlashBag()->add('notice', "Le formulaire contient des erreurs, les changements n'ont pas été enregistrés");
         }
 
         return $this->render('DPCAdminBundle:admin/faq:admin_faq_theme.html.twig', 

@@ -41,7 +41,9 @@ class AdminBrandController extends Controller
 			$request->getSession()->getFlashBag()->add('notice', 'Marque enregistré');
 
 			return $this->redirectToRoute('dpc_admin_brands');
-    	}
+    	} elseif ($request->isMethod('POST')) {
+            $request->getSession()->getFlashBag()->add('notice', "Le formulaire contient des erreurs, les changements n'ont pas été enregistrés");
+        }
 
     	return $this->render(
             'DPCAdminBundle:admin/brand:admin_brand.html.twig',
@@ -78,6 +80,8 @@ class AdminBrandController extends Controller
                 $request->getSession()->getFlashBag()->add('notice', 'Marque supprimé');
 
                 return $this->redirectToRoute('dpc_admin_brands');
+        } elseif ($request->isMethod('POST')) {
+            $request->getSession()->getFlashBag()->add('notice', "Le formulaire contient des erreurs, les changements n'ont pas été enregistrés");
         }
 
     	return $this->render(
