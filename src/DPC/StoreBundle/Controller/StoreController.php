@@ -108,10 +108,11 @@ class StoreController extends Controller
         ));
     }
 
+    // productSelection ne peut être mis en session à cause du composant paginator, en attente de solution
     public function getCurrentSelectionAction(Request $request)
     {
-        $productSelection = $this->getDoctrine()->getManager()->getRepository('DPCStoreBundle:Product')->getCurrentSelection();
-        $this->globalizeCurrentSelection($productSelection, $request);
+        $productSelection = $this->getDoctrine()->getManager()->getRepository('DPCStoreBundle:Product')->getCurrentSelection(9);
+        // $this->globalizeCurrentSelection($productSelection, $request);
 
         return $this->render('DPCStoreBundle:Store/product:current_selection.html.twig', compact('productSelection'));
     }
@@ -124,10 +125,12 @@ class StoreController extends Controller
         return $this->render('DPCStoreBundle:Store:brand.html.twig', compact('brand'));
     }
 
-    // Privées
+    // Privées // productSelection ne peut être mis en session à cause du composant paginator, en attente de solution
+    /*
     private function globalizeCurrentSelection($productSelection, Request $request)
     {
         $session = $request->getSession();
         $session->set('productSelection', $productSelection);
     }
+    */
 }

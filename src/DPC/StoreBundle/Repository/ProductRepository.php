@@ -44,7 +44,9 @@ class ProductRepository extends \Doctrine\ORM\EntityRepository
       	->setMaxResults($limit)
 		->getQuery();
 
-		return $query->getResult();
+		$result = new Paginator($query, $fetchJoin = true);
+
+		return  $result;
 	}
 
 	public function getCatalogueProducts($page = null, $nbPerPage = null){
